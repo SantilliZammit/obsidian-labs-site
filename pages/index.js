@@ -2,6 +2,17 @@ export default function Home() {
   return (
     <div className="container">
 
+      {/* NAVBAR */}
+      <nav className="nav">
+        <div className="logo">OBSIDIAN</div>
+        <div className="links">
+          <a>Products</a>
+          <a>Research</a>
+          <a>Contact</a>
+        </div>
+      </nav>
+
+      {/* HERO */}
       <header className="hero">
         <h1>OBSIDIAN LABS</h1>
         <p className="tagline">Advanced Peptide Research Solutions</p>
@@ -10,6 +21,7 @@ export default function Home() {
         </p>
       </header>
 
+      {/* PRODUCTS */}
       <section className="products">
         <h2>Featured Compounds</h2>
 
