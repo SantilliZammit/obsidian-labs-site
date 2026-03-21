@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  padding: 40px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  color: #aaa;
+}
+
+section {
+  margin-top: 40px;
+}
