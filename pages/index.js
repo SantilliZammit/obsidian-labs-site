@@ -1,6 +1,7 @@
 export default function Home() {
   return (
     <div className="container">
+
       <header className="hero">
         <h1>OBSIDIAN LABS</h1>
         <p className="tagline">Advanced Peptide Research Solutions</p>
@@ -28,6 +29,7 @@ export default function Home() {
           ))}
         </div>
       </section>
+
     </div>
   );
 }
