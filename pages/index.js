@@ -1,8 +1,16 @@
+import Link from "next/link";
+
 export default function Home() {
+  const products = [
+    { name: "BPC-157", slug: "bpc-157" },
+    { name: "TB-500", slug: "tb-500" },
+    { name: "CJC-1295", slug: "cjc-1295" },
+    { name: "PT-141", slug: "pt-141" },
+    { name: "Retatrutide", slug: "retatrutide" },
+  ];
+
   return (
     <div className="container">
-
-      {/* NAVBAR */}
       <nav className="nav">
         <div className="logo">OBSIDIAN</div>
         <div className="links">
@@ -12,7 +20,6 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* HERO */}
       <header className="hero">
         <h1>OBSIDIAN LABS</h1>
         <p className="tagline">Advanced Peptide Research Solutions</p>
@@ -21,27 +28,10 @@ export default function Home() {
         </p>
       </header>
 
-      {/* PRODUCTS */}
       <section className="products">
         <h2>Featured Compounds</h2>
 
         <div className="grid">
-          {[
-            "BPC-157",
-            "TB-500",
-            "CJC-1295",
-            "PT-141",
-            "Retatrutide",
-          ].map((item) => (
-            <div className="card" key={item}>
-              <h3>{item}</h3>
-              <p>Research-grade peptide with verified sourcing.</p>
-              <button>View Details</button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-    </div>
-  );
-}
+          {products.map((item) => (
+            <div className="card" key={item.slug}>
+              <h3>{item
