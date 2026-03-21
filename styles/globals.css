@@ -12,13 +12,36 @@ body {
   margin: auto;
 }
 
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.links a {
+  margin-left: 20px;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.links a:hover {
+  color: white;
+}
+
 /* hero */
 .hero {
   margin-bottom: 60px;
 }
 
 .hero h1 {
-  font-size: 56px;
+  font-size: 50px;
   letter-spacing: 2px;
 }
 
