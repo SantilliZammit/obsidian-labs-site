@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function Home() {
   const products = [
-    { name: "BPC-157", slug: "bpc-157" },
-    { name: "TB-500", slug: "tb-500" },
-    { name: "CJC-1295", slug: "cjc-1295" },
-    { name: "PT-141", slug: "pt-141" },
-    { name: "Retatrutide", slug: "retatrutide" },
+    { name: "BPC-157", slug: "bpc-157", image: "/bpc-157.png" },
+    { name: "TB-500", slug: "tb-500", image: "/tb-500.png" },
+    { name: "CJC-1295", slug: "cjc-1295", image: "/cjc-1295.png" },
+    { name: "PT-141", slug: "pt-141", image: "/pt-141.png" },
+    { name: "Retatrutide", slug: "retatrutide", image: "/retatrutide.png" },
   ];
 
   return (
@@ -34,6 +34,7 @@ export default function Home() {
         <div className="grid">
           {products.map((item) => (
             <div className="card" key={item.slug}>
+              <img src={item.image} alt={item.name} className="product-img" />
               <h3>{item.name}</h3>
               <p>Research-grade peptide with verified sourcing.</p>
 
