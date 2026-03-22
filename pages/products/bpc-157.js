@@ -1,28 +1,25 @@
 export default function BPC157() {
   return (
     <div className="container">
-      <h1>BPC-157</h1>
-      <p className="tagline">Advanced peptide research compound</p>
+      {/* HERO */}
+      <section className="product-hero">
+        <h1 className="product-title">BPC-157</h1>
+        <p className="product-subtitle">
+          Advanced peptide for tissue repair and regenerative research
+        </p>
 
-      {/* PRODUCT IMAGE */}
-      <div style={{ margin: "40px 0", textAlign: "center" }}>
-        <img
-          src="/bpc-157.png"
-          alt="BPC-157"
-          style={{
-            maxWidth: "300px",
-            width: "100%",
-            borderRadius: "12px",
-            boxShadow: "0 0 40px rgba(255,255,255,0.05)"
-          }}
-        />
-      </div>
+        <div className="product-image-wrap">
+          <img src="/bpc-157.png" alt="BPC-157" className="product-image" />
+        </div>
+      </section>
 
-      <div className="card">
+      {/* INFO PANEL */}
+      <section className="product-panel">
         <h2>Overview</h2>
         <p>
-          BPC-157 is a synthetic peptide derived from a protective protein found in the stomach.
-          It is widely studied for its regenerative and healing properties.
+          BPC-157 is a synthetic peptide derived from a protective protein found
+          in the stomach. It is widely studied for its regenerative and healing
+          properties at the cellular level.
         </p>
 
         <h3>Key Research Areas</h3>
@@ -30,11 +27,11 @@ export default function BPC157() {
           <li>Tissue repair</li>
           <li>Ligament and tendon healing</li>
           <li>Gut health support</li>
-          <li>Inflammation reduction</li>
+          <li>Inflammation modulation</li>
         </ul>
 
-        <button>Request Info</button>
-      </div>
+        <button className="primary-btn">Request Research Access</button>
+      </section>
     </div>
   );
 }
