@@ -1,19 +1,32 @@
+import Link from "next/link";
+
 export default function BPC157() {
   return (
     <div className="container">
-      {/* HERO */}
+      <Link href="/" className="back-link">
+        ← Back to Products
+      </Link>
+
       <section className="product-hero">
-        <h1 className="product-title">BPC-157</h1>
-        <p className="product-subtitle">
-          Advanced peptide for tissue repair and regenerative research
-        </p>
+        <div className="product-copy">
+          <p className="eyebrow">OBSIDIAN LABS</p>
+          <h1 className="product-title">BPC-157 Research</h1>
+          <p className="product-subtitle">
+            Advanced peptide for tissue repair and regenerative research
+          </p>
+
+          <div className="product-tags">
+            <span className="tag-pill">5 mg</span>
+            <span className="tag-pill">Research Use Only</span>
+            <span className="tag-pill">Premium Lab Grade</span>
+          </div>
+        </div>
 
         <div className="product-image-wrap">
           <img src="/bpc-157.png" alt="BPC-157" className="product-image" />
         </div>
       </section>
 
-      {/* INFO PANEL */}
       <section className="product-panel">
         <h2>Overview</h2>
         <p>
@@ -30,7 +43,10 @@ export default function BPC157() {
           <li>Inflammation modulation</li>
         </ul>
 
-        <button className="primary-btn">Request Research Access</button>
+        <div className="product-actions">
+          <button className="primary-btn">Request Research Access</button>
+          <button className="secondary-btn">View Lab Information</button>
+        </div>
       </section>
     </div>
   );
