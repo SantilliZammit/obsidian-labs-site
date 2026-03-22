@@ -1,12 +1,20 @@
 /* =========================
-   GLOBAL RESET + THEME
+   GLOBAL RESET + ANIMATED BACKGROUND
 ========================= */
+@keyframes backgroundFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   margin: 0;
   background:
     radial-gradient(circle at 50% 20%, rgba(0,255,255,0.08), transparent 40%),
     radial-gradient(circle at 80% 80%, rgba(0,150,255,0.05), transparent 40%),
     radial-gradient(circle at top, #0a0f1a, #000000 70%);
+  background-size: 200% 200%;
+  animation: backgroundFlow 20s ease infinite;
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -44,7 +52,7 @@ body {
   padding: 60px 20px;
 }
 
-/* MOBILE RESPONSIVE */
+/* MOBILE */
 @media (max-width: 768px) {
   .product-hero {
     grid-template-columns: 1fr;
@@ -84,7 +92,7 @@ body {
 }
 
 /* =========================
-   TITLE
+   TITLE (UPGRADED GLOW)
 ========================= */
 .product-title {
   font-size: 52px;
@@ -123,6 +131,12 @@ body {
   border-radius: 20px;
   font-size: 12px;
   color: #00ffff;
+  transition: 0.3s;
+}
+
+.tag-pill:hover {
+  background: rgba(0,255,255,0.15);
+  box-shadow: 0 0 10px rgba(0,255,255,0.4);
 }
 
 /* =========================
@@ -172,7 +186,7 @@ body {
 }
 
 /* =========================
-   INFO PANEL
+   INFO PANEL (GLASS + GLOW)
 ========================= */
 .product-panel {
   max-width: 800px;
@@ -180,8 +194,9 @@ body {
   padding: 30px;
   border-radius: 16px;
   background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,255,255,0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 60px rgba(0,255,255,0.08);
   transition: 0.3s;
 }
 
@@ -206,7 +221,7 @@ body {
 }
 
 /* =========================
-   BUTTONS
+   BUTTONS (PREMIUM FEEL)
 ========================= */
 .product-actions {
   display: flex;
@@ -238,4 +253,10 @@ body {
   padding: 14px 24px;
   border-radius: 10px;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.secondary-btn:hover {
+  border-color: #00ffff;
+  color: #00ffff;
 }
