@@ -1,7 +1,7 @@
 export default function TB500() {
   return (
     <div className="container">
-      <h1>TB-500</h1>
+      <h1>TB-500 Research</h1>
       <p className="tagline">Advanced peptide research compound</p>
 
       <div className="card">
