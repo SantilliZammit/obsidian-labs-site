@@ -37,8 +37,8 @@ export default function Home() {
               <h3>{item.name}</h3>
               <p>Research-grade peptide with verified sourcing.</p>
 
-              <Link href={`/products/${item.slug}`}>
-                <button>View Details</button>
+              <Link href={`/products/${item.slug}`} className="button">
+                View Details
               </Link>
             </div>
           ))}
