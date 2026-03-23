@@ -14,6 +14,8 @@ export default function BPC157() {
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
+  const [showInfo, setShowInfo] = useState(false);
+
   const current = options[selectedSize];
 
   return (
@@ -71,25 +73,6 @@ export default function BPC157() {
             />
           </div>
         </div>
-      </section>
-
-      <section className="product-panel">
-        <h2>Overview</h2>
-
-        <p>
-          BPC-157 is a synthetic peptide derived from a protective protein found
-          in the stomach. It is widely studied for its regenerative and healing
-          properties at the cellular level.
-        </p>
-
-        <h3>Key Research Areas</h3>
-
-        <ul>
-          <li>Tissue repair</li>
-          <li>Ligament and tendon healing</li>
-          <li>Gut health support</li>
-          <li>Inflammation modulation</li>
-        </ul>
 
         <div className="product-actions top-actions">
           <button className="primary-btn">Request Research Access</button>
@@ -100,7 +83,38 @@ export default function BPC157() {
           <button className="primary-btn">Add to Cart</button>
           <button className="secondary-btn">Buy Now</button>
         </div>
+
+        <div className="info-dropdown">
+          <button
+            className="info-toggle"
+            onClick={() => setShowInfo(!showInfo)}
+            type="button"
+          >
+            {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
+          </button>
+
+          {showInfo && (
+            <div className="info-panel">
+              <h2>Overview</h2>
+
+              <p>
+                BPC-157 is a synthetic peptide derived from a protective protein
+                found in the stomach. It is widely studied for its regenerative
+                and healing properties at the cellular level.
+              </p>
+
+              <h3>Key Research Areas</h3>
+
+              <ul>
+                <li>Tissue repair</li>
+                <li>Ligament and tendon healing</li>
+                <li>Gut health support</li>
+                <li>Inflammation modulation</li>
+              </ul>
+            </div>
+          )}
+        </div>
       </section>
     </div>
   );
-                }
+}
