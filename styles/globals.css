@@ -52,7 +52,7 @@ body {
 }
 
 .container {
-  padding: 60px 20px;
+  padding: 40px 20px 60px;
   max-width: 1200px;
   margin: auto;
 }
@@ -72,12 +72,12 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: center;
-  padding: 60px 20px;
+  padding: 30px 20px 10px;
 }
 
 .single-column {
   grid-template-columns: 1fr;
-  gap: 30px;
+  gap: 18px;
 }
 
 .product-copy {
@@ -180,7 +180,7 @@ body {
   justify-content: center;
   align-items: flex-start;
   background: radial-gradient(circle, rgba(0,255,255,0.14), transparent 70%);
-  padding: 42px 20px 24px;
+  padding: 26px 20px 6px;
   border-radius: 22px;
   border: 1px solid rgba(0,255,255,0.08);
   box-shadow:
@@ -241,7 +241,7 @@ body {
 
 .product-panel {
   max-width: 800px;
-  margin: 60px auto 0;
+  margin: 8px auto 0;
   padding: 30px;
   border-radius: 16px;
   background: rgba(255,255,255,0.03);
@@ -276,6 +276,7 @@ body {
   gap: 12px;
   margin-top: 25px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .primary-btn {
@@ -310,10 +311,19 @@ body {
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 30px 16px 50px;
+  }
+
   .product-hero {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
+    gap: 28px;
+    padding: 20px 0 8px;
+  }
+
+  .single-column {
+    gap: 14px;
   }
 
   .product-title {
@@ -325,6 +335,10 @@ body {
     justify-content: center;
   }
 
+  .product-image-wrap {
+    padding: 20px 12px 0;
+  }
+
   .product-image,
   .product-reflection {
     width: 230px;
@@ -332,5 +346,10 @@ body {
 
   .product-image-stack::after {
     width: 250px;
+  }
+
+  .product-panel {
+    margin-top: 4px;
+    padding: 24px;
   }
 }
