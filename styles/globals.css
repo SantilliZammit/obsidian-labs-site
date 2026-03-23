@@ -481,3 +481,25 @@ body {
 .info-panel ul {
   margin-left: 20px;
 }
+/* =========================
+   BPC-157 PRODUCT FIXES
+   ========================= */
+
+/* Tight layout */
+.product-hero {
+  max-width: 500px;
+  margin: auto;
+}
+
+/* IMAGE SECTION */
+.image-wrap {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 0px; /* 👈 removes gap */
+}
+
+/* PRODUCT IMAGE */
+.product-image {
+  width: 220px;
+  border-radius: 20px;
+  z
