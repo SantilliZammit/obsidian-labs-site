@@ -7,15 +7,17 @@ export default function BPC157() {
         ← Back to Products
       </Link>
 
-      <section className="product-hero">
-        <div className="product-copy">
+      <section className="product-hero single-column">
+        <div className="product-copy centered-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
+
           <h1 className="product-title">BPC-157 Research</h1>
+
           <p className="product-subtitle">
             Advanced peptide for tissue repair and regenerative research
           </p>
 
-          <div className="product-tags">
+          <div className="product-tags centered-tags">
             <span className="tag-pill">5 mg</span>
             <span className="tag-pill">Research Use Only</span>
             <span className="tag-pill">Premium Lab Grade</span>
@@ -23,12 +25,20 @@ export default function BPC157() {
         </div>
 
         <div className="product-image-wrap">
-          <img src="/bpc-157.png" alt="BPC-157" className="product-image" />
+          <div className="product-image-stack">
+            <img src="/bpc-157.png" alt="BPC-157" className="product-image" />
+            <img
+              src="/bpc-157.png"
+              alt="BPC-157 reflection"
+              className="product-reflection"
+            />
+          </div>
         </div>
       </section>
 
       <section className="product-panel">
         <h2>Overview</h2>
+
         <p>
           BPC-157 is a synthetic peptide derived from a protective protein found
           in the stomach. It is widely studied for its regenerative and healing
@@ -36,6 +46,7 @@ export default function BPC157() {
         </p>
 
         <h3>Key Research Areas</h3>
+
         <ul>
           <li>Tissue repair</li>
           <li>Ligament and tendon healing</li>
