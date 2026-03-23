@@ -14,7 +14,7 @@ export default function BPC157() {
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
-  const [showInfo, setShowInfo] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const current = options[selectedSize];
 
@@ -25,6 +25,8 @@ export default function BPC157() {
       </Link>
 
       <section className="product-hero single-column">
+
+        {/* TEXT */}
         <div className="product-copy centered-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
 
@@ -41,12 +43,9 @@ export default function BPC157() {
           </div>
 
           <div className="product-select-row">
-            <label htmlFor="bpc-size" className="select-label">
-              Size
-            </label>
+            <label className="select-label">Size</label>
 
             <select
-              id="bpc-size"
               className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -59,21 +58,44 @@ export default function BPC157() {
           <div className="price-display">{current.price}</div>
         </div>
 
+        {/* IMAGE */}
         <div className="product-image-wrap">
           <div className="product-image-stack">
-            <img
-              src={current.image}
-              alt={`BPC-157 ${selectedSize}`}
-              className="product-image"
-            />
-            <img
-              src={current.image}
-              alt={`BPC-157 ${selectedSize} reflection`}
-              className="product-reflection"
-            />
+            <img src={current.image} className="product-image" />
+            <img src={current.image} className="product-reflection" />
           </div>
         </div>
 
+        {/* 🔥 DROPDOWN RIGHT UNDER IMAGE */}
+        <div className={`info-dropdown ${open ? "open" : ""}`}>
+          <button
+            className="info-toggle"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? "Hide Product Information ▲" : "More Product Information ▼"}
+          </button>
+
+          <div className="info-panel">
+            <h2>Overview</h2>
+
+            <p>
+              BPC-157 is a synthetic peptide derived from a protective protein
+              found in the stomach. It is widely studied for its regenerative
+              and healing properties at the cellular level.
+            </p>
+
+            <h3>Key Research Areas</h3>
+
+            <ul>
+              <li>Tissue repair</li>
+              <li>Ligament and tendon healing</li>
+              <li>Gut health support</li>
+              <li>Inflammation modulation</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* BUTTONS */}
         <div className="product-actions top-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
@@ -84,36 +106,6 @@ export default function BPC157() {
           <button className="secondary-btn">Buy Now</button>
         </div>
 
-        <div className="info-dropdown">
-          <button
-            className="info-toggle"
-            onClick={() => setShowInfo(!showInfo)}
-            type="button"
-          >
-            {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
-          </button>
-
-          {showInfo && (
-            <div className="info-panel">
-              <h2>Overview</h2>
-
-              <p>
-                BPC-157 is a synthetic peptide derived from a protective protein
-                found in the stomach. It is widely studied for its regenerative
-                and healing properties at the cellular level.
-              </p>
-
-              <h3>Key Research Areas</h3>
-
-              <ul>
-                <li>Tissue repair</li>
-                <li>Ligament and tendon healing</li>
-                <li>Gut health support</li>
-                <li>Inflammation modulation</li>
-              </ul>
-            </div>
-          )}
-        </div>
       </section>
     </div>
   );
