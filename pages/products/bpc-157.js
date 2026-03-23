@@ -18,7 +18,7 @@ export default function BPC157() {
           </p>
 
           <div className="product-tags centered-tags">
-            <span className="tag-pill">5 mg</span>
+            <span className="tag-pill">10 mg</span>
             <span className="tag-pill">Research Use Only</span>
             <span className="tag-pill">Premium Lab Grade</span>
           </div>
