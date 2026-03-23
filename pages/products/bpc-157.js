@@ -1,6 +1,22 @@
+import { useState } from "react";
 import Link from "next/link";
 
 export default function BPC157() {
+  const options = {
+    "5 mg": {
+      price: "$49.99",
+      image: "/bpc-157.png",
+    },
+    "10 mg": {
+      price: "$99.99",
+      image: "/bpc-157-10mg.png",
+    },
+  };
+
+  const [selectedSize, setSelectedSize] = useState("5 mg");
+
+  const current = options[selectedSize];
+
   return (
     <div className="container">
       <Link href="/" className="back-link">
@@ -18,18 +34,40 @@ export default function BPC157() {
           </p>
 
           <div className="product-tags centered-tags">
-            <span className="tag-pill">5 mg</span>
+            <span className="tag-pill">{selectedSize}</span>
             <span className="tag-pill">Research Use Only</span>
             <span className="tag-pill">Premium Lab Grade</span>
           </div>
+
+          <div className="product-select-row">
+            <label htmlFor="bpc-size" className="select-label">
+              Size
+            </label>
+
+            <select
+              id="bpc-size"
+              className="dose-select"
+              value={selectedSize}
+              onChange={(e) => setSelectedSize(e.target.value)}
+            >
+              <option value="5 mg">5 mg</option>
+              <option value="10 mg">10 mg</option>
+            </select>
+          </div>
+
+          <div className="price-display">{current.price}</div>
         </div>
 
         <div className="product-image-wrap">
           <div className="product-image-stack">
-            <img src="/bpc-157.png" alt="BPC-157" className="product-image" />
             <img
-              src="/bpc-157.png"
-              alt="BPC-157 reflection"
+              src={current.image}
+              alt={`BPC-157 ${selectedSize}`}
+              className="product-image"
+            />
+            <img
+              src={current.image}
+              alt={`BPC-157 ${selectedSize} reflection`}
               className="product-reflection"
             />
           </div>
@@ -61,4 +99,4 @@ export default function BPC157() {
       </section>
     </div>
   );
-}
+            }
