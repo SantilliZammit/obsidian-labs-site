@@ -1,56 +1,53 @@
+/* ===============================
+   GLOBAL RESET
+=============================== */
 html,
 body {
   margin: 0;
   padding: 0;
-  background: #000;
-  color: white;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: white;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-@keyframes backgroundFlow {
-  0% { background-position: 0% 50%, 100% 100%, center; }
-  50% { background-position: 100% 50%, 0% 0%, center; }
-  100% { background-position: 0% 50%, 100% 100%, center; }
-}
-
-@keyframes glowPulse {
-  0% {
-    box-shadow:
-      0 0 40px rgba(0,255,255,0.20),
-      0 0 120px rgba(0,150,255,0.15);
-  }
-  50% {
-    box-shadow:
-      0 0 80px rgba(0,255,255,0.35),
-      0 0 160px rgba(0,150,255,0.25);
-  }
-  100% {
-    box-shadow:
-      0 0 40px rgba(0,255,255,0.20),
-      0 0 120px rgba(0,150,255,0.15);
-  }
-}
-
+/* ===============================
+   MAIN BACKGROUND (ROCK WALL)
+=============================== */
 body {
   background:
-    radial-gradient(circle at 50% 20%, rgba(0,255,255,0.08), transparent 40%),
-    radial-gradient(circle at 80% 80%, rgba(0,150,255,0.05), transparent 40%),
-    radial-gradient(circle at top, #0a0f1a, #000000 70%);
-  background-size: 200% 200%, 200% 200%, cover;
-  animation: backgroundFlow 20s ease infinite;
-  min-height: 100vh;
+    radial-gradient(circle at center, rgba(0, 255, 255, 0.12), transparent 40%),
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.9)),
+    url('/rock-wall-bg.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
+/* GLOW FROM CENTER CRACK */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 60%);
+  z-index: 0;
+}
+
+/* ===============================
+   LAYOUT
+=============================== */
 .container {
-  padding: 60px 20px;
   max-width: 1200px;
   margin: auto;
+  padding: 40px 20px 80px;
+  position: relative;
+  z-index: 1;
 }
 
+/* ===============================
+   BACK LINK
+=============================== */
 .back-link {
   color: #888;
   text-decoration: none;
@@ -61,12 +58,15 @@ body {
   color: #00ffff;
 }
 
+/* ===============================
+   HERO SECTION
+=============================== */
 .product-hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 60px;
   align-items: center;
-  padding: 60px 20px;
+  margin-top: 40px;
 }
 
 .product-copy {
@@ -77,7 +77,7 @@ body {
   color: #7f8a99;
   letter-spacing: 3px;
   font-size: 12px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .product-title {
@@ -87,98 +87,99 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin: 0;
-  text-shadow: 0 0 20px rgba(0,255,255,0.25);
 }
 
 .product-subtitle {
   color: #aaa;
   font-size: 18px;
-  margin-top: 12px;
+  margin-top: 10px;
   line-height: 1.6;
 }
 
+/* ===============================
+   TAGS
+=============================== */
 .product-tags {
   display: flex;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 20px;
   flex-wrap: wrap;
 }
 
 .tag-pill {
   background: rgba(0,255,255,0.08);
-  border: 1px solid rgba(0,255,255,0.30);
+  border: 1px solid rgba(0,255,255,0.3);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 12px;
   color: #00ffff;
-  transition: 0.3s;
 }
 
-.tag-pill:hover {
-  background: rgba(0,255,255,0.15);
-  box-shadow: 0 0 10px rgba(0,255,255,0.4);
-}
-
+/* ===============================
+   PRODUCT IMAGE + GLOW
+=============================== */
 .product-image-wrap {
-  background: radial-gradient(circle, rgba(0,255,255,0.15), transparent 70%);
-  padding: 40px 40px 30px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  border: 1px solid rgba(0,255,255,0.08);
-  box-shadow: inset 0 0 40px rgba(0,255,255,0.05);
+  align-items: center;
+  position: relative;
 }
 
+/* CYAN ENERGY GLOW */
+.product-image-wrap::before {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+/* IMAGE STACK */
 .product-image-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
+/* MAIN IMAGE */
 .product-image {
   width: 260px;
   border-radius: 16px;
   box-shadow:
-    0 0 40px rgba(0,255,255,0.2),
+    0 0 40px rgba(0,255,255,0.25),
     0 0 120px rgba(0,150,255,0.15);
-  transition: 0.3s;
-  animation: glowPulse 3s ease-in-out infinite;
-  position: relative;
-  z-index: 2;
 }
 
-.product-image:hover {
-  transform: scale(1.05);
-}
-
+/* 🔥 REFLECTION (THIS WAS MISSING BEFORE) */
 .product-reflection {
   width: 260px;
-  margin-top: -8px;
   transform: scaleY(-1);
-  opacity: 0.22;
+  opacity: 0.25;
+  margin-top: -10px;
   filter: blur(2px);
-  border-radius: 16px;
-  mask-image: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0));
-  -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.35), rgba(255,255,255,0));
+
+  mask-image: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
 }
 
+/* ===============================
+   CONTENT PANEL
+=============================== */
 .product-panel {
   max-width: 800px;
   margin: 60px auto 0;
   padding: 30px;
   border-radius: 16px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(0,255,255,0.10);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 60px rgba(0,255,255,0.08);
-  transition: 0.3s;
-}
 
-.product-panel:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 40px rgba(0,255,255,0.15);
-  border-color: rgba(0,255,255,0.2);
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(0,255,255,0.1);
+
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(0,255,255,0.08);
 }
 
 .product-panel h2 {
@@ -195,6 +196,9 @@ body {
   line-height: 1.7;
 }
 
+/* ===============================
+   BUTTONS
+=============================== */
 .product-actions {
   display: flex;
   gap: 12px;
@@ -210,12 +214,6 @@ body {
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.primary-btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 30px rgba(0,255,255,0.5);
 }
 
 .secondary-btn {
@@ -224,24 +222,15 @@ body {
   color: #aaa;
   padding: 14px 24px;
   border-radius: 10px;
-  cursor: pointer;
-  transition: 0.3s;
 }
 
-.secondary-btn:hover {
-  border-color: #00ffff;
-  color: #00ffff;
-}
-
+/* ===============================
+   MOBILE
+=============================== */
 @media (max-width: 768px) {
   .product-hero {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
-  }
-
-  .product-copy {
-    max-width: 100%;
   }
 
   .product-tags {
@@ -253,14 +242,6 @@ body {
   }
 
   .product-title {
-    font-size: 42px;
-  }
-
-  .product-image {
-    width: 230px;
-  }
-
-  .product-reflection {
-    width: 230px;
+    font-size: 40px;
   }
 }
