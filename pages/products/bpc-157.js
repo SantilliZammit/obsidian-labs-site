@@ -14,7 +14,7 @@ export default function BPC157() {
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
-  const [open, setOpen] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   const current = options[selectedSize];
 
@@ -24,66 +24,72 @@ export default function BPC157() {
         ← Back to Products
       </Link>
 
-      <section className="product-hero">
-        <div className="product-copy centered">
+      <section className="product-page">
+        <div className="product-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
-          <h1>BPC-157 Research</h1>
-          <p className="subtitle">
+          <h1 className="product-title">BPC-157 Research</h1>
+          <p className="product-subtitle">
             Advanced peptide for tissue repair and regenerative research
           </p>
 
-          <div className="tags">
-            <span>5 mg</span>
-            <span>Research Use Only</span>
-            <span>Premium Lab Grade</span>
+          <div className="product-tags">
+            <span className="tag-pill">{selectedSize}</span>
+            <span className="tag-pill">Research Use Only</span>
+            <span className="tag-pill">Premium Lab Grade</span>
           </div>
 
-          <div className="selector">
-            <label>Size</label>
+          <div className="product-select-row">
+            <label htmlFor="bpc-size" className="select-label">
+              Size
+            </label>
             <select
+              id="bpc-size"
+              className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
             >
-              <option>5 mg</option>
-              <option>10 mg</option>
+              <option value="5 mg">5 mg</option>
+              <option value="10 mg">10 mg</option>
             </select>
           </div>
 
-          <div className="price">{current.price}</div>
+          <div className="price-display">{current.price}</div>
         </div>
 
-        {/* IMAGE + GLOW */}
-        <div className={`image-wrap ${open ? "glow-active" : ""}`}>
-          <img src={current.image} className="product-image" />
-          <div className="glow"></div>
+        <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
+          <div className="product-image-stack">
+            <img
+              src={current.image}
+              alt={`BPC-157 ${selectedSize}`}
+              className="product-image"
+            />
+            <img
+              src={current.image}
+              alt={`BPC-157 ${selectedSize} reflection`}
+              className="product-reflection"
+            />
+            <div className="glow"></div>
+          </div>
         </div>
 
-        {/* BUTTONS */}
-        <div className="button-row">
-          <button className="primary">Request Research Access</button>
-          <button className="secondary">View Lab Information</button>
-        </div>
-
-        <div className="button-row">
-          <button className="primary">Add to Cart</button>
-          <button className="secondary">Buy Now</button>
-        </div>
-
-        {/* DROPDOWN (DIRECTLY UNDER IMAGE) */}
-        <div className="dropdown">
-          <button onClick={() => setOpen(!open)} className="dropdown-toggle">
-            More Product Information ▼
+        <div className="info-dropdown">
+          <button
+            className="info-toggle"
+            type="button"
+            onClick={() => setShowInfo(!showInfo)}
+          >
+            {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
           </button>
 
-          <div className={`dropdown-content ${open ? "open" : ""}`}>
-            <h3>Overview</h3>
+          <div className={`info-panel ${showInfo ? "open" : ""}`}>
+            <h2>Overview</h2>
             <p>
-              BPC-157 is a synthetic peptide derived from a protective protein
-              found in the stomach. It is widely studied for its regenerative
-              and healing properties at the cellular level.
+              BPC-157 is a synthetic peptide derived from a protective protein found
+              in the stomach. It is widely studied for its regenerative and healing
+              properties at the cellular level.
             </p>
 
-            <h4>Key Research Areas</h4>
+            <h3>Key Research Areas</h3>
             <ul>
               <li>Tissue repair</li>
               <li>Ligament and tendon healing</li>
@@ -91,6 +97,16 @@ export default function BPC157() {
               <li>Inflammation modulation</li>
             </ul>
           </div>
+        </div>
+
+        <div className="product-actions research-actions">
+          <button className="primary-btn">Request Research Access</button>
+          <button className="secondary-btn">View Lab Information</button>
+        </div>
+
+        <div className="product-actions shop-actions">
+          <button className="primary-btn">Add to Cart</button>
+          <button className="secondary-btn">Buy Now</button>
         </div>
       </section>
     </div>
