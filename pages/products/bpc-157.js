@@ -14,7 +14,6 @@ export default function BPC157() {
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
-
   const current = options[selectedSize];
 
   return (
@@ -93,10 +92,10 @@ export default function BPC157() {
         </ul>
 
         <div className="product-actions">
-          <button className="primary-btn">Request Research Access</button>
-          <button className="secondary-btn">View Lab Information</button>
+          <button className="primary-btn">Add to Cart</button>
+          <button className="secondary-btn">Buy Now</button>
         </div>
       </section>
     </div>
   );
-            }
+}
