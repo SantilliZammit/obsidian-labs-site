@@ -24,68 +24,66 @@ export default function BPC157() {
         ← Back to Products
       </Link>
 
-      <section className="product-hero single-column">
-
-        {/* TEXT */}
-        <div className="product-copy centered-copy">
+      <section className="product-hero">
+        <div className="product-copy centered">
           <p className="eyebrow">OBSIDIAN LABS</p>
-
-          <h1 className="product-title">BPC-157 Research</h1>
-
-          <p className="product-subtitle">
+          <h1>BPC-157 Research</h1>
+          <p className="subtitle">
             Advanced peptide for tissue repair and regenerative research
           </p>
 
-          <div className="product-tags centered-tags">
-            <span className="tag-pill">{selectedSize}</span>
-            <span className="tag-pill">Research Use Only</span>
-            <span className="tag-pill">Premium Lab Grade</span>
+          <div className="tags">
+            <span>5 mg</span>
+            <span>Research Use Only</span>
+            <span>Premium Lab Grade</span>
           </div>
 
-          <div className="product-select-row">
-            <label className="select-label">Size</label>
-
+          <div className="selector">
+            <label>Size</label>
             <select
-              className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
             >
-              <option value="5 mg">5 mg</option>
-              <option value="10 mg">10 mg</option>
+              <option>5 mg</option>
+              <option>10 mg</option>
             </select>
           </div>
 
-          <div className="price-display">{current.price}</div>
+          <div className="price">{current.price}</div>
         </div>
 
-        {/* IMAGE */}
-        <div className="product-image-wrap">
-          <div className="product-image-stack">
-            <img src={current.image} className="product-image" />
-            <img src={current.image} className="product-reflection" />
-          </div>
+        {/* IMAGE + GLOW */}
+        <div className={`image-wrap ${open ? "glow-active" : ""}`}>
+          <img src={current.image} className="product-image" />
+          <div className="glow"></div>
         </div>
 
-        {/* 🔥 DROPDOWN RIGHT UNDER IMAGE */}
-        <div className={`info-dropdown ${open ? "open" : ""}`}>
-          <button
-            className="info-toggle"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? "Hide Product Information ▲" : "More Product Information ▼"}
+        {/* BUTTONS */}
+        <div className="button-row">
+          <button className="primary">Request Research Access</button>
+          <button className="secondary">View Lab Information</button>
+        </div>
+
+        <div className="button-row">
+          <button className="primary">Add to Cart</button>
+          <button className="secondary">Buy Now</button>
+        </div>
+
+        {/* DROPDOWN (DIRECTLY UNDER IMAGE) */}
+        <div className="dropdown">
+          <button onClick={() => setOpen(!open)} className="dropdown-toggle">
+            More Product Information ▼
           </button>
 
-          <div className="info-panel">
-            <h2>Overview</h2>
-
+          <div className={`dropdown-content ${open ? "open" : ""}`}>
+            <h3>Overview</h3>
             <p>
               BPC-157 is a synthetic peptide derived from a protective protein
               found in the stomach. It is widely studied for its regenerative
               and healing properties at the cellular level.
             </p>
 
-            <h3>Key Research Areas</h3>
-
+            <h4>Key Research Areas</h4>
             <ul>
               <li>Tissue repair</li>
               <li>Ligament and tendon healing</li>
@@ -94,18 +92,6 @@ export default function BPC157() {
             </ul>
           </div>
         </div>
-
-        {/* BUTTONS */}
-        <div className="product-actions top-actions">
-          <button className="primary-btn">Request Research Access</button>
-          <button className="secondary-btn">View Lab Information</button>
-        </div>
-
-        <div className="product-actions bottom-actions">
-          <button className="primary-btn">Add to Cart</button>
-          <button className="secondary-btn">Buy Now</button>
-        </div>
-
       </section>
     </div>
   );
