@@ -346,3 +346,58 @@ body {
     padding: 24px;
   }
 }
+.info-dropdown {
+  max-width: 800px;
+  margin: 12px auto 0;
+  width: 100%;
+}
+
+.info-toggle {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.12);
+  color: #fff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.06);
+}
+
+.info-toggle:hover {
+  border-color: rgba(0, 255, 255, 0.28);
+  color: #00ffff;
+}
+
+.info-panel {
+  margin-top: 12px;
+  padding: 28px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 255, 255, 0.10);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.08);
+}
+
+.info-panel h2 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.info-panel h3 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+.info-panel p,
+.info-panel li {
+  color: #ccc;
+  line-height: 1.7;
+}
+
+.info-panel ul {
+  margin-left: 22px;
+}
