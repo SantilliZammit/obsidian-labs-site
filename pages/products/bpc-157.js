@@ -91,11 +91,16 @@ export default function BPC157() {
           <li>Inflammation modulation</li>
         </ul>
 
-        <div className="product-actions">
+        <div className="product-actions top-actions">
+          <button className="primary-btn">Request Research Access</button>
+          <button className="secondary-btn">View Lab Information</button>
+        </div>
+
+        <div className="product-actions bottom-actions">
           <button className="primary-btn">Add to Cart</button>
           <button className="secondary-btn">Buy Now</button>
         </div>
       </section>
     </div>
   );
-}
+                }
