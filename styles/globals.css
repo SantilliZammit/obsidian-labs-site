@@ -401,3 +401,83 @@ body {
 .info-panel ul {
   margin-left: 22px;
 }
+/* === DROPDOWN CONTAINER === */
+.info-dropdown {
+  max-width: 800px;
+  margin: -10px auto 10px;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+/* BUTTON */
+.info-toggle {
+  width: 100%;
+  background: rgba(0, 255, 255, 0.04);
+  border: 1px solid rgba(0, 255, 255, 0.18);
+  color: #fff;
+  padding: 16px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(0,255,255,0.06);
+}
+
+.info-toggle:hover {
+  border-color: rgba(0,255,255,0.5);
+  color: #00ffff;
+}
+
+/* PANEL BASE (HIDDEN) */
+.info-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition:
+    max-height 0.5s ease,
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* OPEN STATE (🔥 ANIMATION) */
+.info-dropdown.open .info-panel {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* PANEL DESIGN */
+.info-panel {
+  margin-top: 12px;
+  padding: 28px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(0,255,255,0.10);
+  backdrop-filter: blur(20px);
+  box-shadow: 
+    0 0 40px rgba(0,255,255,0.08),
+    inset 0 0 20px rgba(0,255,255,0.05);
+}
+
+/* TEXT */
+.info-panel h2 {
+  font-size: 26px;
+  margin-bottom: 14px;
+}
+
+.info-panel h3 {
+  margin-top: 18px;
+}
+
+.info-panel p,
+.info-panel li {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.info-panel ul {
+  margin-left: 20px;
+}
