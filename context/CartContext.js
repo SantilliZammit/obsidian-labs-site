@@ -1,31 +1,34 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-const CartContext = createContext();
+const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
 
-  // LOAD CART FROM STORAGE
   useEffect(() => {
-    const saved = localStorage.getItem("obsidian-cart");
-    if (saved) {
-      setCartItems(JSON.parse(saved));
+    if (typeof window === "undefined") return;
+    const savedCart = window.localStorage.getItem("obsidian-cart");
+    if (savedCart) {
+      try {
+        setCartItems(JSON.parse(savedCart));
+      } catch (error) {
+        console.error("Failed to parse saved cart:", error);
+      }
     }
   }, []);
 
-  // SAVE CART TO STORAGE
   useEffect(() => {
-    localStorage.setItem("obsidian-cart", JSON.stringify(cartItems));
+    if (typeof window === "undefined") return;
+    window.localStorage.setItem("obsidian-cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product) => {
     setCartItems((prev) => {
-      const exists = prev.find(
-        (item) =>
-          item.slug === product.slug && item.variant === product.variant
+      const existing = prev.find(
+        (item) => item.slug === product.slug && item.variant === product.variant
       );
 
-      if (exists) {
+      if (existing) {
         return prev.map((item) =>
           item.slug === product.slug && item.variant === product.variant
             ? { ...item, quantity: item.quantity + 1 }
@@ -39,9 +42,7 @@ export function CartProvider({ children }) {
 
   const removeFromCart = (slug, variant) => {
     setCartItems((prev) =>
-      prev.filter(
-        (item) => item.slug !== slug || item.variant !== variant
-      )
+      prev.filter((item) => !(item.slug === slug && item.variant === variant))
     );
   };
 
@@ -60,10 +61,12 @@ export function CartProvider({ children }) {
     );
   };
 
-  const clearCart = () => setCartItems([]);
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   const cartTotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
+    (total, item) => total + Number(item.price) * item.quantity,
     0
   );
 
@@ -84,5 +87,11 @@ export function CartProvider({ children }) {
 }
 
 export function useCart() {
-  return useContext(CartContext);
+  const context = useContext(CartContext);
+
+  if (!context) {
+    throw new Error("useCart must be used within a CartProvider");
+  }
+
+  return context;
 }
