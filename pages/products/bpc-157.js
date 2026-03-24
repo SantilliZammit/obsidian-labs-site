@@ -1,22 +1,77 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useCart } from "../../context/CartContext";
 
 export default function BPC157() {
   const options = {
     "5 mg": {
-      price: "$49.99",
+      price: 49.99,
       image: "/bpc-157.png",
     },
     "10 mg": {
-      price: "$99.99",
+      price: 99.99,
       image: "/bpc-157-10mg.png",
     },
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
   const [showInfo, setShowInfo] = useState(false);
+  const [addedMessage, setAddedMessage] = useState("");
+  const [animateAdd, setAnimateAdd] = useState(false);
+  const { addToCart } = useCart();
 
   const current = options[selectedSize];
+
+  const buildItem = () => ({
+    slug: "bpc-157",
+    name: "BPC-157",
+    variant: selectedSize,
+    price: current.price,
+    image: current.image,
+    quantity: 1,
+  });
+
+  const handleAddToCart = () => {
+    addToCart(buildItem());
+    setAddedMessage(`Added BPC-157 ${selectedSize} to cart`);
+    setAnimateAdd(true);
+
+    setTimeout(() => {
+      setAddedMessage("");
+    }, 1800);
+
+    setTimeout(() => {
+      setAnimateAdd(false);
+    }, 900);
+  };
+
+  const handleBuyNow = async () => {
+    const item = buildItem();
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: [item],
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
+    }
+  };
 
   return (
     <div className="container">
@@ -53,11 +108,13 @@ export default function BPC157() {
             </select>
           </div>
 
-          <div className="price-display">{current.price}</div>
+          <div className="price-display">${current.price.toFixed(2)}</div>
+
+          {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className="product-image-stack">
+          <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
             <img
               src={current.image}
               alt={`BPC-157 ${selectedSize}`}
@@ -102,13 +159,25 @@ export default function BPC157() {
         <div className="product-actions research-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
+          <a
+            href="/bpc-157-lab-report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="secondary-btn"
+          >
+            View Certificate of Analysis
+          </a>
         </div>
 
         <div className="product-actions shop-actions">
-          <button className="primary-btn">Add to Cart</button>
-          <button className="secondary-btn">Buy Now</button>
+          <button className="primary-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <button className="secondary-btn" onClick={handleBuyNow}>
+            Buy Now
+          </button>
         </div>
       </section>
     </div>
   );
-}
+            }
