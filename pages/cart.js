@@ -10,6 +10,30 @@ export default function CartPage() {
     clearCart,
   } = useCart();
 
+  const handleCheckout = async () => {
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cartItems }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
+    }
+  };
+
   return (
     <div className="container">
       <Link href="/" className="back-link">
@@ -98,7 +122,9 @@ export default function CartPage() {
               <p>Total: ${cartTotal.toFixed(2)}</p>
 
               <div className="cart-summary-actions">
-                <button className="primary-btn">Checkout</button>
+                <button className="primary-btn" onClick={handleCheckout}>
+                  Checkout
+                </button>
                 <button className="secondary-btn" onClick={clearCart}>
                   Clear Cart
                 </button>
@@ -109,4 +135,4 @@ export default function CartPage() {
       </section>
     </div>
   );
-}
+                }
