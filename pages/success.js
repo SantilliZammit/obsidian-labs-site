@@ -1,6 +1,10 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 
 export default function Success() {
+  const router = useRouter();
+  const { session_id } = router.query;
+
   return (
     <div className="container">
       <section className="cart-page">
@@ -14,6 +18,13 @@ export default function Success() {
 
         <div className="cart-empty">
           <p>Thank you for your purchase.</p>
+
+          {session_id && (
+            <p style={{ marginTop: "12px", opacity: 0.7, fontSize: "14px" }}>
+              Order Reference: {session_id}
+            </p>
+          )}
+
           <Link href="/" className="primary-btn cart-link-btn">
             Back to Home
           </Link>
