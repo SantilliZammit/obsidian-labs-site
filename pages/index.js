@@ -116,6 +116,28 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          <Link
+            href="/products/retatrutide"
+            className="home-product-card elite-product-card"
+          >
+            <div className="home-product-image-wrap">
+              <img
+                src="/retatrutide-60mg.png"
+                alt="Retatrutide"
+                className="home-product-image"
+              />
+            </div>
+
+            <div className="home-product-info">
+              <h3>Retatrutide</h3>
+              <p>Advanced metabolic peptide with premium clinical presentation.</p>
+              <div className="home-product-meta">
+                <span>From $129.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -181,4 +203,4 @@ export default function Home() {
       </section>
     </div>
   );
-              }
+}
