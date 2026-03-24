@@ -910,3 +910,116 @@ body {
   mask-composite: exclude;
   pointer-events: none;
 }
+/* =========================
+   FIX PRODUCT CARDS (MOBILE + CLEAN)
+   ========================= */
+
+.home-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.home-product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Fix image size */
+.home-product-image-wrap {
+  min-height: 220px;
+  padding: 16px;
+}
+
+.home-product-image {
+  width: 120px;
+  max-width: 100%;
+}
+
+/* Fix text layout */
+.home-product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Fix meta spacing */
+.home-product-meta {
+  margin-top: auto;
+  font-size: 14px;
+}
+
+/* =========================
+   HERO BUTTON FIX
+   ========================= */
+
+.home-hero-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.home-primary-btn,
+.home-secondary-btn {
+  min-width: 180px;
+  text-align: center;
+}
+
+/* =========================
+   MOBILE FIXES
+   ========================= */
+
+@media (max-width: 768px) {
+  .home-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-product-image-wrap {
+    min-height: 200px;
+  }
+
+  .home-product-image {
+    width: 100px;
+  }
+
+  .home-title {
+    font-size: 36px;
+  }
+
+  .home-subtitle {
+    font-size: 15px;
+  }
+
+  .home-hero {
+    padding: 60px 16px 70px;
+  }
+}
+
+/* =========================
+   CLEAN SPACING UPGRADE
+   ========================= */
+
+.home-section {
+  margin-bottom: 60px;
+}
+
+/* =========================
+   HOVER POLISH (MORE PREMIUM)
+   ========================= */
+
+.home-product-card:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* =========================
+   REMOVE OVERFLOW ISSUES
+   ========================= */
+
+.home-page {
+  overflow-x: hidden;
+}
