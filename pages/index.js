@@ -14,16 +14,23 @@ export default function Home() {
 
       <section className="home-hero">
         <div className="home-hero-overlay"></div>
+        <div className="home-orb home-orb-1"></div>
+        <div className="home-orb home-orb-2"></div>
+        <div className="home-orb home-orb-3"></div>
+
         <div className="home-hero-content">
           <p className="home-eyebrow">PREMIUM RESEARCH COMPOUNDS</p>
+
           <h1 className="home-title">
             Precision Peptides.
             <br />
-            Elevated Design.
+            Luxury Presentation.
           </h1>
+
           <p className="home-subtitle">
-            High-end research compounds presented with a clean biotech aesthetic,
-            premium formulation identity, and a modern direct-to-consumer feel.
+            A modern peptide storefront with premium product pages, elevated
+            bottle design, and a clean biotech identity built to feel sharp,
+            expensive, and unforgettable.
           </p>
 
           <div className="home-hero-buttons">
@@ -31,26 +38,30 @@ export default function Home() {
               Explore Compounds
             </a>
             <a href="#research" className="home-secondary-btn">
-              Learn More
+              Why Obsidian
             </a>
           </div>
         </div>
       </section>
 
-      <section className="home-section" id="featured">
+      <section className="home-section home-fade-up" id="featured">
         <div className="home-section-header">
           <p className="home-section-eyebrow">FEATURED COMPOUNDS</p>
-          <h2>Built like a premium brand, not a generic shop.</h2>
+          <h2>Built like a brand, not a template.</h2>
           <p>
-            Clean presentation, luxury visual identity, and a focused product
-            lineup designed to feel sharp, modern, and credible.
+            Product presentation matters. Clean spacing, premium visuals, and
+            strong layout make each compound feel intentional and high-end.
           </p>
         </div>
 
         <div className="home-product-grid">
           <Link href="/products/bpc-157" className="home-product-card">
             <div className="home-product-image-wrap">
-              <img src="/bpc-157.png" alt="BPC-157" className="home-product-image" />
+              <img
+                src="/bpc-157.png"
+                alt="BPC-157"
+                className="home-product-image"
+              />
             </div>
             <div className="home-product-info">
               <h3>BPC-157</h3>
@@ -64,7 +75,11 @@ export default function Home() {
 
           <Link href="/products/tb-500" className="home-product-card">
             <div className="home-product-image-wrap">
-              <img src="/tb-500.png" alt="TB-500" className="home-product-image" />
+              <img
+                src="/tb-500.png"
+                alt="TB-500"
+                className="home-product-image"
+              />
             </div>
             <div className="home-product-info">
               <h3>TB-500</h3>
@@ -82,7 +97,7 @@ export default function Home() {
             </div>
             <div className="home-product-info">
               <h3>CJC-1295</h3>
-              <p>Growth-hormone pathway support in a premium research format.</p>
+              <p>Growth-pathway research presented with a premium storefront feel.</p>
               <div className="home-product-meta">
                 <span>Research Compound</span>
                 <span className="home-product-link">View Product →</span>
@@ -96,7 +111,7 @@ export default function Home() {
             </div>
             <div className="home-product-info">
               <h3>PT-141</h3>
-              <p>Modern peptide presentation with a clean luxury storefront feel.</p>
+              <p>Designed to feel modern, clinical, polished, and premium.</p>
               <div className="home-product-meta">
                 <span>Research Compound</span>
                 <span className="home-product-link">View Product →</span>
@@ -106,47 +121,50 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-section home-split-section" id="research">
+      <section className="home-section home-split-section home-fade-up" id="research">
         <div className="home-split-card">
           <p className="home-section-eyebrow">WHY OBSIDIAN</p>
-          <h2>Luxury biotech styling with a real storefront structure.</h2>
+          <h2>Dark, modern, premium, clinical.</h2>
           <p>
-            Your site should feel intentional: sharp typography, controlled glow,
-            strong spacing, and product cards that look like a premium brand
-            instead of a basic template.
+            The brand should feel like a high-end peptide lab with elite visual
+            discipline: black glass, controlled glow, strong spacing, and clean
+            luxury storefront structure.
           </p>
+
           <ul className="home-feature-list">
-            <li>Premium product page layouts</li>
-            <li>Clear variant pricing structure</li>
-            <li>Animated dropdown information panels</li>
-            <li>Brand-consistent bottle presentation</li>
+            <li>Premium product detail pages</li>
+            <li>Luxury dark-mode visual identity</li>
+            <li>Clean variant pricing experience</li>
+            <li>Animated dropdown research information</li>
           </ul>
         </div>
 
         <div className="home-split-card home-glow-card">
-          <p className="home-section-eyebrow">BRAND DIRECTION</p>
-          <h2>Dark, clinical, premium, modern.</h2>
+          <p className="home-section-eyebrow">STORE EXPERIENCE</p>
+          <h2>Designed to feel expensive the second it loads.</h2>
           <p>
-            The goal is to feel like a high-end peptide lab with an elevated
-            visual identity: black glass, soft cyan glow, disciplined spacing,
-            and a strong product-first experience.
+            Your homepage should instantly communicate trust, design intent,
+            premium positioning, and a real brand identity instead of feeling
+            like a basic product dump.
           </p>
+
           <div className="home-badge-row">
             <span>Premium Lab Grade</span>
-            <span>Modern Storefront</span>
+            <span>Luxury Presentation</span>
             <span>Research Use Only</span>
           </div>
         </div>
       </section>
 
-      <section className="home-section home-cta-section" id="contact">
+      <section className="home-section home-fade-up" id="contact">
         <div className="home-cta-card">
-          <p className="home-section-eyebrow">READY TO BUILD IT OUT</p>
-          <h2>Launch a storefront that actually feels expensive.</h2>
+          <p className="home-section-eyebrow">READY TO EXPAND</p>
+          <h2>Launch a storefront that actually looks elite.</h2>
           <p>
-            Clean homepage, premium product pages, consistent bottle branding,
-            and a layout that looks more like a real luxury biotech company.
+            Premium homepage, premium product pages, stronger visual identity,
+            and a storefront structure built to grow with your product line.
           </p>
+
           <div className="home-hero-buttons">
             <a href="#featured" className="home-primary-btn">
               Shop Products
