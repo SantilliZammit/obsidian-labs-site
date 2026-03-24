@@ -1,10 +1,15 @@
-import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
 export default function CartDrawer() {
-  const [open, setOpen] = useState(false);
-  const { cartItems, cartTotal, removeFromCart, updateQuantity } = useCart();
+  const {
+    cartItems,
+    cartTotal,
+    removeFromCart,
+    updateQuantity,
+    cartOpen: open,
+    setCartOpen: setOpen,
+  } = useCart();
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
@@ -170,4 +175,4 @@ export default function CartDrawer() {
       </div>
     </>
   );
-                }
+}
