@@ -3226,3 +3226,93 @@ body {
     padding-bottom: 16px !important;
   }
 }
+/* ===== KILL DUPLICATE HERO + TOP GAP ===== */
+
+/* Remove all global/page background images */
+html,
+body,
+.home-page {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* Keep nav fixed but don't create a giant gap */
+.home-page {
+  padding-top: 0 !important;
+}
+
+/* Hero sits directly under the nav */
+.hero-image-section {
+  position: relative !important;
+  margin-top: 78px !important; /* just enough room for nav */
+  min-height: auto !important;
+  height: auto !important;
+  background: url("/obsidian-hero.png") center top / contain no-repeat #000 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  padding: 0 16px 20px !important;
+  overflow: hidden !important;
+}
+
+/* Remove extra hero overlays/text */
+.hero-image-overlay,
+.hero-main-title,
+.hero-eyebrow,
+.hero-subtitle {
+  display: none !important;
+}
+
+/* Keep buttons tight under the real hero image */
+.hero-image-content,
+.hero-image-content-clean {
+  min-height: auto !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.hero-buttons,
+.hero-buttons-lower {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+/* Everything below hero must be black, not image-backed */
+.split-section,
+.home-strip-section,
+.home-section,
+.home-cta-section,
+.home-split-section,
+.home-split-card,
+.home-glow-card,
+.home-cta-card,
+.home-strip-card,
+.home-product-card {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* Clean spacing after hero */
+.split-section {
+  margin-top: 0 !important;
+  padding-top: 24px !important;
+}
+
+/* Mobile tune */
+@media (max-width: 768px) {
+  .hero-image-section {
+    margin-top: 74px !important;
+    background-size: contain !important;
+    background-position: center top !important;
+    padding-bottom: 16px !important;
+  }
+}
