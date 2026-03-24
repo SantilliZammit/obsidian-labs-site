@@ -19,7 +19,7 @@ export default function CartDrawer() {
         onClick={() => setOpen(false)}
       />
 
-      <aside className={`cart-drawer ${open ? "open" : ""}`}>
+      <div className={`cart-drawer ${open ? "open" : ""}`}>
         <div className="cart-drawer-header">
           <h3>Your Cart</h3>
           <button className="cart-drawer-close" onClick={() => setOpen(false)}>
@@ -96,9 +96,7 @@ export default function CartDrawer() {
             </div>
 
             <div className="cart-drawer-footer">
-              <p className="cart-drawer-total-items">
-                Items: {cartCount}
-              </p>
+              <p className="cart-drawer-total-items">Items: {cartCount}</p>
               <p className="cart-drawer-total">
                 Subtotal: ${cartTotal.toFixed(2)}
               </p>
@@ -111,7 +109,7 @@ export default function CartDrawer() {
             </div>
           </>
         )}
-      </aside>
+      </div>
     </>
   );
                       }
