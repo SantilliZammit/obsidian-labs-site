@@ -1388,3 +1388,85 @@ body,
     padding-bottom: 20px !important;
   }
 }
+/* ===== HERO FINAL CLEAN (MATCH YOUR DESIGN) ===== */
+
+.hero-image-section {
+  position: relative !important;
+  height: 78vh !important;
+
+  background: url("/obsidian-hero.png") center center / cover no-repeat !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+
+  padding: 0 40px !important;
+  margin-top: 78px !important;
+  overflow: hidden !important;
+}
+
+/* REMOVE ALL DUPLICATE TEXT LAYERS */
+.hero-image-overlay,
+.hero-eyebrow,
+.hero-main-title {
+  display: none !important;
+}
+
+/* KEEP BUTTONS ON IMAGE (RIGHT SIDE) */
+.hero-image-content {
+  position: relative !important;
+  z-index: 2 !important;
+
+  width: auto !important;
+  max-width: 320px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+
+  transform: none !important;
+}
+
+/* BUTTON STACK */
+.hero-buttons,
+.hero-buttons-lower {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* BUTTON STYLE */
+.home-primary-btn,
+.home-secondary-btn {
+  width: 220px !important;
+  text-align: center !important;
+  padding: 14px 18px !important;
+  border-radius: 12px !important;
+}
+
+/* CLEAN LOWER SECTIONS (NO IMAGE BLEED) */
+.split-section,
+.home-section,
+.home-strip-section {
+  background: #000 !important;
+}
+
+/* ===== MOBILE FIX ===== */
+
+@media (max-width: 768px) {
+  .hero-image-section {
+    height: 70vh !important;
+    background-position: center top !important;
+    justify-content: center !important;
+    padding: 0 20px !important;
+  }
+
+  .hero-image-content {
+    align-items: center !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    width: 100% !important;
+  }
+}
