@@ -65,9 +65,7 @@ export default function Retatrutide() {
             </select>
           </div>
 
-          <div className="price-display">
-            ${current.price.toFixed(2)}
-          </div>
+          <div className="price-display">${current.price.toFixed(2)}</div>
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
@@ -134,4 +132,4 @@ export default function Retatrutide() {
       </section>
     </div>
   );
-                }
+}
