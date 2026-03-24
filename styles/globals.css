@@ -2510,3 +2510,6 @@ body {
   background: rgba(0,255,255,0.08);
   color: #00ecff;
 }
+.hero-image-section {
+  padding-top: 90px;
+}
