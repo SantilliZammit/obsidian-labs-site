@@ -1470,3 +1470,72 @@ body,
     width: 100% !important;
   }
 }
+/* ===== HERO BUTTON HIGHLIGHT (PREMIUM) ===== */
+
+.home-primary-btn {
+  position: relative;
+  background: linear-gradient(90deg, #29f0ff, #1485ff) !important;
+  color: #041116 !important;
+  font-weight: 800;
+  border-radius: 14px !important;
+
+  box-shadow:
+    0 0 12px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(0, 140, 255, 0.25);
+
+  transition: all 0.25s ease;
+}
+
+/* glow pulse */
+.home-primary-btn::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 16px;
+  background: linear-gradient(90deg, #00ffff, #007cff);
+  opacity: 0.25;
+  filter: blur(12px);
+  z-index: -1;
+}
+
+/* hover = stronger glow */
+.home-primary-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow:
+    0 0 18px rgba(0, 255, 255, 0.6),
+    0 0 45px rgba(0, 140, 255, 0.5);
+}
+
+/* ===== SECOND BUTTON (LEARN MORE) ===== */
+
+.home-secondary-btn {
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  background: rgba(0,0,0,0.35) !important;
+  color: #e6eef5 !important;
+
+  backdrop-filter: blur(6px);
+  border-radius: 14px !important;
+
+  transition: all 0.25s ease;
+}
+
+/* subtle glow */
+.home-secondary-btn::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 16px;
+  background: rgba(0, 255, 255, 0.2);
+  filter: blur(10px);
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* hover effect */
+.home-secondary-btn:hover {
+  border-color: #00ecff !important;
+  color: #00ecff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(0,255,255,0.25);
+}
