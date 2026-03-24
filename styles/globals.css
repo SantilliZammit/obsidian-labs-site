@@ -1903,3 +1903,65 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+/* PREMIUM ADD TO CART ANIMATION */
+
+.add-cart-toast {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(87, 227, 255, 0.35);
+  border-radius: 12px;
+  color: #57e3ff;
+  font-weight: 700;
+  background: rgba(87, 227, 255, 0.08);
+  box-shadow: 0 0 22px rgba(87, 227, 255, 0.12);
+  animation: cartToastIn 0.35s ease;
+}
+
+.cart-added-pulse .product-image {
+  animation: productAddPulse 0.9s ease;
+}
+
+.cart-added-pulse .glow {
+  animation: productGlowBurst 0.9s ease;
+}
+
+@keyframes cartToastIn {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes productAddPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(87, 227, 255, 0));
+  }
+  35% {
+    transform: scale(1.045);
+    filter: drop-shadow(0 0 24px rgba(87, 227, 255, 0.35));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(87, 227, 255, 0));
+  }
+}
+
+@keyframes productGlowBurst {
+  0% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.25);
+  }
+  100% {
+    opacity: 0.7;
+    transform: translateX(-50%) scale(1);
+  }
+}
