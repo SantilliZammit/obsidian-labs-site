@@ -1577,3 +1577,51 @@ body,
     width: 100% !important;
   }
 }
+/* ===== HERO BUTTONS PERFECT MOBILE FIX ===== */
+
+.hero-buttons,
+.hero-buttons-lower {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  padding: 0 16px !important; /* keeps them inside screen */
+}
+
+/* BUTTON BASE */
+.home-primary-btn,
+.home-secondary-btn {
+  width: auto !important;
+  max-width: 100% !important;
+  padding: 12px 18px !important;
+  font-size: 15px !important;
+  border-radius: 12px !important;
+  text-align: center !important;
+  white-space: nowrap;
+}
+
+/* ===== MOBILE BEHAVIOR ===== */
+@media (max-width: 768px) {
+  .hero-buttons,
+  .hero-buttons-lower {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    width: 100% !important;
+    max-width: 320px !important; /* keeps it clean */
+    font-size: 15px !important;
+  }
+}
+
+/* ===== SMALL PHONES (iPhone SE etc) ===== */
+@media (max-width: 400px) {
+  .home-primary-btn,
+  .home-secondary-btn {
+    font-size: 14px !important;
+    padding: 10px 14px !important;
+  }
+}
