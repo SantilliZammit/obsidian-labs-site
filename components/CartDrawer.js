@@ -8,6 +8,32 @@ export default function CartDrawer() {
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
+  const handleCheckout = async () => {
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: cartItems,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
+    }
+  };
+
   return (
     <>
       <button className="cart-drawer-toggle" onClick={() => setOpen(true)}>
@@ -30,6 +56,16 @@ export default function CartDrawer() {
         {cartItems.length === 0 ? (
           <div className="cart-drawer-empty">
             <p>Your cart is empty.</p>
+
+            <div className="cart-drawer-actions">
+              <button
+                className="secondary-btn"
+                onClick={() => setOpen(false)}
+                style={{ width: "100%" }}
+              >
+                Continue Shopping
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -102,9 +138,25 @@ export default function CartDrawer() {
               </p>
 
               <div className="cart-drawer-actions">
-                <Link href="/cart" className="primary-btn cart-drawer-link">
+                <button
+                  className="secondary-btn"
+                  onClick={() => setOpen(false)}
+                  style={{ width: "100%" }}
+                >
+                  Continue Shopping
+                </button>
+
+                <Link href="/cart" className="secondary-btn cart-drawer-link">
                   View Full Cart
                 </Link>
+
+                <button
+                  className="primary-btn"
+                  onClick={handleCheckout}
+                  style={{ width: "100%" }}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
           </>
@@ -112,4 +164,4 @@ export default function CartDrawer() {
       </div>
     </>
   );
-                      }
+}
