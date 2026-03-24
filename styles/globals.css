@@ -1815,3 +1815,77 @@ body {
     right: -100%;
   }
 }
+/* =========================
+   CART DRAWER PREMIUM POLISH
+   ========================= */
+
+.cart-drawer {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-drawer-list {
+  padding: 18px;
+}
+
+.cart-drawer-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(0,255,255,0.08);
+}
+
+/* Quantity row tighter */
+.cart-drawer-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.cart-drawer-qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,255,255,0.2);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  cursor: pointer;
+}
+
+/* Footer FIX */
+.cart-drawer-footer {
+  padding: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(0,0,0,0.9);
+}
+
+/* Buttons spacing */
+.cart-drawer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+/* Checkout button stronger */
+.cart-drawer-footer .primary-btn {
+  font-size: 18px;
+  padding: 16px;
+}
+
+/* Make subtotal stand out */
+.cart-drawer-total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #00ecff;
+}
+
+/* Items text */
+.cart-drawer-total-items {
+  font-size: 14px;
+  opacity: 0.7;
+}
