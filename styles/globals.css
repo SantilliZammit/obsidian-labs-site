@@ -1628,7 +1628,6 @@ body {
   }
 }
 /* AMAZON STYLE RIGHT CART DRAWER */
-
 .cart-drawer-toggle {
   position: fixed;
   top: 20px;
@@ -1642,6 +1641,12 @@ body {
   cursor: pointer;
   font-weight: 700;
   backdrop-filter: blur(12px);
+}
+
+/* Hide button when drawer is open */
+.cart-drawer.open ~ .cart-drawer-toggle {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .cart-drawer-overlay {
@@ -1888,4 +1893,13 @@ body {
 .cart-drawer-total-items {
   font-size: 14px;
   opacity: 0.7;
+}
+.cart-drawer.open + .cart-drawer-toggle,
+.cart-drawer-overlay.open + .cart-drawer {
+  pointer-events: auto;
+}
+
+.cart-drawer.open ~ .cart-drawer-toggle {
+  opacity: 0;
+  pointer-events: none;
 }
