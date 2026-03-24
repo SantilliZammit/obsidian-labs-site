@@ -1023,3 +1023,179 @@ body {
 .home-page {
   overflow-x: hidden;
 }
+/* =========================
+   ELITE HOMEPAGE UPGRADE
+   ========================= */
+
+.elite-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, 0.45);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.06);
+}
+
+.elite-hero {
+  padding-top: 70px;
+  padding-bottom: 80px;
+}
+
+.elite-hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: center;
+}
+
+.elite-hero-copy {
+  margin: 0;
+  text-align: left;
+}
+
+.elite-hero-copy .home-subtitle {
+  margin-left: 0;
+}
+
+.elite-hero-copy .home-hero-buttons {
+  justify-content: flex-start;
+}
+
+.elite-hero-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.elite-hero-product-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.elite-hero-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.18), transparent 68%);
+  filter: blur(28px);
+  animation: eliteGlowPulse 4s ease-in-out infinite;
+}
+
+.elite-hero-bottle {
+  position: relative;
+  width: 230px;
+  z-index: 2;
+  filter: drop-shadow(0 0 28px rgba(0, 255, 255, 0.16));
+  animation: eliteBottleFloat 5s ease-in-out infinite;
+}
+
+.elite-hero-caption {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.elite-hero-caption-label {
+  color: #85919c;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.elite-hero-caption-name {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+@keyframes eliteBottleFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes eliteGlowPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.55;
+  }
+}
+
+.elite-product-card .home-product-image-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.elite-product-card .home-product-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 255, 255, 0.08), transparent 58%);
+  pointer-events: none;
+}
+
+.elite-product-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 16px 40px rgba(0, 255, 255, 0.10);
+}
+
+.elite-product-card:hover .home-product-link {
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 900px) {
+  .elite-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .elite-hero-copy {
+    text-align: center;
+  }
+
+  .elite-hero-copy .home-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .elite-hero-copy .home-hero-buttons {
+    justify-content: center;
+  }
+
+  .elite-hero-product-wrap {
+    min-height: 320px;
+  }
+
+  .elite-hero-bottle {
+    width: 180px;
+  }
+
+  .elite-hero-glow {
+    width: 220px;
+    height: 220px;
+  }
+}
