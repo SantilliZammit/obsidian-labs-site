@@ -2268,3 +2268,83 @@ body {
     font-size: 14px;
   }
 }
+/* =========================
+   HERO FINAL OVERRIDE
+   ========================= */
+
+.hero-image-section {
+  position: relative;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 20px !important;
+  overflow: hidden;
+  background: url("/obsidian-hero.png") center center / cover no-repeat fixed !important;
+}
+
+.hero-image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.6)),
+    radial-gradient(circle at center, rgba(0, 160, 255, 0.18), transparent 40%);
+  z-index: 1;
+}
+
+.hero-image-content {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+  padding: 0 20px;
+}
+
+.hero-main-title {
+  font-size: 74px !important;
+  line-height: 0.96;
+  font-weight: 900;
+  color: #fff;
+  text-shadow:
+    0 0 20px rgba(0, 255, 255, 0.12),
+    0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.hero-subtitle {
+  font-size: 22px !important;
+  color: #e0e6eb;
+  margin-top: 18px;
+}
+
+/* =========================
+   SECTION OVERLAY EFFECT
+   ========================= */
+
+.split-section {
+  position: relative;
+  z-index: 3;
+  margin-top: -60px !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================
+   MOBILE FIX
+   ========================= */
+
+@media (max-width: 768px) {
+  .hero-image-section {
+    background-attachment: scroll !important;
+    min-height: 85vh !important;
+  }
+
+  .hero-main-title {
+    font-size: 42px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 18px !important;
+  }
+}
