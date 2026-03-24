@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { useCart } from "../context/CartContext";
 
 export default function Home() {
+  const { cartItems } = useCart();
+
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div className="home-page">
       <header className="home-nav elite-nav">
@@ -9,7 +14,9 @@ export default function Home() {
           <a href="#featured">Products</a>
           <a href="#research">Research</a>
           <a href="#contact">Contact</a>
-          <Link href="/cart">Cart</Link>
+          <Link href="/cart">
+            Cart{cartCount > 0 ? ` (${cartCount})` : ""}
+          </Link>
         </nav>
       </header>
 
@@ -240,4 +247,4 @@ export default function Home() {
       </section>
     </div>
   );
-}
+                  }
