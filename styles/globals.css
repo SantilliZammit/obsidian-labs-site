@@ -3049,3 +3049,85 @@ body,
     padding: 8px 12px !important;
   }
 }
+/* ===== ONE-SHOT DUPLICATE HERO KILLER ===== */
+
+/* kill any site-wide background image */
+html,
+body,
+.home-page {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* only the hero gets the hero image */
+.hero-image-section {
+  position: relative !important;
+  min-height: 72vh !important;
+  background: url("/obsidian-hero.png") center top / contain no-repeat #000 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  padding: 16px 16px 24px !important;
+  overflow: hidden !important;
+}
+
+/* remove any overlay/fake text layers */
+.hero-image-overlay,
+.hero-main-title,
+.hero-eyebrow,
+.hero-subtitle {
+  display: none !important;
+}
+
+/* keep hero buttons under the image */
+.hero-image-content,
+.hero-image-content-clean {
+  min-height: auto !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.hero-buttons,
+.hero-buttons-lower {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+/* make all later sections solid black so hero can't bleed through */
+.split-section,
+.home-strip-section,
+.home-section,
+.home-cta-section,
+.home-split-section,
+.home-split-card,
+.home-glow-card,
+.home-cta-card,
+.home-strip-card,
+.home-product-card {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* keep flagship section clean */
+.split-section {
+  margin-top: 0 !important;
+  padding-top: 28px !important;
+}
+
+/* mobile cleanup */
+@media (max-width: 768px) {
+  .hero-image-section {
+    min-height: 64vh !important;
+    background-position: center top !important;
+    background-size: contain !important;
+  }
+}
