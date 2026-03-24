@@ -17,6 +17,7 @@ export default function Retatrutide() {
   const [selectedSize, setSelectedSize] = useState("60 mg");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
+  const [animateAdd, setAnimateAdd] = useState(false);
   const { addToCart } = useCart();
 
   const current = options[selectedSize];
@@ -33,10 +34,15 @@ export default function Retatrutide() {
   const handleAddToCart = () => {
     addToCart(buildItem());
     setAddedMessage(`Added Retatrutide ${selectedSize} to cart`);
+    setAnimateAdd(true);
 
     setTimeout(() => {
       setAddedMessage("");
-    }, 2000);
+    }, 1800);
+
+    setTimeout(() => {
+      setAnimateAdd(false);
+    }, 900);
   };
 
   const handleBuyNow = async () => {
@@ -105,24 +111,14 @@ export default function Retatrutide() {
           <div className="price-display">${current.price.toFixed(2)}</div>
 
           {addedMessage && (
-            <div
-              style={{
-                marginTop: "14px",
-                padding: "12px 16px",
-                border: "1px solid rgba(87, 227, 255, 0.35)",
-                borderRadius: "12px",
-                color: "#57e3ff",
-                fontWeight: 600,
-                background: "rgba(87, 227, 255, 0.08)",
-              }}
-            >
+            <div className="add-cart-toast">
               {addedMessage}
             </div>
           )}
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className="product-image-stack">
+          <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
             <img
               src={current.image}
               alt={`Retatrutide ${selectedSize}`}
@@ -187,4 +183,4 @@ export default function Retatrutide() {
       </section>
     </div>
   );
-              }
+             }
