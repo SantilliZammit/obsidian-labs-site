@@ -2781,3 +2781,80 @@ body {
 .hero-image-section {
   margin-top: 80px !important;
 }
+/* ===== FINAL HERO FIX (OVERRIDE EVERYTHING) ===== */
+
+.hero-image-section {
+  position: relative;
+  min-height: 85vh;
+  background: url('/obsidian-hero.png') center center / cover no-repeat;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 40px 20px 60px;
+}
+
+/* remove dark overlay */
+.hero-image-overlay {
+  display: none !important;
+}
+
+/* center content properly */
+.hero-image-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 500px;
+}
+
+/* REMOVE the big annoying duplicate title */
+.hero-main-title {
+  display: none !important;
+}
+
+/* keep subtitle clean */
+.hero-subtitle {
+  font-size: 16px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+/* buttons stacked nicely for mobile */
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* full width buttons */
+.home-primary-btn,
+.home-secondary-btn {
+  width: 100%;
+  text-align: center;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+/* fix image cropping */
+@media (max-width: 768px) {
+  .hero-image-section {
+    min-height: 70vh;
+    background-position: center top;
+    padding-top: 120px;
+  }
+}
+
+/* NAV FIX */
+.dropdown-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+}
+
+/* prevent content hiding under nav */
+.home-page {
+  padding-top: 80px;
+}
