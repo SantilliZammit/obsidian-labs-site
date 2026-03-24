@@ -15,7 +15,6 @@ export default function Retatrutide() {
   };
 
   const [selectedSize, setSelectedSize] = useState("60 mg");
-  const [showInfo, setShowInfo] = useState(false);
   const { addToCart } = useCart();
 
   const current = options[selectedSize];
@@ -40,23 +39,10 @@ export default function Retatrutide() {
         <div className="product-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
           <h1 className="product-title">Retatrutide Research</h1>
-          <p className="product-subtitle">
-            Advanced peptide for metabolic and weight management research
-          </p>
-
-          <div className="product-tags">
-            <span className="tag-pill">{selectedSize}</span>
-            <span className="tag-pill">Research Use Only</span>
-            <span className="tag-pill">Premium Lab Grade</span>
-          </div>
 
           <div className="product-select-row">
-            <label htmlFor="retatrutide-size" className="select-label">
-              Size
-            </label>
+            <label>Size</label>
             <select
-              id="retatrutide-size"
-              className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
             >
@@ -65,69 +51,17 @@ export default function Retatrutide() {
             </select>
           </div>
 
-          <div className="price-display">${current.price.toFixed(2)}</div>
-        </div>
-
-        <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className="product-image-stack">
-            <img
-              src={current.image}
-              alt={`Retatrutide ${selectedSize}`}
-              className="product-image"
-            />
-            <img
-              src={current.image}
-              alt={`Retatrutide ${selectedSize} reflection`}
-              className="product-reflection"
-            />
-            <div className="glow"></div>
+          <div className="price-display">
+            ${current.price.toFixed(2)}
           </div>
-        </div>
 
-        <div className="info-dropdown">
-          <button
-            className="info-toggle"
-            type="button"
-            onClick={() => setShowInfo(!showInfo)}
-          >
-            {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
-          </button>
-
-          <div className={`info-panel ${showInfo ? "open" : ""}`}>
-            <h2>Overview</h2>
-            <p>
-              Retatrutide is an investigational peptide studied for metabolic
-              function, body-weight regulation, and multi-receptor research.
-            </p>
-
-            <h3>Key Research Areas</h3>
-            <ul>
-              <li>Metabolic support research</li>
-              <li>Weight management studies</li>
-              <li>Energy regulation</li>
-              <li>Multi-pathway peptide research</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="product-actions research-actions">
-          <button className="primary-btn">Request Research Access</button>
-          <button className="secondary-btn">View Lab Information</button>
-          <a
-            href="/retatrutide-lab-report.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="secondary-btn"
-          >
-            View Certificate of Analysis
-          </a>
-        </div>
-
-        <div className="product-actions shop-actions">
           <button className="primary-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
-          <button className="secondary-btn">Buy Now</button>
+        </div>
+
+        <div className="product-image-wrap">
+          <img src={current.image} alt="Retatrutide" />
         </div>
       </section>
     </div>
