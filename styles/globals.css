@@ -3131,3 +3131,98 @@ body,
     background-size: contain !important;
   }
 }
+/* FINAL HERO POSITION + DUPLICATE BACKGROUND FIX */
+
+html,
+body,
+.home-page {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+body {
+  min-height: 100vh !important;
+}
+
+/* fixed nav spacing */
+.home-page {
+  padding-top: 64px !important;
+}
+
+/* only this section gets the hero image */
+.hero-image-section {
+  position: relative !important;
+  min-height: 58vh !important;
+  background: url("/obsidian-hero.png") center top / contain no-repeat #000 !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  padding: 0 16px 20px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+
+/* remove any extra hero layers */
+.hero-image-overlay,
+.hero-main-title,
+.hero-eyebrow,
+.hero-subtitle {
+  display: none !important;
+}
+
+/* keep buttons directly under image */
+.hero-image-content,
+.hero-image-content-clean {
+  min-height: auto !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  transform: none !important;
+}
+
+.hero-buttons,
+.hero-buttons-lower {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+/* make every section after hero solid black */
+.split-section,
+.home-strip-section,
+.home-section,
+.home-cta-section,
+.home-split-section,
+.home-split-card,
+.home-glow-card,
+.home-cta-card,
+.home-strip-card,
+.home-product-card {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* tighten space right after hero */
+.split-section {
+  margin-top: 0 !important;
+  padding-top: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .home-page {
+    padding-top: 60px !important;
+  }
+
+  .hero-image-section {
+    min-height: 50vh !important;
+    background-position: center top !important;
+    background-size: contain !important;
+    padding-bottom: 16px !important;
+  }
+}
