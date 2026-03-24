@@ -116,42 +116,6 @@ export default function Home() {
               </div>
             </div>
           </Link>
-
-          <Link
-            href="/products/cjc-1295"
-            className="home-product-card elite-product-card"
-          >
-            <div className="home-product-image-wrap home-placeholder-wrap">
-              <div className="home-placeholder-text">CJC-1295</div>
-            </div>
-
-            <div className="home-product-info">
-              <h3>CJC-1295</h3>
-              <p>Growth-pathway research presented with a premium storefront feel.</p>
-              <div className="home-product-meta">
-                <span>Research Compound</span>
-                <span className="home-product-link">View Product →</span>
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/products/pt-141"
-            className="home-product-card elite-product-card"
-          >
-            <div className="home-product-image-wrap home-placeholder-wrap">
-              <div className="home-placeholder-text">PT-141</div>
-            </div>
-
-            <div className="home-product-info">
-              <h3>PT-141</h3>
-              <p>Designed to feel modern, clinical, polished, and premium.</p>
-              <div className="home-product-meta">
-                <span>Research Compound</span>
-                <span className="home-product-link">View Product →</span>
-              </div>
-            </div>
-          </Link>
         </div>
       </section>
 
