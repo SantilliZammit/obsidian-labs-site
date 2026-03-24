@@ -1625,3 +1625,86 @@ body,
     padding: 10px 14px !important;
   }
 }
+/* ===== FINAL HERO BUTTON OVERRIDE ===== */
+
+.hero-image-content,
+.hero-image-content-clean {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.hero-buttons,
+.hero-buttons-lower {
+  width: 100% !important;
+  max-width: 520px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin: 0 auto !important;
+  padding: 0 12px !important;
+}
+
+.hero-buttons a,
+.hero-buttons-lower a,
+.home-primary-btn,
+.home-secondary-btn {
+  flex: 1 1 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: 240px !important;
+  padding: 12px 14px !important;
+  font-size: 15px !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  border-radius: 12px !important;
+}
+
+/* keep them side by side on phones too */
+@media (max-width: 768px) {
+  .hero-image-content,
+  .hero-image-content-clean {
+    max-width: 460px !important;
+  }
+
+  .hero-buttons,
+  .hero-buttons-lower {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    padding: 0 10px !important;
+  }
+
+  .hero-buttons a,
+  .hero-buttons-lower a,
+  .home-primary-btn,
+  .home-secondary-btn {
+    max-width: none !important;
+    padding: 11px 10px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* very small phones */
+@media (max-width: 420px) {
+  .hero-buttons,
+  .hero-buttons-lower {
+    gap: 8px !important;
+    padding: 0 8px !important;
+  }
+
+  .hero-buttons a,
+  .hero-buttons-lower a,
+  .home-primary-btn,
+  .home-secondary-btn {
+    font-size: 13px !important;
+    padding: 10px 8px !important;
+  }
+}
