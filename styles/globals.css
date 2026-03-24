@@ -2348,3 +2348,33 @@ body {
     font-size: 18px !important;
   }
 }
+/* FIX HERO BACKGROUND (MOBILE + DESKTOP) */
+
+.hero-image-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* THIS is the magic */
+.hero-image-section::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("/obsidian-hero.png") center center / cover no-repeat;
+  z-index: -2;
+}
+
+/* keep overlay working */
+.hero-image-overlay {
+  z-index: -1;
+}
+
+/* make rest of site scroll above it */
+.split-section,
+.home-section,
+.home-strip-section {
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.9);
+}
