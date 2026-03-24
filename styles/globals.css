@@ -1199,3 +1199,53 @@ body {
     height: 220px;
   }
 }
+/* STEP 1: HOMEPAGE PRODUCT CARD FIX */
+.home-product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.home-product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.home-product-image-wrap {
+  min-height: 220px;
+  padding: 16px;
+}
+
+.home-product-image {
+  width: 120px;
+  max-width: 100%;
+}
+
+.home-product-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.home-product-meta {
+  margin-top: auto;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .home-product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-product-image-wrap {
+    min-height: 200px;
+  }
+
+  .home-product-image {
+    width: 100px;
+  }
+}
