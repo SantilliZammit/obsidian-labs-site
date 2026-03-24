@@ -45,12 +45,8 @@ export default function Home() {
       <section className="hero-image-section">
         <div className="hero-image-overlay"></div>
 
-        <div className="hero-image-content">
-          <p className="hero-eyebrow">OBSIDIAN LABS</p>
-          <h1 className="hero-main-title">HEALTH IS WEALTH AFTER 40</h1>
-          <p className="hero-subtitle">Get tight. Build lean. Stay strong.</p>
-
-          <div className="hero-buttons">
+        <div className="hero-image-content hero-image-content-clean">
+          <div className="hero-buttons hero-buttons-lower">
             <a href="#featured" className="home-primary-btn">
               Shop Compounds
             </a>
@@ -239,4 +235,4 @@ export default function Home() {
       </section>
     </div>
   );
-                  }
+              }
