@@ -1292,3 +1292,99 @@ a {
     right: -100%;
   }
     }
+/* =========================================
+   🔥 FINAL HERO FIX OVERRIDE (DO NOT TOUCH ABOVE)
+   ========================================= */
+
+/* Kill any background bleed */
+html,
+body,
+.home-page {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* Fix nav spacing */
+.home-page {
+  padding-top: 0 !important;
+}
+
+/* HERO — force proper size + remove duplication */
+.hero-image-section {
+  position: relative !important;
+  margin-top: 78px !important;
+  min-height: 520px !important;
+
+  background: url("/obsidian-hero.png") center top / cover no-repeat #000 !important;
+
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+
+  padding: 0 16px 32px !important;
+  overflow: hidden !important;
+}
+
+/* Kill ALL duplicate layers */
+.hero-image-overlay,
+.hero-main-title,
+.hero-eyebrow,
+.hero-subtitle {
+  display: none !important;
+}
+
+/* Keep buttons clean */
+.hero-image-content,
+.hero-image-content-clean {
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+/* Buttons layout */
+.hero-buttons,
+.hero-buttons-lower {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+
+/* Buttons full width */
+.hero-buttons a,
+.hero-buttons-lower a {
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* STOP hero image leaking into other sections */
+.split-section,
+.home-strip-section,
+.home-section,
+.home-cta-section,
+.home-split-section {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* Clean spacing after hero */
+.split-section {
+  margin-top: 0 !important;
+  padding-top: 24px !important;
+}
+
+/* Mobile fix */
+@media (max-width: 768px) {
+  .hero-image-section {
+    margin-top: 74px !important;
+    min-height: 420px !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    padding-bottom: 20px !important;
+  }
+}
