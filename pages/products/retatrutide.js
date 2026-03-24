@@ -101,6 +101,14 @@ export default function Retatrutide() {
         <div className="product-actions research-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
+          <a
+            href="/retatrutide-lab-report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="secondary-btn"
+          >
+            View Certificate of Analysis
+          </a>
         </div>
 
         <div className="product-actions shop-actions">
@@ -110,4 +118,4 @@ export default function Retatrutide() {
       </section>
     </div>
   );
-            }
+}
