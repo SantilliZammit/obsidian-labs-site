@@ -2513,3 +2513,67 @@ body {
 .hero-image-section {
   padding-top: 90px;
 }
+/* HERO IMAGE FIX */
+
+.hero-image-section {
+  min-height: 92vh !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  padding-top: 110px !important;
+  padding-bottom: 120px !important;
+}
+
+/* make hero text sit a little higher */
+.hero-image-content {
+  transform: translateY(-20px);
+}
+
+/* STOP the next section from covering the bottle */
+.split-section {
+  margin-top: 0 !important;
+  padding-top: 48px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* tighten the flagship section itself */
+.split-grid {
+  gap: 24px !important;
+}
+
+/* make the second bottle a little smaller */
+.split-image img {
+  width: 200px !important;
+}
+
+/* mobile tuning */
+@media (max-width: 768px) {
+  .hero-image-section {
+    min-height: 78vh !important;
+    background-position: center top !important;
+    padding-top: 90px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .hero-image-content {
+    transform: translateY(-10px);
+  }
+
+  .hero-main-title {
+    font-size: 40px !important;
+    line-height: 1.02 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 18px !important;
+  }
+
+  .split-section {
+    padding-top: 28px !important;
+  }
+
+  .split-image img {
+    width: 160px !important;
+  }
+}
