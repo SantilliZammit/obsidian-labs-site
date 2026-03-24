@@ -1,22 +1,34 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 export default function Retatrutide() {
   const options = {
     "30 mg": {
-      price: "$129.99",
+      price: 129.99,
       image: "/retatrutide-30mg.png",
     },
     "60 mg": {
-      price: "$199.99",
+      price: 199.99,
       image: "/retatrutide-60mg.png",
     },
   };
 
   const [selectedSize, setSelectedSize] = useState("60 mg");
   const [showInfo, setShowInfo] = useState(false);
+  const { addToCart } = useCart();
 
   const current = options[selectedSize];
+
+  const handleAddToCart = () => {
+    addToCart({
+      slug: "retatrutide",
+      name: "Retatrutide",
+      variant: selectedSize,
+      price: current.price,
+      image: current.image,
+    });
+  };
 
   return (
     <div className="container">
@@ -53,7 +65,9 @@ export default function Retatrutide() {
             </select>
           </div>
 
-          <div className="price-display">{current.price}</div>
+          <div className="price-display">
+            ${current.price.toFixed(2)}
+          </div>
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
@@ -112,10 +126,12 @@ export default function Retatrutide() {
         </div>
 
         <div className="product-actions shop-actions">
-          <button className="primary-btn">Add to Cart</button>
+          <button className="primary-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
           <button className="secondary-btn">Buy Now</button>
         </div>
       </section>
     </div>
   );
-}
+                }
