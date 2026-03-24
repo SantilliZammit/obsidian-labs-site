@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useCart } from "../../context/CartContext";
 
 export default function Retatrutide() {
@@ -17,17 +18,50 @@ export default function Retatrutide() {
   const [selectedSize, setSelectedSize] = useState("60 mg");
   const [showInfo, setShowInfo] = useState(false);
   const { addToCart } = useCart();
+  const router = useRouter();
 
   const current = options[selectedSize];
 
+  const buildItem = () => ({
+    slug: "retatrutide",
+    name: "Retatrutide",
+    variant: selectedSize,
+    price: current.price,
+    image: current.image,
+    quantity: 1,
+  });
+
   const handleAddToCart = () => {
-    addToCart({
-      slug: "retatrutide",
-      name: "Retatrutide",
-      variant: selectedSize,
-      price: current.price,
-      image: current.image,
-    });
+    addToCart(buildItem());
+    router.push("/cart");
+  };
+
+  const handleBuyNow = async () => {
+    const item = buildItem();
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: [item],
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
+    }
   };
 
   return (
@@ -127,7 +161,9 @@ export default function Retatrutide() {
           <button className="primary-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
-          <button className="secondary-btn">Buy Now</button>
+          <button className="secondary-btn" onClick={handleBuyNow}>
+            Buy Now
+          </button>
         </div>
       </section>
     </div>
