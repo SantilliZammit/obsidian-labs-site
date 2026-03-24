@@ -4,6 +4,7 @@ const CartContext = createContext(null);
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -38,6 +39,8 @@ export function CartProvider({ children }) {
 
       return [...prev, { ...product, quantity: 1 }];
     });
+
+    setCartOpen(true);
   };
 
   const removeFromCart = (slug, variant) => {
@@ -79,6 +82,8 @@ export function CartProvider({ children }) {
         updateQuantity,
         clearCart,
         cartTotal,
+        cartOpen,
+        setCartOpen,
       }}
     >
       {children}
