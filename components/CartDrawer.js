@@ -38,9 +38,11 @@ export default function CartDrawer() {
 
   return (
     <>
-      <button className="cart-drawer-toggle" onClick={() => setOpen(true)}>
-        Cart{cartCount > 0 ? ` (${cartCount})` : ""}
-      </button>
+      {!open && (
+        <button className="cart-drawer-toggle" onClick={() => setOpen(true)}>
+          Cart{cartCount > 0 ? ` (${cartCount})` : ""}
+        </button>
+      )}
 
       <div
         className={`cart-drawer-overlay ${open ? "open" : ""}`}
@@ -168,4 +170,4 @@ export default function CartDrawer() {
       </div>
     </>
   );
-}
+                }
