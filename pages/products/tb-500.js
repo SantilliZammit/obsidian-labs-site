@@ -1,22 +1,77 @@
 import { useState } from "react";
 import Link from "next/link";
+import { useCart } from "../../context/CartContext";
 
 export default function TB500() {
   const options = {
     "5 mg": {
-      price: "$59.99",
+      price: 59.99,
       image: "/tb-500.png",
     },
     "10 mg": {
-      price: "$109.99",
+      price: 109.99,
       image: "/tb-500-10mg.png",
     },
   };
 
   const [selectedSize, setSelectedSize] = useState("5 mg");
   const [showInfo, setShowInfo] = useState(false);
+  const [addedMessage, setAddedMessage] = useState("");
+  const [animateAdd, setAnimateAdd] = useState(false);
+  const { addToCart } = useCart();
 
   const current = options[selectedSize];
+
+  const buildItem = () => ({
+    slug: "tb-500",
+    name: "TB-500",
+    variant: selectedSize,
+    price: current.price,
+    image: current.image,
+    quantity: 1,
+  });
+
+  const handleAddToCart = () => {
+    addToCart(buildItem());
+    setAddedMessage(`Added TB-500 ${selectedSize} to cart`);
+    setAnimateAdd(true);
+
+    setTimeout(() => {
+      setAddedMessage("");
+    }, 1800);
+
+    setTimeout(() => {
+      setAnimateAdd(false);
+    }, 900);
+  };
+
+  const handleBuyNow = async () => {
+    const item = buildItem();
+
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: [item],
+        }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
+    }
+  };
 
   return (
     <div className="container">
@@ -29,7 +84,7 @@ export default function TB500() {
           <p className="eyebrow">OBSIDIAN LABS</p>
           <h1 className="product-title">TB-500 Research</h1>
           <p className="product-subtitle">
-            Advanced peptide for recovery, repair, and regenerative research
+            Recovery-focused peptide for repair, healing, and research
           </p>
 
           <div className="product-tags">
@@ -39,11 +94,11 @@ export default function TB500() {
           </div>
 
           <div className="product-select-row">
-            <label htmlFor="tb500-size" className="select-label">
+            <label htmlFor="tb-size" className="select-label">
               Size
             </label>
             <select
-              id="tb500-size"
+              id="tb-size"
               className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -53,11 +108,13 @@ export default function TB500() {
             </select>
           </div>
 
-          <div className="price-display">{current.price}</div>
+          <div className="price-display">${current.price.toFixed(2)}</div>
+
+          {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className="product-image-stack">
+          <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
             <img
               src={current.image}
               alt={`TB-500 ${selectedSize}`}
@@ -84,17 +141,16 @@ export default function TB500() {
           <div className={`info-panel ${showInfo ? "open" : ""}`}>
             <h2>Overview</h2>
             <p>
-              TB-500 is a synthetic peptide derived from Thymosin Beta-4. It is
-              widely studied for its role in recovery, cell migration, tissue
-              regeneration, and accelerated healing.
+              TB-500 is a synthetic peptide studied for its role in tissue recovery,
+              repair, and cellular migration.
             </p>
 
             <h3>Key Research Areas</h3>
             <ul>
-              <li>Muscle recovery</li>
-              <li>Ligament and tendon repair</li>
-              <li>Wound healing</li>
-              <li>Inflammation modulation</li>
+              <li>Recovery research</li>
+              <li>Repair studies</li>
+              <li>Tissue support</li>
+              <li>Cell migration research</li>
             </ul>
           </div>
         </div>
@@ -102,13 +158,25 @@ export default function TB500() {
         <div className="product-actions research-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
+          <a
+            href="/tb-500-lab-report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="secondary-btn"
+          >
+            View Certificate of Analysis
+          </a>
         </div>
 
         <div className="product-actions shop-actions">
-          <button className="primary-btn">Add to Cart</button>
-          <button className="secondary-btn">Buy Now</button>
+          <button className="primary-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+          <button className="secondary-btn" onClick={handleBuyNow}>
+            Buy Now
+          </button>
         </div>
       </section>
     </div>
   );
-                }
+}
