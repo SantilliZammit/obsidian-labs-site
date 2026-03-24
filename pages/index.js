@@ -1,21 +1,45 @@
+import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 
 export default function Home() {
   const { cartItems } = useCart();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <div className="home-page">
-      <header className="home-nav elite-nav">
-        <div className="home-brand">OBSIDIAN LABS</div>
+      <header className="dropdown-nav">
+        <div className="dropdown-nav-inner">
+          <div className="home-brand">OBSIDIAN LABS</div>
 
-        <nav className="home-nav-links">
-          <a href="#featured">Products</a>
-          <a href="#why">Why Us</a>
-          <a href="#contact">Contact</a>
-          <Link href="/cart">Cart{cartCount > 0 ? ` (${cartCount})` : ""}</Link>
-        </nav>
+          <button
+            className="dropdown-toggle"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+        </div>
+
+        <div className={`dropdown-menu ${menuOpen ? "open" : ""}`}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            Home
+          </Link>
+          <a href="#featured" onClick={() => setMenuOpen(false)}>
+            Products
+          </a>
+          <a href="#why" onClick={() => setMenuOpen(false)}>
+            Why Us
+          </a>
+          <a href="#contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
+          <Link href="/cart" onClick={() => setMenuOpen(false)}>
+            Cart{cartCount > 0 ? ` (${cartCount})` : ""}
+          </Link>
+        </div>
       </header>
 
       <section className="hero-image-section">
@@ -24,9 +48,7 @@ export default function Home() {
         <div className="hero-image-content">
           <p className="hero-eyebrow">OBSIDIAN LABS</p>
           <h1 className="hero-main-title">HEALTH IS WEALTH AFTER 40</h1>
-          <p className="hero-subtitle">
-            Get tight. Build lean. Stay strong.
-          </p>
+          <p className="hero-subtitle">Get tight. Build lean. Stay strong.</p>
 
           <div className="hero-buttons">
             <a href="#featured" className="home-primary-btn">
@@ -94,9 +116,16 @@ export default function Home() {
         </div>
 
         <div className="home-product-grid">
-          <Link href="/products/retatrutide" className="home-product-card elite-product-card">
+          <Link
+            href="/products/retatrutide"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap">
-              <img src="/retatrutide-60mg.png" alt="Retatrutide" className="home-product-image" />
+              <img
+                src="/retatrutide-60mg.png"
+                alt="Retatrutide"
+                className="home-product-image"
+              />
             </div>
             <div className="home-product-info">
               <h3>Retatrutide</h3>
@@ -108,9 +137,16 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/bpc-157" className="home-product-card elite-product-card">
+          <Link
+            href="/products/bpc-157"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap">
-              <img src="/bpc-157.png" alt="BPC-157" className="home-product-image" />
+              <img
+                src="/bpc-157.png"
+                alt="BPC-157"
+                className="home-product-image"
+              />
             </div>
             <div className="home-product-info">
               <h3>BPC-157</h3>
@@ -122,9 +158,16 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/tb-500" className="home-product-card elite-product-card">
+          <Link
+            href="/products/tb-500"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap">
-              <img src="/tb-500.png" alt="TB-500" className="home-product-image" />
+              <img
+                src="/tb-500.png"
+                alt="TB-500"
+                className="home-product-image"
+              />
             </div>
             <div className="home-product-info">
               <h3>TB-500</h3>
@@ -185,7 +228,10 @@ export default function Home() {
             <a href="#featured" className="home-primary-btn">
               Shop Now
             </a>
-            <a href="mailto:info@obsidianlabs.com" className="home-secondary-btn">
+            <a
+              href="mailto:info@obsidianlabs.com"
+              className="home-secondary-btn"
+            >
               Contact Us
             </a>
           </div>
@@ -193,4 +239,4 @@ export default function Home() {
       </section>
     </div>
   );
-              }
+                  }
