@@ -1539,3 +1539,41 @@ body,
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(0,255,255,0.25);
 }
+/* ===== HERO BUTTONS SIDE-BY-SIDE ===== */
+
+.hero-image-content {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* THIS is the key change */
+.hero-buttons,
+.hero-buttons-lower {
+  display: flex !important;
+  flex-direction: row !important; /* ← side-by-side */
+  gap: 14px !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* make them look balanced */
+.home-primary-btn,
+.home-secondary-btn {
+  min-width: 180px !important;
+  text-align: center !important;
+}
+
+/* ===== MOBILE (stack again for small screens) ===== */
+@media (max-width: 768px) {
+  .hero-buttons,
+  .hero-buttons-lower {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    width: 100% !important;
+  }
+}
