@@ -2044,3 +2044,142 @@ body,
     padding: 10px 6px !important;
   }
 }
+/* =========================================
+   FINAL HERO FIX (POSITION + MOBILE CLEAN)
+   ========================================= */
+
+/* HERO BASE */
+.hero-image-section {
+  position: relative !important;
+  margin-top: 78px !important;
+  background-image: url("/obsidian-hero.png") !important;
+  background-repeat: no-repeat !important;
+  background-color: #050608 !important;
+  overflow: hidden !important;
+}
+
+/* REMOVE DUPLICATE TEXT */
+.hero-image-overlay,
+.hero-eyebrow,
+.hero-main-title,
+.hero-subtitle {
+  display: none !important;
+}
+
+/* CENTER WRAPPER */
+.hero-image-content {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  width: 100% !important;
+}
+
+/* BUTTON CONTAINER */
+.hero-buttons,
+.hero-buttons-lower {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+/* BUTTON STYLE */
+.home-primary-btn,
+.home-secondary-btn {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+}
+
+/* PRIMARY */
+.home-primary-btn {
+  background: linear-gradient(180deg, #5fe0ff, #2b8cff) !important;
+  color: #050608 !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35) !important;
+}
+
+/* SECONDARY */
+.home-secondary-btn {
+  background: rgba(20,22,26,0.85) !important;
+  color: #e6ebf0 !important;
+  border: 1px solid rgba(180,190,205,0.25) !important;
+}
+
+/* =======================
+   DESKTOP (PERFECT FULL)
+   ======================= */
+@media (min-width: 769px) {
+  .hero-image-section {
+    height: 100vh !important;
+    background-size: cover !important;
+    background-position: 68% center !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding-bottom: 80px !important;
+  }
+
+  .hero-buttons,
+  .hero-buttons-lower {
+    flex-direction: row !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    min-width: 200px !important;
+    padding: 14px 18px !important;
+    font-size: 16px !important;
+  }
+}
+
+/* =======================
+   MOBILE (FIXED PERFECT)
+   ======================= */
+@media (max-width: 768px) {
+  .hero-image-section {
+    min-height: 620px !important;
+    height: auto !important;
+    background-size: contain !important;
+    background-position: center top !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-end !important;
+    padding: 0 12px 40px !important;
+  }
+
+  /* PUSH BUTTONS DOWN (KEY FIX) */
+  .hero-image-content {
+    padding-top: 260px !important;
+  }
+
+  .hero-buttons,
+  .hero-buttons-lower {
+    width: 100% !important;
+    max-width: 420px !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    flex: 1 !important;
+    font-size: 14px !important;
+    padding: 10px 8px !important;
+    white-space: nowrap !important;
+  }
+}
+
+/* EXTRA SMALL PHONES */
+@media (max-width: 420px) {
+  .hero-image-content {
+    padding-top: 230px !important;
+  }
+
+  .home-primary-btn,
+  .home-secondary-btn {
+    font-size: 13px !important;
+    padding: 10px 6px !important;
+  }
+}
