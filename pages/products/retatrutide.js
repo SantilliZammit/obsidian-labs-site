@@ -17,7 +17,8 @@ export default function Retatrutide() {
   const [selectedSize, setSelectedSize] = useState("60 mg");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
-  const { addToCart } = useCart();
+
+  const { cartItems, addToCart } = useCart();
 
   const current = options[selectedSize];
 
@@ -67,11 +68,41 @@ export default function Retatrutide() {
     }
   };
 
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  const retatrutideInCart = cartItems
+    .filter((item) => item.slug === "retatrutide")
+    .reduce((total, item) => total + item.quantity, 0);
+
   return (
     <div className="container">
-      <Link href="/" className="back-link">
-        ← Back to Products
-      </Link>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "20px",
+          gap: "12px",
+          flexWrap: "wrap",
+        }}
+      >
+        <Link href="/" className="back-link">
+          ← Back to Products
+        </Link>
+
+        <Link
+          href="/cart"
+          className="secondary-btn"
+          style={{
+            textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          Cart {cartCount > 0 ? `(${cartCount})` : ""}
+        </Link>
+      </div>
 
       <section className="product-page">
         <div className="product-copy">
@@ -105,10 +136,53 @@ export default function Retatrutide() {
           <div className="price-display">${current.price.toFixed(2)}</div>
 
           {addedMessage && (
-            <p style={{ marginTop: "14px", color: "#57e3ff", fontWeight: 600 }}>
+            <div
+              style={{
+                marginTop: "14px",
+                padding: "12px 16px",
+                border: "1px solid rgba(87, 227, 255, 0.35)",
+                borderRadius: "12px",
+                color: "#57e3ff",
+                fontWeight: 600,
+                background: "rgba(87, 227, 255, 0.08)",
+              }}
+            >
               {addedMessage}
-            </p>
+            </div>
           )}
+
+          <div
+            style={{
+              marginTop: "18px",
+              padding: "14px 16px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              borderRadius: "16px",
+              background: "rgba(255,255,255,0.02)",
+            }}
+          >
+            <p style={{ margin: 0, fontWeight: 700 }}>Your Product Bin</p>
+            <p style={{ margin: "8px 0 0 0", opacity: 0.85 }}>
+              Total items in cart: {cartCount}
+            </p>
+            <p style={{ margin: "6px 0 0 0", opacity: 0.85 }}>
+              Retatrutide in cart: {retatrutideInCart}
+            </p>
+
+            <div style={{ marginTop: "14px" }}>
+              <Link
+                href="/cart"
+                className="primary-btn"
+                style={{
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                View Cart
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
@@ -177,4 +251,4 @@ export default function Retatrutide() {
       </section>
     </div>
   );
-}
+                }
