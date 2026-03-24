@@ -53,6 +53,7 @@ export default function Home() {
                 className="elite-hero-bottle"
               />
             </div>
+
             <div className="elite-hero-caption">
               <span className="elite-hero-caption-label">Featured Compound</span>
               <span className="elite-hero-caption-name">BPC-157</span>
@@ -72,7 +73,10 @@ export default function Home() {
         </div>
 
         <div className="home-product-grid">
-          <Link href="/products/bpc-157" className="home-product-card elite-product-card">
+          <Link
+            href="/products/bpc-157"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap">
               <img
                 src="/bpc-157.png"
@@ -80,6 +84,7 @@ export default function Home() {
                 className="home-product-image"
               />
             </div>
+
             <div className="home-product-info">
               <h3>BPC-157</h3>
               <p>Advanced peptide for tissue repair and regenerative research.</p>
@@ -90,7 +95,10 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/tb-500" className="home-product-card elite-product-card">
+          <Link
+            href="/products/tb-500"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap">
               <img
                 src="/tb-500.png"
@@ -98,6 +106,7 @@ export default function Home() {
                 className="home-product-image"
               />
             </div>
+
             <div className="home-product-info">
               <h3>TB-500</h3>
               <p>Recovery-focused peptide for repair, healing, and research.</p>
@@ -108,10 +117,14 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/cjc-1295" className="home-product-card elite-product-card">
+          <Link
+            href="/products/cjc-1295"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap home-placeholder-wrap">
               <div className="home-placeholder-text">CJC-1295</div>
             </div>
+
             <div className="home-product-info">
               <h3>CJC-1295</h3>
               <p>Growth-pathway research presented with a premium storefront feel.</p>
@@ -122,10 +135,14 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/pt-141" className="home-product-card elite-product-card">
+          <Link
+            href="/products/pt-141"
+            className="home-product-card elite-product-card"
+          >
             <div className="home-product-image-wrap home-placeholder-wrap">
               <div className="home-placeholder-text">PT-141</div>
             </div>
+
             <div className="home-product-info">
               <h3>PT-141</h3>
               <p>Designed to feel modern, clinical, polished, and premium.</p>
@@ -138,7 +155,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-section home-split-section home-fade-up" id="research">
+      <section
+        className="home-section home-split-section home-fade-up"
+        id="research"
+      >
         <div className="home-split-card">
           <p className="home-section-eyebrow">WHY OBSIDIAN</p>
           <h2>Dark, modern, premium, clinical.</h2>
@@ -186,7 +206,10 @@ export default function Home() {
             <a href="#featured" className="home-primary-btn">
               Shop Products
             </a>
-            <a href="mailto:info@obsidianlabs.com" className="home-secondary-btn">
+            <a
+              href="mailto:info@obsidianlabs.com"
+              className="home-secondary-btn"
+            >
               Contact Us
             </a>
           </div>
