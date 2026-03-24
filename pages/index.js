@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="home-page">
-      <header className="home-nav">
+      <header className="home-nav elite-nav">
         <div className="home-brand">OBSIDIAN LABS</div>
         <nav className="home-nav-links">
           <a href="#featured">Products</a>
@@ -12,34 +12,51 @@ export default function Home() {
         </nav>
       </header>
 
-      <section className="home-hero">
+      <section className="home-hero elite-hero">
         <div className="home-hero-overlay"></div>
         <div className="home-orb home-orb-1"></div>
         <div className="home-orb home-orb-2"></div>
         <div className="home-orb home-orb-3"></div>
 
-        <div className="home-hero-content">
-          <p className="home-eyebrow">PREMIUM RESEARCH COMPOUNDS</p>
+        <div className="elite-hero-grid">
+          <div className="home-hero-content elite-hero-copy">
+            <p className="home-eyebrow">PREMIUM RESEARCH COMPOUNDS</p>
 
-          <h1 className="home-title">
-            Precision Peptides.
-            <br />
-            Luxury Presentation.
-          </h1>
+            <h1 className="home-title">
+              Precision Peptides.
+              <br />
+              Luxury Presentation.
+            </h1>
 
-          <p className="home-subtitle">
-            A modern peptide storefront with premium product pages, elevated
-            bottle design, and a clean biotech identity built to feel sharp,
-            expensive, and unforgettable.
-          </p>
+            <p className="home-subtitle">
+              A modern peptide storefront with premium product pages, elevated
+              bottle design, and a clean biotech identity built to feel sharp,
+              expensive, and unforgettable.
+            </p>
 
-          <div className="home-hero-buttons">
-            <a href="#featured" className="home-primary-btn">
-              Explore Compounds
-            </a>
-            <a href="#research" className="home-secondary-btn">
-              Why Obsidian
-            </a>
+            <div className="home-hero-buttons">
+              <a href="#featured" className="home-primary-btn">
+                Explore Compounds
+              </a>
+              <a href="#research" className="home-secondary-btn">
+                Why Obsidian
+              </a>
+            </div>
+          </div>
+
+          <div className="elite-hero-product">
+            <div className="elite-hero-product-wrap">
+              <div className="elite-hero-glow"></div>
+              <img
+                src="/bpc-157.png"
+                alt="BPC-157"
+                className="elite-hero-bottle"
+              />
+            </div>
+            <div className="elite-hero-caption">
+              <span className="elite-hero-caption-label">Featured Compound</span>
+              <span className="elite-hero-caption-name">BPC-157</span>
+            </div>
           </div>
         </div>
       </section>
@@ -55,7 +72,7 @@ export default function Home() {
         </div>
 
         <div className="home-product-grid">
-          <Link href="/products/bpc-157" className="home-product-card">
+          <Link href="/products/bpc-157" className="home-product-card elite-product-card">
             <div className="home-product-image-wrap">
               <img
                 src="/bpc-157.png"
@@ -73,7 +90,7 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/tb-500" className="home-product-card">
+          <Link href="/products/tb-500" className="home-product-card elite-product-card">
             <div className="home-product-image-wrap">
               <img
                 src="/tb-500.png"
@@ -91,7 +108,7 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/cjc-1295" className="home-product-card">
+          <Link href="/products/cjc-1295" className="home-product-card elite-product-card">
             <div className="home-product-image-wrap home-placeholder-wrap">
               <div className="home-placeholder-text">CJC-1295</div>
             </div>
@@ -105,7 +122,7 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/products/pt-141" className="home-product-card">
+          <Link href="/products/pt-141" className="home-product-card elite-product-card">
             <div className="home-product-image-wrap home-placeholder-wrap">
               <div className="home-placeholder-text">PT-141</div>
             </div>
