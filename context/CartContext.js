@@ -1,9 +1,22 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
   const [cartItems, setCartItems] = useState([]);
+
+  // LOAD CART FROM STORAGE
+  useEffect(() => {
+    const saved = localStorage.getItem("obsidian-cart");
+    if (saved) {
+      setCartItems(JSON.parse(saved));
+    }
+  }, []);
+
+  // SAVE CART TO STORAGE
+  useEffect(() => {
+    localStorage.setItem("obsidian-cart", JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -33,7 +46,10 @@ export function CartProvider({ children }) {
   };
 
   const updateQuantity = (slug, variant, quantity) => {
-    if (quantity <= 0) return;
+    if (quantity <= 0) {
+      removeFromCart(slug, variant);
+      return;
+    }
 
     setCartItems((prev) =>
       prev.map((item) =>
@@ -44,9 +60,7 @@ export function CartProvider({ children }) {
     );
   };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  const clearCart = () => setCartItems([]);
 
   const cartTotal = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
