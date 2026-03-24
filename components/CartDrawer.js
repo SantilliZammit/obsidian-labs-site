@@ -10,6 +10,8 @@ export default function CartDrawer() {
 
   const handleCheckout = async () => {
     try {
+      setOpen(false);
+
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: {
@@ -132,7 +134,9 @@ export default function CartDrawer() {
             </div>
 
             <div className="cart-drawer-footer">
-              <p className="cart-drawer-total-items">Items: {cartCount}</p>
+              <p className="cart-drawer-total-items">
+                {cartCount} item{cartCount !== 1 ? "s" : ""}
+              </p>
               <p className="cart-drawer-total">
                 Subtotal: ${cartTotal.toFixed(2)}
               </p>
