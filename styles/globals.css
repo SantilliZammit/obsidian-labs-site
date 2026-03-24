@@ -2378,3 +2378,63 @@ body {
   z-index: 2;
   background: rgba(0, 0, 0, 0.9);
 }
+/* NAVBAR DROPDOWN */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.08);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+}
+
+.nav-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+
+.nav-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.95);
+  transition: max-height 0.3s ease;
+}
+
+.nav-dropdown.open {
+  max-height: 400px;
+}
+
+.nav-dropdown a {
+  padding: 16px 20px;
+  color: #cbd5df;
+  text-decoration: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-dropdown a:hover {
+  color: #00ecff;
+  background: rgba(0, 255, 255, 0.05);
+}
