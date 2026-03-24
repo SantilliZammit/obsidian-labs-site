@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useCart } from "../../context/CartContext";
 
 export default function Retatrutide() {
@@ -17,8 +16,8 @@ export default function Retatrutide() {
 
   const [selectedSize, setSelectedSize] = useState("60 mg");
   const [showInfo, setShowInfo] = useState(false);
+  const [addedMessage, setAddedMessage] = useState("");
   const { addToCart } = useCart();
-  const router = useRouter();
 
   const current = options[selectedSize];
 
@@ -33,7 +32,11 @@ export default function Retatrutide() {
 
   const handleAddToCart = () => {
     addToCart(buildItem());
-    router.push("/cart");
+    setAddedMessage(`Added Retatrutide ${selectedSize} to cart`);
+
+    setTimeout(() => {
+      setAddedMessage("");
+    }, 2000);
   };
 
   const handleBuyNow = async () => {
@@ -100,6 +103,12 @@ export default function Retatrutide() {
           </div>
 
           <div className="price-display">${current.price.toFixed(2)}</div>
+
+          {addedMessage && (
+            <p style={{ marginTop: "14px", color: "#57e3ff", fontWeight: 600 }}>
+              {addedMessage}
+            </p>
+          )}
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
