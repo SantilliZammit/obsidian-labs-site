@@ -2663,3 +2663,47 @@ body {
     margin-bottom: 20px;
   }
 }
+/* =========================
+   HERO BACKGROUND FIX (FINAL)
+   ========================= */
+
+.hero-image-section {
+  position: relative;
+  min-height: 100vh;
+
+  background-image: url("/obsidian-hero.png"); /* YOUR IMAGE */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* REMOVE DARK CUTTING BLOCK */
+.split-section {
+  background: transparent !important;
+  margin-top: 0 !important;
+  padding-top: 80px;
+}
+
+/* FIX BOTTLE OVERLAP */
+.split-image img {
+  max-width: 260px;
+  position: relative;
+  z-index: 2;
+}
+
+/* REMOVE DUPLICATE HERO TEXT (THE ONE OVER FACE) */
+.hero-main-title {
+  font-size: 64px;
+  line-height: 1.1;
+}
+
+/* OPTIONAL: if still overlapping, reduce spacing */
+.hero-image-content {
+  padding-top: 40px;
+}
