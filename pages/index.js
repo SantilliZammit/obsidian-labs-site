@@ -1,121 +1,196 @@
-/* SICK HOMEPAGE UPGRADE */
+import Link from "next/link";
+import { useCart } from "../context/CartContext";
 
-.home-hero-premium {
-  box-shadow:
-    inset 0 0 50px rgba(0, 255, 255, 0.04),
-    0 0 60px rgba(0, 255, 255, 0.06);
-}
+export default function Home() {
+  const { cartItems } = useCart();
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
-.hero-trust-row {
-  margin-top: 22px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
+  return (
+    <div className="home-page">
+      <header className="home-nav elite-nav">
+        <div className="home-brand">OBSIDIAN LABS</div>
 
-.hero-trust-row span {
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(87, 227, 255, 0.14);
-  background: rgba(255, 255, 255, 0.03);
-  color: #bfeef4;
-  font-size: 12px;
-  letter-spacing: 0.3px;
-}
+        <nav className="home-nav-links">
+          <a href="#featured">Products</a>
+          <a href="#why">Why Us</a>
+          <a href="#contact">Contact</a>
+          <Link href="/cart">Cart{cartCount > 0 ? ` (${cartCount})` : ""}</Link>
+        </nav>
+      </header>
 
-.hero-bottle-stack {
-  min-height: 460px;
-  position: relative;
-}
+      <section className="hero-image-section">
+        <div className="hero-image-overlay"></div>
 
-.hero-bottle-main {
-  width: 240px;
-}
+        <div className="hero-image-content">
+          <p className="hero-eyebrow">OBSIDIAN LABS</p>
+          <h1 className="hero-main-title">HEALTH IS WEALTH AFTER 40</h1>
+          <p className="hero-subtitle">
+            Get tight. Build lean. Stay strong.
+          </p>
 
-.hero-bottle-side {
-  position: absolute;
-  width: 140px;
-  opacity: 0.92;
-  filter: drop-shadow(0 0 18px rgba(0, 255, 255, 0.08));
-}
+          <div className="hero-buttons">
+            <a href="#featured" className="home-primary-btn">
+              Shop Compounds
+            </a>
+            <a href="#why" className="home-secondary-btn">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </section>
 
-.hero-bottle-left {
-  left: 18px;
-  bottom: 10px;
-  transform: rotate(-10deg);
-}
+      <section className="split-section">
+        <div className="split-grid">
+          <div className="split-image">
+            <img src="/bpc-157.png" alt="BPC-157" />
+          </div>
 
-.hero-bottle-right {
-  right: 18px;
-  bottom: 12px;
-  transform: rotate(10deg);
-}
+          <div className="split-content">
+            <p className="split-eyebrow">FLAGSHIP COMPOUND</p>
+            <h2>BPC-157</h2>
+            <p>
+              Advanced peptide for recovery, tissue repair, and regenerative
+              research. Clean presentation. Premium trust signals. Serious brand
+              feel.
+            </p>
 
-.home-strip-section {
-  padding-top: 28px;
-}
+            <div className="split-buttons">
+              <Link href="/products/bpc-157" className="home-primary-btn">
+                View Product
+              </Link>
+              <a href="#featured" className="home-secondary-btn">
+                Explore More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-.home-strip-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
+      <section className="home-strip-section">
+        <div className="home-strip-grid">
+          <div className="home-strip-card">
+            <h3>Premium Presentation</h3>
+            <p>Built to feel like a real biotech brand, not a template.</p>
+          </div>
+          <div className="home-strip-card">
+            <h3>Secure Checkout</h3>
+            <p>Live cart drawer, clean flow, and streamlined checkout UX.</p>
+          </div>
+          <div className="home-strip-card">
+            <h3>Research Grade</h3>
+            <p>Luxury dark-mode styling with lab-first positioning.</p>
+          </div>
+        </div>
+      </section>
 
-.home-strip-card {
-  padding: 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.025);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 24px rgba(0, 255, 255, 0.04);
-}
+      <section className="home-section home-fade-up" id="featured">
+        <div className="home-section-header">
+          <p className="home-section-eyebrow">FEATURED COMPOUNDS</p>
+          <h2>Built like a brand, not a template.</h2>
+          <p>
+            Premium product detail pages, live cart experience, and a storefront
+            designed to convert.
+          </p>
+        </div>
 
-.home-strip-card h3 {
-  margin: 0 0 8px;
-  font-size: 20px;
-}
+        <div className="home-product-grid">
+          <Link href="/products/retatrutide" className="home-product-card elite-product-card">
+            <div className="home-product-image-wrap">
+              <img src="/retatrutide-60mg.png" alt="Retatrutide" className="home-product-image" />
+            </div>
+            <div className="home-product-info">
+              <h3>Retatrutide</h3>
+              <p>Advanced metabolic peptide with premium clinical branding.</p>
+              <div className="home-product-meta">
+                <span>From $129.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
 
-.home-strip-card p {
-  margin: 0;
-  color: #b8c1c9;
-  line-height: 1.6;
-}
+          <Link href="/products/bpc-157" className="home-product-card elite-product-card">
+            <div className="home-product-image-wrap">
+              <img src="/bpc-157.png" alt="BPC-157" className="home-product-image" />
+            </div>
+            <div className="home-product-info">
+              <h3>BPC-157</h3>
+              <p>Advanced peptide for tissue repair and regenerative research.</p>
+              <div className="home-product-meta">
+                <span>From $49.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
 
-@media (max-width: 900px) {
-  .home-strip-grid {
-    grid-template-columns: 1fr;
-  }
+          <Link href="/products/tb-500" className="home-product-card elite-product-card">
+            <div className="home-product-image-wrap">
+              <img src="/tb-500.png" alt="TB-500" className="home-product-image" />
+            </div>
+            <div className="home-product-info">
+              <h3>TB-500</h3>
+              <p>Recovery-focused peptide for repair, healing, and research.</p>
+              <div className="home-product-meta">
+                <span>From $59.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
 
-  .hero-bottle-main {
-    width: 190px;
-  }
+      <section className="home-section home-split-section home-fade-up" id="why">
+        <div className="home-split-card">
+          <p className="home-section-eyebrow">WHY OBSIDIAN</p>
+          <h2>Dark, modern, premium, clinical.</h2>
+          <p>
+            A biotech storefront built to feel expensive the second it loads.
+            Better product pages. Better trust. Better conversion flow.
+          </p>
 
-  .hero-bottle-side {
-    width: 110px;
-  }
+          <ul className="home-feature-list">
+            <li>Premium product pages</li>
+            <li>Pop-out cart drawer with live subtotal</li>
+            <li>Secure Stripe checkout</li>
+            <li>Luxury biotech visual identity</li>
+          </ul>
+        </div>
 
-  .hero-bottle-left {
-    left: 10px;
-  }
+        <div className="home-split-card home-glow-card">
+          <p className="home-section-eyebrow">TRUST + EXPERIENCE</p>
+          <h2>Designed to feel credible and elite.</h2>
+          <p>
+            Clean spacing, high-end dark mode, controlled glow, and a strong
+            product-first buying experience.
+          </p>
 
-  .hero-bottle-right {
-    right: 10px;
-  }
-}
+          <div className="home-badge-row">
+            <span>Secure Checkout</span>
+            <span>COA Access</span>
+            <span>Research Use Only</span>
+            <span>Premium Lab Grade</span>
+          </div>
+        </div>
+      </section>
 
-@media (max-width: 640px) {
-  .hero-trust-row {
-    justify-content: center;
-  }
+      <section className="home-section home-fade-up home-cta-section" id="contact">
+        <div className="home-cta-card">
+          <p className="home-section-eyebrow">READY TO SHOP</p>
+          <h2>Explore the Obsidian Labs line.</h2>
+          <p>
+            Premium product pages, clean cart flow, and a storefront built to
+            scale with your catalog.
+          </p>
 
-  .hero-bottle-stack {
-    min-height: 340px;
-  }
-
-  .hero-bottle-main {
-    width: 160px;
-  }
-
-  .hero-bottle-side {
-    width: 88px;
-  }
-  }
+          <div className="home-hero-buttons">
+            <a href="#featured" className="home-primary-btn">
+              Shop Now
+            </a>
+            <a href="mailto:info@obsidianlabs.com" className="home-secondary-btn">
+              Contact Us
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+              }
