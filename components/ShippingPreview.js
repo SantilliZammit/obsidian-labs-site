@@ -1,58 +1,78 @@
-export default function ShippingPreview({ subtotal = 0 }) {
-  const freeShippingThreshold = 200;
-  const standardShipping = 9.95;
+import { useMemo } from "react";
 
-  const qualifiesForFreeShipping = subtotal >= freeShippingThreshold;
-  const amountRemaining = Math.max(freeShippingThreshold - subtotal, 0);
-  const progressPercent = Math.min((subtotal / freeShippingThreshold) * 100, 100);
+export default function ShippingPreview({ subtotal }) {
+  const FREE_SHIPPING_THRESHOLD = 500;
+  const SHIPPING_COST = 25;
 
-  const estimatedShipping = qualifiesForFreeShipping ? 0 : standardShipping;
-  const estimatedTotal = subtotal + estimatedShipping;
+  const { progress, remaining, unlocked } = useMemo(() => {
+    const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+    const remaining = Math.max(FREE_SHIPPING_THRESHOLD - subtotal, 0);
+    const unlocked = subtotal >= FREE_SHIPPING_THRESHOLD;
+
+    return { progress, remaining, unlocked };
+  }, [subtotal]);
 
   return (
-    <div className="shipping-preview-card">
-      <div className="shipping-preview-top">
-        <div>
-          <p className="shipping-preview-eyebrow">SHIPPING PREVIEW</p>
-          <h3 className="shipping-preview-title">
-            {qualifiesForFreeShipping
-              ? "You unlocked free shipping"
-              : `$${amountRemaining.toFixed(2)} away from free shipping`}
-          </h3>
-        </div>
-
-        <div className="shipping-preview-summary">
-          <div className="shipping-preview-row">
-            <span>Subtotal</span>
-            <strong>${subtotal.toFixed(2)}</strong>
-          </div>
-          <div className="shipping-preview-row">
-            <span>Estimated Shipping</span>
-            <strong>
-              {qualifiesForFreeShipping ? "FREE" : `$${standardShipping.toFixed(2)}`}
-            </strong>
-          </div>
-          <div className="shipping-preview-row total">
-            <span>Estimated Total</span>
-            <strong>${estimatedTotal.toFixed(2)}</strong>
-          </div>
-        </div>
-      </div>
-
-      <div className="shipping-progress-wrap">
-        <div className="shipping-progress-bar">
-          <div
-            className="shipping-progress-fill"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
-      </div>
-
-      <p className="shipping-preview-note">
-        {qualifiesForFreeShipping
-          ? "Standard shipping is now free at checkout."
-          : `Orders over $${freeShippingThreshold.toFixed(2)} qualify for free shipping.`}
+    <div style={{ marginTop: "16px" }}>
+      {/* MESSAGE */}
+      <p
+        style={{
+          fontSize: "14px",
+          color: unlocked ? "#00ffc3" : "#aaa",
+          marginBottom: "6px",
+        }}
+      >
+        {unlocked
+          ? "🚚 Free shipping unlocked"
+          : `Add $${remaining.toFixed(2)} more to unlock FREE shipping`}
       </p>
+
+      {/* PROGRESS BAR */}
+      <div
+        style={{
+          width: "100%",
+          height: "6px",
+          background: "#1a1a1a",
+          borderRadius: "999px",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: `${progress}%`,
+            height: "100%",
+            background: "linear-gradient(90deg, #00ffc3, #00aaff)",
+            transition: "width 0.4s ease",
+          }}
+        />
+      </div>
+
+      {/* SHIPPING PRICE PREVIEW */}
+      <p
+        style={{
+          marginTop: "8px",
+          fontSize: "13px",
+          color: "#888",
+        }}
+      >
+        Shipping:{" "}
+        <span style={{ color: unlocked ? "#00ffc3" : "#fff" }}>
+          {unlocked ? "FREE" : `$${SHIPPING_COST.toFixed(2)}`}
+        </span>
+      </p>
+
+      {/* 🔥 AUTO UPSELL */}
+      {!unlocked && (
+        <p
+          style={{
+            marginTop: "6px",
+            fontSize: "13px",
+            color: "#00ffc3",
+          }}
+        >
+          💡 Add one more item to save on shipping
+        </p>
+      )}
     </div>
   );
 }
