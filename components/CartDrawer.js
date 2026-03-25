@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
+import ShippingPreview from "./ShippingPreview";
 
 export default function CartDrawer() {
   const {
@@ -144,9 +145,12 @@ export default function CartDrawer() {
               <p className="cart-drawer-total-items">
                 {cartCount} item{cartCount !== 1 ? "s" : ""}
               </p>
+
               <p className="cart-drawer-total">
                 Subtotal: ${cartTotal.toFixed(2)}
               </p>
+
+              <ShippingPreview subtotal={cartTotal} />
 
               <div className="cart-drawer-actions">
                 <button
@@ -175,4 +179,4 @@ export default function CartDrawer() {
       </div>
     </>
   );
-}
+                  }
