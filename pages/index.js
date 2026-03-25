@@ -174,6 +174,30 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          <Link
+            href="/products/pt-141"
+            className="home-product-card elite-product-card"
+          >
+            <div className="home-product-image-wrap">
+              <img
+                src="/pt141-10mg.png"
+                alt="PT-141"
+                className="home-product-image"
+              />
+            </div>
+            <div className="home-product-info">
+              <h3>PT-141</h3>
+              <p>
+                Advanced peptide for libido, performance, and neurological
+                signaling research.
+              </p>
+              <div className="home-product-meta">
+                <span>From $79.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -235,4 +259,4 @@ export default function Home() {
       </section>
     </div>
   );
-              }
+            }
