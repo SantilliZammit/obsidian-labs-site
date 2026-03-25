@@ -218,6 +218,30 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          <Link
+            href="/products/tirzepatide"
+            className="home-product-card elite-product-card"
+          >
+            <div className="home-product-image-wrap">
+              <img
+                src="/tirzepatide-10mg.png"
+                alt="Tirzepatide"
+                className="home-product-image"
+              />
+            </div>
+            <div className="home-product-info">
+              <h3>Tirzepatide</h3>
+              <p>
+                Advanced metabolic peptide for appetite, body composition, and
+                performance research.
+              </p>
+              <div className="home-product-meta">
+                <span>From $129.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
@@ -279,4 +303,4 @@ export default function Home() {
       </section>
     </div>
   );
-            }
+}
