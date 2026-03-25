@@ -2,8 +2,9 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-const FREE_SHIPPING_THRESHOLD = 200;
-const STANDARD_SHIPPING_AMOUNT = 9.95;
+const FREE_SHIPPING_THRESHOLD = 500;
+const GROUND_SHIPPING_AMOUNT = 25;
+const EXPRESS_SHIPPING_AMOUNT = 45;
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -43,7 +44,7 @@ export default async function handler(req, res) {
                 amount: 0,
                 currency: "usd",
               },
-              display_name: "Free Shipping",
+              display_name: "Free Ground Shipping",
               delivery_estimate: {
                 minimum: {
                   unit: "business_day",
@@ -56,16 +57,36 @@ export default async function handler(req, res) {
               },
             },
           },
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: {
+                amount: EXPRESS_SHIPPING_AMOUNT * 100,
+                currency: "usd",
+              },
+              display_name: "Express Shipping",
+              delivery_estimate: {
+                minimum: {
+                  unit: "business_day",
+                  value: 1,
+                },
+                maximum: {
+                  unit: "business_day",
+                  value: 2,
+                },
+              },
+            },
+          },
         ]
       : [
           {
             shipping_rate_data: {
               type: "fixed_amount",
               fixed_amount: {
-                amount: Math.round(STANDARD_SHIPPING_AMOUNT * 100),
+                amount: GROUND_SHIPPING_AMOUNT * 100,
                 currency: "usd",
               },
-              display_name: "Standard Shipping",
+              display_name: "Ground Shipping",
               delivery_estimate: {
                 minimum: {
                   unit: "business_day",
@@ -74,6 +95,26 @@ export default async function handler(req, res) {
                 maximum: {
                   unit: "business_day",
                   value: 5,
+                },
+              },
+            },
+          },
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: {
+                amount: EXPRESS_SHIPPING_AMOUNT * 100,
+                currency: "usd",
+              },
+              display_name: "Express Shipping",
+              delivery_estimate: {
+                minimum: {
+                  unit: "business_day",
+                  value: 1,
+                },
+                maximum: {
+                  unit: "business_day",
+                  value: 2,
                 },
               },
             },
