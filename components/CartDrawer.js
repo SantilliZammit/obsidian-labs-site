@@ -32,15 +32,21 @@ export default function CartDrawer() {
 
       const data = await res.json();
 
+      if (!res.ok) {
+        alert(data.error || "Checkout session failed");
+        console.error("Checkout error:", data);
+        return;
+      }
+
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Checkout session failed.");
-        console.error(data);
+        alert("Checkout session failed");
+        console.error("Missing checkout URL:", data);
       }
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong starting checkout.");
+      console.error("Checkout request failed:", error);
+      alert(error.message || "Something went wrong starting checkout.");
     }
   };
 
