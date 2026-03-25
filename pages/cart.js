@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
+import ShippingPreview from "../components/ShippingPreview";
 
 export default function CartPage() {
   const {
@@ -9,6 +10,11 @@ export default function CartPage() {
     updateQuantity,
     clearCart,
   } = useCart();
+
+  const subtotal = cartItems.reduce(
+    (total, item) => total + Number(item.price) * Number(item.quantity),
+    0
+  );
 
   const handleCheckout = async () => {
     try {
@@ -117,6 +123,8 @@ export default function CartPage() {
               ))}
             </div>
 
+            <ShippingPreview subtotal={subtotal} />
+
             <div className="cart-summary">
               <h2>Order Summary</h2>
               <p>Total: ${cartTotal.toFixed(2)}</p>
@@ -135,4 +143,4 @@ export default function CartPage() {
       </section>
     </div>
   );
-}
+          }
