@@ -3,8 +3,11 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const FREE_SHIPPING_THRESHOLD = 500;
-const GROUND_SHIPPING_AMOUNT = 25;
-const EXPRESS_SHIPPING_AMOUNT = 45;
+
+// ✅ YOUR REAL SHIPPING RATE IDS (CORRECTLY MAPPED)
+const GROUND_SHIPPING_RATE_ID = "shr_1TErNtIM6o7c6vXeIKQbTDVJ";
+const EXPRESS_SHIPPING_RATE_ID = "shr_1TErOnIM6o7c6vXeaoJYoAYu";
+const FREE_SHIPPING_RATE_ID = "shr_1TErPNIM6o7c6vXeafO8mge8";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -18,6 +21,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: "No items provided" });
     }
 
+    // 🛒 Build line items
     const line_items = items.map((item) => ({
       price_data: {
         currency: "usd",
@@ -29,98 +33,24 @@ export default async function handler(req, res) {
       quantity: Number(item.quantity) || 1,
     }));
 
+    // 💰 Calculate subtotal
     const subtotal = items.reduce((total, item) => {
       return total + Number(item.price) * Number(item.quantity || 1);
     }, 0);
 
-    const qualifiesForFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
+    // 🚚 Choose correct shipping options
+    const shipping_options =
+      subtotal >= FREE_SHIPPING_THRESHOLD
+        ? [
+            { shipping_rate: FREE_SHIPPING_RATE_ID },
+            { shipping_rate: EXPRESS_SHIPPING_RATE_ID },
+          ]
+        : [
+            { shipping_rate: GROUND_SHIPPING_RATE_ID },
+            { shipping_rate: EXPRESS_SHIPPING_RATE_ID },
+          ];
 
-    const shipping_options = qualifiesForFreeShipping
-      ? [
-          {
-            shipping_rate_data: {
-              type: "fixed_amount",
-              fixed_amount: {
-                amount: 0,
-                currency: "usd",
-              },
-              display_name: "Free Ground Shipping",
-              delivery_estimate: {
-                minimum: {
-                  unit: "business_day",
-                  value: 3,
-                },
-                maximum: {
-                  unit: "business_day",
-                  value: 5,
-                },
-              },
-            },
-          },
-          {
-            shipping_rate_data: {
-              type: "fixed_amount",
-              fixed_amount: {
-                amount: EXPRESS_SHIPPING_AMOUNT * 100,
-                currency: "usd",
-              },
-              display_name: "Express Shipping",
-              delivery_estimate: {
-                minimum: {
-                  unit: "business_day",
-                  value: 1,
-                },
-                maximum: {
-                  unit: "business_day",
-                  value: 2,
-                },
-              },
-            },
-          },
-        ]
-      : [
-          {
-            shipping_rate_data: {
-              type: "fixed_amount",
-              fixed_amount: {
-                amount: GROUND_SHIPPING_AMOUNT * 100,
-                currency: "usd",
-              },
-              display_name: "Ground Shipping",
-              delivery_estimate: {
-                minimum: {
-                  unit: "business_day",
-                  value: 3,
-                },
-                maximum: {
-                  unit: "business_day",
-                  value: 5,
-                },
-              },
-            },
-          },
-          {
-            shipping_rate_data: {
-              type: "fixed_amount",
-              fixed_amount: {
-                amount: EXPRESS_SHIPPING_AMOUNT * 100,
-                currency: "usd",
-              },
-              display_name: "Express Shipping",
-              delivery_estimate: {
-                minimum: {
-                  unit: "business_day",
-                  value: 1,
-                },
-                maximum: {
-                  unit: "business_day",
-                  value: 2,
-                },
-              },
-            },
-          },
-        ];
-
+    // 💳 Create Stripe session
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
@@ -131,10 +61,6 @@ export default async function handler(req, res) {
       },
 
       shipping_options,
-
-      automatic_tax: {
-        enabled: true,
-      },
 
       success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/cart`,
