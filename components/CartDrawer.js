@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 import ShippingPreview from "./ShippingPreview";
+import UpsellSuggestion from "./UpsellSuggestion";
 
 export default function CartDrawer() {
   const {
@@ -8,6 +9,7 @@ export default function CartDrawer() {
     cartTotal,
     removeFromCart,
     updateQuantity,
+    addToCart,
     cartOpen: open,
     setCartOpen: setOpen,
   } = useCart();
@@ -98,6 +100,10 @@ export default function CartDrawer() {
                       ${Number(item.price).toFixed(2)}
                     </p>
 
+                    <p style={{ fontSize: "12px", color: "#ff4d4d", marginTop: "4px" }}>
+                      ⚠️ Only a few left
+                    </p>
+
                     <div className="cart-drawer-qty-row">
                       <button
                         className="cart-drawer-qty-btn"
@@ -151,6 +157,7 @@ export default function CartDrawer() {
               </p>
 
               <ShippingPreview subtotal={cartTotal} />
+              <UpsellSuggestion subtotal={cartTotal} addToCart={addToCart} />
 
               <div className="cart-drawer-actions">
                 <button
