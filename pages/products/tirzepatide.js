@@ -5,24 +5,24 @@ import { useCart } from "../../context/CartContext";
 export default function Tirzepatide() {
   const options = {
     "10 mg": {
-      price: 99.99,
+      price: 129.99,
       image: "/tirzepatide-10mg.png",
     },
     "30 mg": {
-      price: 199.99,
+      price: 299.99,
       image: "/tirzepatide-30mg.png",
     },
     "50 mg": {
-      price: 299.99,
+      price: 449.99,
       image: "/tirzepatide-50mg.png",
     },
     "60 mg": {
-      price: 349.99,
+      price: 529.99,
       image: "/tirzepatide-60mg.png",
     },
   };
 
-  const [selectedSize, setSelectedSize] = useState("30 mg");
+  const [selectedSize, setSelectedSize] = useState("10 mg");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
@@ -44,27 +44,40 @@ export default function Tirzepatide() {
     setAddedMessage(`Added Tirzepatide ${selectedSize} to cart`);
     setAnimateAdd(true);
 
-    setTimeout(() => setAddedMessage(""), 1800);
-    setTimeout(() => setAnimateAdd(false), 900);
+    setTimeout(() => {
+      setAddedMessage("");
+    }, 1800);
+
+    setTimeout(() => {
+      setAnimateAdd(false);
+    }, 900);
   };
 
   const handleBuyNow = async () => {
     const item = buildItem();
 
-    const res = await fetch("/api/checkout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ items: [item] }),
-    });
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          items: [item],
+        }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      alert("Checkout failed.");
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert("Checkout session failed.");
+        console.error(data);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong starting checkout.");
     }
   };
 
@@ -77,12 +90,10 @@ export default function Tirzepatide() {
       <section className="product-page">
         <div className="product-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
-
           <h1 className="product-title">Tirzepatide Research</h1>
-
           <p className="product-subtitle">
-            Advanced dual-action peptide studied for metabolic optimization,
-            glucose regulation, and weight management support.
+            Advanced peptide studied for metabolic support, appetite regulation,
+            body composition, and performance-focused research applications.
           </p>
 
           <div className="product-tags">
@@ -92,9 +103,11 @@ export default function Tirzepatide() {
           </div>
 
           <div className="product-select-row">
-            <label className="select-label">Size</label>
-
+            <label htmlFor="tirzepatide-size" className="select-label">
+              Size
+            </label>
             <select
+              id="tirzepatide-size"
               className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -106,19 +119,23 @@ export default function Tirzepatide() {
             </select>
           </div>
 
-          <div className="price-display">
-            ${current.price.toFixed(2)}
-          </div>
+          <div className="price-display">${current.price.toFixed(2)}</div>
 
-          {addedMessage && (
-            <div className="add-cart-toast">{addedMessage}</div>
-          )}
+          {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
         </div>
 
-        <div className="product-image-wrap">
+        <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
           <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
-            <img src={current.image} className="product-image" />
-            <img src={current.image} className="product-reflection" />
+            <img
+              src={current.image}
+              alt={`Tirzepatide ${selectedSize}`}
+              className="product-image"
+            />
+            <img
+              src={current.image}
+              alt={`Tirzepatide ${selectedSize} reflection`}
+              className="product-reflection"
+            />
             <div className="glow"></div>
           </div>
         </div>
@@ -126,34 +143,48 @@ export default function Tirzepatide() {
         <div className="info-dropdown">
           <button
             className="info-toggle"
+            type="button"
             onClick={() => setShowInfo(!showInfo)}
           >
-            {showInfo ? "Hide Info ▲" : "More Info ▼"}
+            {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
           </button>
 
           <div className={`info-panel ${showInfo ? "open" : ""}`}>
             <h2>Overview</h2>
             <p>
-              Tirzepatide is a dual GIP and GLP-1 receptor agonist currently
-              being studied for its powerful effects on metabolic function,
-              appetite regulation, insulin sensitivity, and weight management.
+              Tirzepatide is a research peptide commonly studied for metabolic
+              support, appetite signaling, weight management, body composition,
+              and glucose-related research pathways.
             </p>
 
-            <h3>Research Focus</h3>
+            <h3>Key Research Areas</h3>
             <ul>
-              <li>Weight management</li>
-              <li>Glucose control</li>
-              <li>Metabolic efficiency</li>
-              <li>Appetite suppression</li>
+              <li>Metabolic function support</li>
+              <li>Appetite and satiety signaling</li>
+              <li>Body composition research</li>
+              <li>Weight management protocols</li>
+            </ul>
+
+            <h3>Product Details</h3>
+            <ul>
+              <li>Compound: Tirzepatide</li>
+              <li>Available Sizes: 10 mg, 30 mg, 50 mg, 60 mg</li>
+              <li>Form: Lyophilized powder</li>
+              <li>Use: Research Use Only</li>
+              <li>Premium lab-grade presentation</li>
             </ul>
           </div>
+        </div>
+
+        <div className="product-actions research-actions">
+          <button className="primary-btn">Request Research Access</button>
+          <button className="secondary-btn">View Lab Information</button>
         </div>
 
         <div className="product-actions shop-actions">
           <button className="primary-btn" onClick={handleAddToCart}>
             Add to Cart
           </button>
-
           <button className="secondary-btn" onClick={handleBuyNow}>
             Buy Now
           </button>
@@ -161,4 +192,4 @@ export default function Tirzepatide() {
       </section>
     </div>
   );
-}
+                }
