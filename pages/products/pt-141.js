@@ -1,26 +1,36 @@
-<section class="product-section pt141">
-  <div class="product-container">
+import Link from "next/link";
 
-    <!-- Image -->
-    <div class="product-image">
-      <img src="/images/pt141.png" alt="PT-141 10mg">
-    </div>
+export default function PT141() {
+  return (
+    <section className="product-section pt141">
+      <div className="product-container">
 
-    <!-- Content -->
-    <div class="product-content">
-      <p class="product-sub">FLAGSHIP COMPOUND</p>
-      <h2 class="product-title">PT-141</h2>
+        {/* Image */}
+        <div className="product-image">
+          <img src="/pt141-10mg.png" alt="PT-141 10mg" />
+        </div>
 
-      <p class="product-desc">
-        Advanced peptide designed to support performance, drive, and neurological signaling. 
-        Clean presentation. Premium trust signals. Serious brand feel.
-      </p>
+        {/* Content */}
+        <div className="product-content">
+          <p className="product-sub">FLAGSHIP COMPOUND</p>
+          <h2 className="product-title">PT-141</h2>
 
-      <div class="product-buttons">
-        <a href="/shop" class="btn-primary">Shop Compounds</a>
-        <a href="/learn/pt141" class="btn-secondary">Learn More</a>
+          <p className="product-desc">
+            Advanced peptide designed to support performance, drive, and neurological signaling.
+            Clean presentation. Premium trust signals. Serious brand feel.
+          </p>
+
+          <div className="product-buttons">
+            <Link href="/products/pt-141" className="home-primary-btn">
+              Add to Cart
+            </Link>
+            <a href="#featured" className="home-secondary-btn">
+              Explore More
+            </a>
+          </div>
+        </div>
+
       </div>
-    </div>
-
-  </div>
-</section>
+    </section>
+  );
+}
