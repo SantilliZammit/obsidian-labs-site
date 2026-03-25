@@ -57,31 +57,31 @@ export default function Home() {
         </div>
       </section>
 
-<section className="split-section">
-  <div className="split-grid">
-    <div className="split-image">
-      <img src="/pt141-10mg.png" alt="PT-141" />
-    </div>
+      <section className="split-section">
+        <div className="split-grid">
+          <div className="split-image">
+            <img src="/pt141-10mg.png" alt="PT-141" />
+          </div>
 
-    <div className="split-content">
-      <p className="split-eyebrow">FLAGSHIP COMPOUND</p>
-      <h2>PT-141</h2>
-      <p>
-        Advanced peptide for libido, performance, and neurological signaling
-        research. Clean presentation. Premium trust signals. Serious brand feel.
-      </p>
+          <div className="split-content">
+            <p className="split-eyebrow">FLAGSHIP COMPOUND</p>
+            <h2>PT-141</h2>
+            <p>
+              Advanced peptide for libido, performance, and neurological signaling
+              research. Clean presentation. Premium trust signals. Serious brand feel.
+            </p>
 
-      <div className="split-buttons">
-        <Link href="/products/pt-141" className="home-primary-btn">
-          View Product
-        </Link>
-        <a href="#featured" className="home-secondary-btn">
-          Explore More
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+            <div className="split-buttons">
+              <Link href="/products/pt-141" className="home-primary-btn">
+                View Product
+              </Link>
+              <a href="#featured" className="home-secondary-btn">
+                Explore More
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="home-strip-section">
         <div className="home-strip-grid">
@@ -193,6 +193,27 @@ export default function Home() {
               </p>
               <div className="home-product-meta">
                 <span>From $79.99</span>
+                <span className="home-product-link">View Product →</span>
+              </div>
+            </div>
+          </Link>
+
+          <Link
+            href="/products/cjc-1295"
+            className="home-product-card elite-product-card"
+          >
+            <div className="home-product-image-wrap">
+              <img
+                src="/cjc-1295.png"
+                alt="CJC-1295"
+                className="home-product-image"
+              />
+            </div>
+            <div className="home-product-info">
+              <h3>CJC-1295</h3>
+              <p>Growth hormone peptide for performance and recovery research.</p>
+              <div className="home-product-meta">
+                <span>From $89.99</span>
                 <span className="home-product-link">View Product →</span>
               </div>
             </div>
