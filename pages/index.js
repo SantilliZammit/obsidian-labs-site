@@ -57,32 +57,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="split-section">
-        <div className="split-grid">
-          <div className="split-image">
-            <img src="/bpc-157.png" alt="BPC-157" />
-          </div>
+<section className="split-section">
+  <div className="split-grid">
+    <div className="split-image">
+      <img src="/pt141-10mg.png" alt="PT-141" />
+    </div>
 
-          <div className="split-content">
-            <p className="split-eyebrow">FLAGSHIP COMPOUND</p>
-            <h2>BPC-157</h2>
-            <p>
-              Advanced peptide for recovery, tissue repair, and regenerative
-              research. Clean presentation. Premium trust signals. Serious brand
-              feel.
-            </p>
+    <div className="split-content">
+      <p className="split-eyebrow">FLAGSHIP COMPOUND</p>
+      <h2>PT-141</h2>
+      <p>
+        Advanced peptide for libido, performance, and neurological signaling
+        research. Clean presentation. Premium trust signals. Serious brand feel.
+      </p>
 
-            <div className="split-buttons">
-              <Link href="/products/bpc-157" className="home-primary-btn">
-                View Product
-              </Link>
-              <a href="#featured" className="home-secondary-btn">
-                Explore More
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="split-buttons">
+        <Link href="/products/pt-141" className="home-primary-btn">
+          View Product
+        </Link>
+        <a href="#featured" className="home-secondary-btn">
+          Explore More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
       <section className="home-strip-section">
         <div className="home-strip-grid">
