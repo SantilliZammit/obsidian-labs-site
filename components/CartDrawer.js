@@ -100,7 +100,13 @@ export default function CartDrawer() {
                       ${Number(item.price).toFixed(2)}
                     </p>
 
-                    <p style={{ fontSize: "12px", color: "#ff4d4d", marginTop: "4px" }}>
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        color: "#ff4d4d",
+                        marginTop: "4px",
+                      }}
+                    >
                       ⚠️ Only a few left
                     </p>
 
@@ -186,4 +192,4 @@ export default function CartDrawer() {
       </div>
     </>
   );
-                  }
+}
