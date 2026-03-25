@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
-import ShippingPreview from "../components/ShippingPreview";
 
 export default function CartPage() {
   const {
@@ -10,11 +9,6 @@ export default function CartPage() {
     updateQuantity,
     clearCart,
   } = useCart();
-
-  const subtotal = cartItems.reduce(
-    (total, item) => total + Number(item.price) * Number(item.quantity),
-    0
-  );
 
   const handleCheckout = async () => {
     try {
@@ -28,15 +22,21 @@ export default function CartPage() {
 
       const data = await res.json();
 
+      if (!res.ok) {
+        alert(data.error || "Checkout session failed");
+        console.error("Checkout error:", data);
+        return;
+      }
+
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Checkout session failed.");
-        console.error(data);
+        alert("Checkout session failed");
+        console.error("Missing checkout URL:", data);
       }
     } catch (error) {
-      console.error(error);
-      alert("Something went wrong starting checkout.");
+      console.error("Checkout request failed:", error);
+      alert(error.message || "Something went wrong starting checkout.");
     }
   };
 
@@ -123,8 +123,6 @@ export default function CartPage() {
               ))}
             </div>
 
-            <ShippingPreview subtotal={subtotal} />
-
             <div className="cart-summary">
               <h2>Order Summary</h2>
               <p>Total: ${cartTotal.toFixed(2)}</p>
@@ -143,4 +141,4 @@ export default function CartPage() {
       </section>
     </div>
   );
-          }
+                        }
