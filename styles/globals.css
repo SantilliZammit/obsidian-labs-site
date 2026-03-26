@@ -3229,3 +3229,399 @@ body,
     padding-bottom: 88px;
   }
   }
+/* =========================
+   MONEY PRINTER SEMAGLUTIDE
+   ========================= */
+
+.premium-product-page {
+  gap: 28px;
+}
+
+.premium-product-copy {
+  position: relative;
+}
+
+.review-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0 14px;
+  flex-wrap: wrap;
+}
+
+.review-stars {
+  color: #ffd666;
+  letter-spacing: 1px;
+  font-size: 1rem;
+}
+
+.review-score {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.review-count {
+  color: #9fc8d0;
+  font-size: 0.95rem;
+}
+
+.premium-price-wrap {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.subscription-savings-line {
+  margin-top: 8px;
+  color: #7ef5ff;
+  font-size: 0.96rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.scarcity-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffb4b4;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.scarcity-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.55; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.social-proof-line {
+  text-align: center;
+  color: #92dce4;
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.purchase-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 22px 18px;
+  border: 1px solid rgba(0, 224, 255, 0.12);
+  border-radius: 22px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 255, 255, 0.015)
+  );
+  box-shadow: 0 0 34px rgba(0, 224, 255, 0.04);
+}
+
+.purchase-panel-header {
+  text-align: center;
+}
+
+.purchase-panel-eyebrow {
+  color: #7deef8;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.76rem;
+  margin-bottom: 6px;
+}
+
+.purchase-panel-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.premium-purchase-options {
+  margin-top: 0;
+  margin-bottom: 0;
+  gap: 14px;
+}
+
+.premium-purchase-option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 224, 255, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #e6fbff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.premium-purchase-option:hover {
+  border-color: rgba(0, 224, 255, 0.55);
+  box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
+  transform: translateY(-1px);
+}
+
+.premium-purchase-option.active {
+  border-color: rgba(0, 224, 255, 0.88);
+  background: rgba(0, 224, 255, 0.08);
+  box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
+}
+
+.premium-purchase-option input[type="radio"] {
+  accent-color: #00e0ff;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.purchase-option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.purchase-option-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  width: 100%;
+}
+
+.purchase-option-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.purchase-option-price {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #aaf8ff;
+  white-space: nowrap;
+}
+
+.purchase-option-sub {
+  color: #a8c8cf;
+  font-size: 0.93rem;
+  line-height: 1.45;
+}
+
+.best-value-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #00e0ff, #009dff);
+  color: #00131a;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 7px 11px;
+  border-radius: 999px;
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
+}
+
+.premium-frequency-panel {
+  padding: 16px 18px;
+  border: 1px solid rgba(0, 224, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.frequency-label {
+  color: #c7faff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.frequency-options {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.frequency-pill {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 224, 255, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  color: #dffcff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.frequency-pill.active {
+  border-color: #00e0ff;
+  background: rgba(0, 224, 255, 0.1);
+  box-shadow: 0 0 14px rgba(0, 224, 255, 0.15);
+}
+
+.micro-urgency {
+  text-align: center;
+  color: #9fd6dd;
+  font-size: 0.9rem;
+  margin-top: -2px;
+}
+
+.premium-shop-actions {
+  margin-top: 0;
+  justify-content: center;
+}
+
+.premium-shop-actions .primary-btn,
+.premium-shop-actions .secondary-btn {
+  min-height: 54px;
+}
+
+.premium-shop-actions .primary-btn:hover {
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+  justify-content: center;
+}
+
+.trust-pill {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d6f9ff;
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.premium-image-wrap {
+  min-height: 420px;
+}
+
+.premium-image-stack {
+  transform: scale(1.04);
+}
+
+.premium-product-image {
+  max-width: 310px;
+}
+
+.premium-info-dropdown .info-toggle {
+  border-radius: 16px;
+}
+
+.premium-research-actions {
+  margin-top: 4px;
+}
+
+.sticky-buy-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  background: rgba(2, 10, 16, 0.96);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 224, 255, 0.15);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sticky-buy-bar__left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sticky-buy-bar__title {
+  color: #dffcff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+.sticky-buy-bar__price {
+  color: #7ef5ff;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.sticky-buy-bar__sub {
+  font-size: 0.8rem;
+  color: #7ef5ff;
+}
+
+.sticky-buy-bar__right {
+  flex-shrink: 0;
+}
+
+.sticky-buy-btn {
+  min-height: 46px;
+  min-width: 140px;
+}
+
+@media (max-width: 768px) {
+  .purchase-option-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  .purchase-option-price {
+    font-size: 0.96rem;
+  }
+
+  .best-value-badge {
+    position: static;
+    margin-top: 8px;
+    align-self: flex-start;
+  }
+
+  .premium-product-image {
+    max-width: 260px;
+  }
+
+  .trust-strip {
+    gap: 8px;
+  }
+
+  .trust-pill {
+    font-size: 0.82rem;
+    padding: 9px 12px;
+  }
+
+  .sticky-buy-bar {
+    display: flex;
+  }
+
+  .container {
+    padding-bottom: 88px;
+  }
+
+  .purchase-panel {
+    padding: 18px 14px;
+  }
+}
