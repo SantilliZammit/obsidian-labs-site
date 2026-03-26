@@ -18,12 +18,35 @@ export default function Semaglutide() {
     },
   };
 
+  const frequentlyBoughtTogether = [
+    {
+      id: "bpc-157",
+      name: "BPC-157 10 mg",
+      price: 49.99,
+      image: "/bpc-157-10mg.png",
+    },
+    {
+      id: "tb-500",
+      name: "TB-500 10 mg",
+      price: 59.99,
+      image: "/tb-500-10mg.png",
+    },
+  ];
+
+  const orderBump = {
+    id: "lab-priority",
+    name: "Priority Handling + Premium Packaging",
+    price: 19.99,
+  };
+
   const [selectedSize, setSelectedSize] = useState("20 mg");
   const [purchaseType, setPurchaseType] = useState("subscription");
   const [subscriptionFrequency, setSubscriptionFrequency] = useState("monthly");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
+  const [selectedBundleIds, setSelectedBundleIds] = useState(["bpc-157"]);
+  const [bumpSelected, setBumpSelected] = useState(true);
   const { addToCart } = useCart();
 
   const current = options[selectedSize];
@@ -31,9 +54,27 @@ export default function Semaglutide() {
   const subscriptionPrice = useMemo(() => current.price * 0.85, [current.price]);
   const finalPrice = purchaseType === "subscription" ? subscriptionPrice : current.price;
   const savings = current.price - subscriptionPrice;
-  const frequencyLabel = subscriptionFrequency === "biweekly" ? "Every 2 Weeks" : "Monthly";
 
-  const buildItem = () => ({
+  const selectedBundleItems = frequentlyBoughtTogether.filter((item) =>
+    selectedBundleIds.includes(item.id)
+  );
+
+  const bundleSubtotal = selectedBundleItems.reduce((sum, item) => sum + item.price, 0);
+  const bundleDiscountRate = selectedBundleItems.length >= 2 ? 0.1 : selectedBundleItems.length === 1 ? 0.05 : 0;
+  const bundleDiscount = bundleSubtotal * bundleDiscountRate;
+  const bumpPrice = bumpSelected ? orderBump.price : 0;
+  const estimatedTotal = finalPrice + (bundleSubtotal - bundleDiscount) + bumpPrice;
+
+  const frequencyLabel =
+    subscriptionFrequency === "biweekly" ? "Every 2 Weeks" : "Monthly";
+
+  const toggleBundle = (id) => {
+    setSelectedBundleIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
+  const buildMainItem = () => ({
     slug: "semaglutide",
     name: "Semaglutide",
     variant:
@@ -47,13 +88,40 @@ export default function Semaglutide() {
     subscriptionFrequency,
   });
 
+  const buildBundleItems = () => {
+    const perItemDiscount =
+      selectedBundleItems.length > 0 && bundleDiscount > 0
+        ? bundleDiscount / selectedBundleItems.length
+        : 0;
+
+    return selectedBundleItems.map((item) => ({
+      slug: item.id,
+      name: item.name,
+      variant: `Bundle Add-On${bundleDiscountRate > 0 ? ` • ${Math.round(bundleDiscountRate * 100)}% bundle savings` : ""}`,
+      price: Number((item.price - perItemDiscount).toFixed(2)),
+      image: item.image,
+      quantity: 1,
+    }));
+  };
+
+  const buildBumpItem = () => ({
+    slug: orderBump.id,
+    name: orderBump.name,
+    variant: "Order Bump",
+    price: orderBump.price,
+    image: current.image,
+    quantity: 1,
+  });
+
+  const buildCartItems = () => {
+    const items = [buildMainItem(), ...buildBundleItems()];
+    if (bumpSelected) items.push(buildBumpItem());
+    return items;
+  };
+
   const handleAddToCart = () => {
-    addToCart(buildItem());
-    setAddedMessage(
-      purchaseType === "subscription"
-        ? `Added Semaglutide ${selectedSize} subscription (${frequencyLabel}) to cart`
-        : `Added Semaglutide ${selectedSize} to cart`
-    );
+    buildCartItems().forEach((item) => addToCart(item));
+    setAddedMessage("Added selected items to cart");
     setAnimateAdd(true);
 
     setTimeout(() => setAddedMessage(""), 1800);
@@ -61,7 +129,7 @@ export default function Semaglutide() {
   };
 
   const handleBuyNow = async () => {
-    const item = buildItem();
+    const items = buildCartItems();
 
     try {
       const res = await fetch("/api/checkout", {
@@ -69,9 +137,7 @@ export default function Semaglutide() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          items: [item],
-        }),
+        body: JSON.stringify({ items }),
       });
 
       const data = await res.json();
@@ -141,7 +207,7 @@ export default function Semaglutide() {
 
           <div className="scarcity-line">
             <span className="scarcity-dot"></span>
-            Only 12 left at this price
+            Only 12 left at this discounted price
           </div>
 
           <div className="social-proof-line">
@@ -221,6 +287,9 @@ export default function Semaglutide() {
                 <div className="purchase-option-sub">
                   Save ${savings.toFixed(2)} every order • Cancel anytime
                 </div>
+                <div className="subscription-highlight">
+                  Most customers choose this option
+                </div>
               </div>
               <span className="best-value-badge">Best Value</span>
             </label>
@@ -248,6 +317,70 @@ export default function Semaglutide() {
             </div>
           )}
 
+          <div className="bundle-panel">
+            <div className="bundle-panel-header">
+              <div className="bundle-title">Frequently bought together</div>
+              <div className="bundle-subtitle">
+                Add complementary products and save more
+              </div>
+            </div>
+
+            <div className="bundle-grid">
+              {frequentlyBoughtTogether.map((item) => (
+                <label
+                  key={item.id}
+                  className={`bundle-card ${
+                    selectedBundleIds.includes(item.id) ? "active" : ""
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={selectedBundleIds.includes(item.id)}
+                    onChange={() => toggleBundle(item.id)}
+                  />
+                  <img src={item.image} alt={item.name} className="bundle-image" />
+                  <div className="bundle-copy">
+                    <div className="bundle-name">{item.name}</div>
+                    <div className="bundle-price">${item.price.toFixed(2)}</div>
+                  </div>
+                </label>
+              ))}
+            </div>
+
+            <div className="bundle-savings-line">
+              {bundleDiscount > 0
+                ? `Bundle savings applied: -$${bundleDiscount.toFixed(2)}`
+                : "Add 2 items together to unlock 10% bundle savings"}
+            </div>
+          </div>
+
+          <div className={`order-bump ${bumpSelected ? "active" : ""}`}>
+            <label className="order-bump-label">
+              <input
+                type="checkbox"
+                checked={bumpSelected}
+                onChange={() => setBumpSelected((prev) => !prev)}
+              />
+              <div className="order-bump-copy">
+                <div className="order-bump-top">
+                  <span className="order-bump-title">
+                    Add Priority Handling + Premium Packaging
+                  </span>
+                  <span className="order-bump-price">
+                    ${orderBump.price.toFixed(2)}
+                  </span>
+                </div>
+                <div className="order-bump-sub">
+                  Fast-track your order with elevated packaging and priority processing
+                </div>
+              </div>
+            </label>
+          </div>
+
+          <div className="estimated-total">
+            Estimated total today: <span>${estimatedTotal.toFixed(2)}</span>
+          </div>
+
           <div className="micro-urgency">
             Ships fast. Limited stock at current promo pricing.
           </div>
@@ -261,6 +394,10 @@ export default function Semaglutide() {
             <button className="secondary-btn" onClick={handleBuyNow}>
               Buy Now
             </button>
+          </div>
+
+          <div className="conversion-copy">
+            Secure checkout • Fast shipping • Cancel anytime
           </div>
 
           <div className="trust-strip">
@@ -310,7 +447,7 @@ export default function Semaglutide() {
           <div className="sticky-buy-bar__title">Semaglutide {selectedSize}</div>
           <div className="sticky-buy-bar__price">${finalPrice.toFixed(2)}</div>
           <div className="sticky-buy-bar__sub">
-            Only 12 left • Save ${savings.toFixed(2)}
+            Save ${savings.toFixed(2)} • Only 12 left
           </div>
         </div>
         <div className="sticky-buy-bar__right">
