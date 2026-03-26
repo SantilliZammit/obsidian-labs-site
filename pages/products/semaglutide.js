@@ -225,19 +225,24 @@ export default function Semaglutide() {
           </div>
 
           {purchaseType === "subscription" && (
-            <div className="frequency-panel">
-              <label htmlFor="subscription-frequency" className="frequency-label">
-                Delivery frequency
-              </label>
-              <select
-                id="subscription-frequency"
-                className="frequency-select"
-                value={subscriptionFrequency}
-                onChange={(e) => setSubscriptionFrequency(e.target.value)}
-              >
-                <option value="monthly">Monthly</option>
-                <option value="biweekly">Bi-Weekly</option>
-              </select>
+            <div className="frequency-panel premium-frequency-panel">
+              <div className="frequency-label">Delivery frequency</div>
+              <div className="frequency-options">
+                <button
+                  type="button"
+                  className={`frequency-pill ${subscriptionFrequency === "monthly" ? "active" : ""}`}
+                  onClick={() => setSubscriptionFrequency("monthly")}
+                >
+                  Monthly
+                </button>
+                <button
+                  type="button"
+                  className={`frequency-pill ${subscriptionFrequency === "biweekly" ? "active" : ""}`}
+                  onClick={() => setSubscriptionFrequency("biweekly")}
+                >
+                  Every 2 Weeks
+                </button>
+              </div>
             </div>
           )}
 
@@ -298,6 +303,7 @@ export default function Semaglutide() {
         <div className="sticky-buy-bar__left">
           <div className="sticky-buy-bar__title">Semaglutide {selectedSize}</div>
           <div className="sticky-buy-bar__price">${finalPrice.toFixed(2)}</div>
+          <div className="sticky-buy-bar__sub">Only 12 left • Save ${savings.toFixed(2)}</div>
         </div>
         <div className="sticky-buy-bar__right">
           <button className="primary-btn sticky-buy-btn" onClick={handleAddToCart}>
@@ -307,4 +313,4 @@ export default function Semaglutide() {
       </div>
     </div>
   );
-}
+    }
