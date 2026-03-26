@@ -49,13 +49,8 @@ export default function Semaglutide() {
     );
     setAnimateAdd(true);
 
-    setTimeout(() => {
-      setAddedMessage("");
-    }, 1800);
-
-    setTimeout(() => {
-      setAnimateAdd(false);
-    }, 900);
+    setTimeout(() => setAddedMessage(""), 1800);
+    setTimeout(() => setAnimateAdd(false), 900);
   };
 
   const handleBuyNow = async () => {
@@ -67,9 +62,7 @@ export default function Semaglutide() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          items: [item],
-        }),
+        body: JSON.stringify({ items: [item] }),
       });
 
       const data = await res.json();
@@ -78,7 +71,6 @@ export default function Semaglutide() {
         window.location.href = data.url;
       } else {
         alert(data.error || "Checkout session failed.");
-        console.error(data);
       }
     } catch (error) {
       console.error(error);
@@ -107,11 +99,8 @@ export default function Semaglutide() {
           </div>
 
           <div className="product-select-row">
-            <label htmlFor="semaglutide-size" className="select-label">
-              Size
-            </label>
+            <label className="select-label">Size</label>
             <select
-              id="semaglutide-size"
               className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -122,12 +111,15 @@ export default function Semaglutide() {
             </select>
           </div>
 
+          {/* PRICE FIRST */}
+          <div className="price-display">${finalPrice.toFixed(2)}</div>
+
+          {/* THEN SUBSCRIPTION */}
           <div className="purchase-options">
             <label className={`purchase-option ${purchaseType === "one-time" ? "active" : ""}`}>
               <input
                 type="radio"
                 name="purchaseType"
-                value="one-time"
                 checked={purchaseType === "one-time"}
                 onChange={() => setPurchaseType("one-time")}
               />
@@ -138,11 +130,10 @@ export default function Semaglutide() {
               <input
                 type="radio"
                 name="purchaseType"
-                value="subscription"
                 checked={purchaseType === "subscription"}
                 onChange={() => setPurchaseType("subscription")}
               />
-              <span>Subscribe &amp; Save 15%</span>
+              <span>Subscribe & Save 15%</span>
             </label>
 
             {purchaseType === "subscription" && (
@@ -152,54 +143,35 @@ export default function Semaglutide() {
             )}
           </div>
 
-          <div className="price-display">${finalPrice.toFixed(2)}</div>
-
-          {addedMessage && (
-            <div className="add-cart-toast">
-              {addedMessage}
-            </div>
-          )}
+          {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
         </div>
 
         <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
           <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
-            <img
-              src={current.image}
-              alt={`Semaglutide ${selectedSize}`}
-              className="product-image"
-            />
-            <img
-              src={current.image}
-              alt={`Semaglutide ${selectedSize} reflection`}
-              className="product-reflection"
-            />
+            <img src={current.image} className="product-image" />
+            <img src={current.image} className="product-reflection" />
             <div className="glow"></div>
           </div>
         </div>
 
         <div className="info-dropdown">
-          <button
-            className="info-toggle"
-            type="button"
-            onClick={() => setShowInfo(!showInfo)}
-          >
+          <button className="info-toggle" onClick={() => setShowInfo(!showInfo)}>
             {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
           </button>
 
           <div className={`info-panel ${showInfo ? "open" : ""}`}>
             <h2>Overview</h2>
             <p>
-              Semaglutide is an investigational peptide studied for appetite
-              regulation, body composition, metabolic function, and weight
-              management research.
+              Semaglutide is studied for appetite regulation, metabolic function,
+              and weight management research.
             </p>
 
             <h3>Key Research Areas</h3>
             <ul>
-              <li>Appetite regulation research</li>
-              <li>Metabolic support studies</li>
-              <li>Body composition research</li>
-              <li>Weight management investigation</li>
+              <li>Appetite regulation</li>
+              <li>Metabolic support</li>
+              <li>Body composition</li>
+              <li>Weight management</li>
             </ul>
           </div>
         </div>
@@ -221,4 +193,4 @@ export default function Semaglutide() {
       </section>
     </div>
   );
-}
+                }
