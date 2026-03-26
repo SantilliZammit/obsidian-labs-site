@@ -31,9 +31,7 @@ export default function Semaglutide() {
   const subscriptionPrice = useMemo(() => current.price * 0.85, [current.price]);
   const finalPrice = purchaseType === "subscription" ? subscriptionPrice : current.price;
   const savings = current.price - subscriptionPrice;
-
-  const frequencyLabel =
-    subscriptionFrequency === "biweekly" ? "Bi-Weekly" : "Monthly";
+  const frequencyLabel = subscriptionFrequency === "biweekly" ? "Every 2 Weeks" : "Monthly";
 
   const buildItem = () => ({
     slug: "semaglutide",
@@ -42,7 +40,7 @@ export default function Semaglutide() {
       purchaseType === "subscription"
         ? `${selectedSize} • Subscribe & Save 15% • ${frequencyLabel}`
         : `${selectedSize} • One-Time Purchase`,
-    price: finalPrice,
+    price: Number(finalPrice.toFixed(2)),
     image: current.image,
     quantity: 1,
     subscription: purchaseType === "subscription",
@@ -58,13 +56,8 @@ export default function Semaglutide() {
     );
     setAnimateAdd(true);
 
-    setTimeout(() => {
-      setAddedMessage("");
-    }, 1800);
-
-    setTimeout(() => {
-      setAnimateAdd(false);
-    }, 900);
+    setTimeout(() => setAddedMessage(""), 1800);
+    setTimeout(() => setAnimateAdd(false), 900);
   };
 
   const handleBuyNow = async () => {
@@ -150,6 +143,10 @@ export default function Semaglutide() {
             <span className="scarcity-dot"></span>
             Only 12 left at this price
           </div>
+
+          <div className="social-proof-line">
+            23 people viewed this in the last 24 hours
+          </div>
         </div>
 
         <div className={`product-image-wrap premium-image-wrap ${showInfo ? "glow-active" : ""}`}>
@@ -169,6 +166,11 @@ export default function Semaglutide() {
         </div>
 
         <div className="purchase-panel">
+          <div className="purchase-panel-header">
+            <p className="purchase-panel-eyebrow">Choose your order type</p>
+            <h3 className="purchase-panel-title">Fastest way to start</h3>
+          </div>
+
           <div className="purchase-options premium-purchase-options">
             <label
               className={`purchase-option premium-purchase-option ${
@@ -246,6 +248,10 @@ export default function Semaglutide() {
             </div>
           )}
 
+          <div className="micro-urgency">
+            Ships fast. Limited stock at current promo pricing.
+          </div>
+
           {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
 
           <div className="product-actions shop-actions premium-shop-actions">
@@ -303,7 +309,9 @@ export default function Semaglutide() {
         <div className="sticky-buy-bar__left">
           <div className="sticky-buy-bar__title">Semaglutide {selectedSize}</div>
           <div className="sticky-buy-bar__price">${finalPrice.toFixed(2)}</div>
-          <div className="sticky-buy-bar__sub">Only 12 left • Save ${savings.toFixed(2)}</div>
+          <div className="sticky-buy-bar__sub">
+            Only 12 left • Save ${savings.toFixed(2)}
+          </div>
         </div>
         <div className="sticky-buy-bar__right">
           <button className="primary-btn sticky-buy-btn" onClick={handleAddToCart}>
