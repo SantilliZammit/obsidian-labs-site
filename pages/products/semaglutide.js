@@ -20,6 +20,7 @@ export default function Semaglutide() {
 
   const [selectedSize, setSelectedSize] = useState("20 mg");
   const [purchaseType, setPurchaseType] = useState("subscription");
+  const [subscriptionFrequency, setSubscriptionFrequency] = useState("monthly");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
@@ -31,20 +32,29 @@ export default function Semaglutide() {
   const finalPrice = purchaseType === "subscription" ? subscriptionPrice : current.price;
   const savings = current.price - subscriptionPrice;
 
+  const frequencyLabel =
+    subscriptionFrequency === "biweekly" ? "Bi-Weekly" : "Monthly";
+
   const buildItem = () => ({
     slug: "semaglutide",
     name: "Semaglutide",
-    variant: `${selectedSize}${purchaseType === "subscription" ? " • Subscribe & Save 15%" : ""}`,
+    variant:
+      purchaseType === "subscription"
+        ? `${selectedSize} • Subscribe & Save 15% • ${frequencyLabel}`
+        : `${selectedSize} • One-Time Purchase`,
     price: finalPrice,
     image: current.image,
     quantity: 1,
     subscription: purchaseType === "subscription",
+    subscriptionFrequency,
   });
 
   const handleAddToCart = () => {
     addToCart(buildItem());
     setAddedMessage(
-      `Added Semaglutide ${selectedSize}${purchaseType === "subscription" ? " subscription" : ""} to cart`
+      purchaseType === "subscription"
+        ? `Added Semaglutide ${selectedSize} subscription (${frequencyLabel}) to cart`
+        : `Added Semaglutide ${selectedSize} to cart`
     );
     setAnimateAdd(true);
 
@@ -99,6 +109,12 @@ export default function Semaglutide() {
             Advanced peptide for appetite, body composition, and metabolic research
           </p>
 
+          <div className="review-row">
+            <span className="review-stars">★★★★★</span>
+            <span className="review-score">4.9</span>
+            <span className="review-count">(214 reviews)</span>
+          </div>
+
           <div className="product-tags">
             <span className="tag-pill">{selectedSize}</span>
             <span className="tag-pill">Research Use Only</span>
@@ -130,6 +146,29 @@ export default function Semaglutide() {
             )}
           </div>
 
+          <div className="scarcity-line">
+            <span className="scarcity-dot"></span>
+            Only 12 left at this price
+          </div>
+        </div>
+
+        <div className={`product-image-wrap premium-image-wrap ${showInfo ? "glow-active" : ""}`}>
+          <div className={`product-image-stack premium-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
+            <img
+              src={current.image}
+              alt={`Semaglutide ${selectedSize}`}
+              className="product-image premium-product-image"
+            />
+            <img
+              src={current.image}
+              alt={`Semaglutide ${selectedSize} reflection`}
+              className="product-reflection"
+            />
+            <div className="glow"></div>
+          </div>
+        </div>
+
+        <div className="purchase-panel">
           <div className="purchase-options premium-purchase-options">
             <label
               className={`purchase-option premium-purchase-option ${
@@ -185,6 +224,23 @@ export default function Semaglutide() {
             </label>
           </div>
 
+          {purchaseType === "subscription" && (
+            <div className="frequency-panel">
+              <label htmlFor="subscription-frequency" className="frequency-label">
+                Delivery frequency
+              </label>
+              <select
+                id="subscription-frequency"
+                className="frequency-select"
+                value={subscriptionFrequency}
+                onChange={(e) => setSubscriptionFrequency(e.target.value)}
+              >
+                <option value="monthly">Monthly</option>
+                <option value="biweekly">Bi-Weekly</option>
+              </select>
+            </div>
+          )}
+
           {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
 
           <div className="product-actions shop-actions premium-shop-actions">
@@ -197,26 +253,10 @@ export default function Semaglutide() {
           </div>
 
           <div className="trust-strip">
-            <div className="trust-pill">Secure Checkout</div>
-            <div className="trust-pill">Fast Shipping</div>
-            <div className="trust-pill">Premium Lab Grade</div>
-            <div className="trust-pill">Cancel Anytime</div>
-          </div>
-        </div>
-
-        <div className={`product-image-wrap premium-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className={`product-image-stack premium-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
-            <img
-              src={current.image}
-              alt={`Semaglutide ${selectedSize}`}
-              className="product-image premium-product-image"
-            />
-            <img
-              src={current.image}
-              alt={`Semaglutide ${selectedSize} reflection`}
-              className="product-reflection"
-            />
-            <div className="glow"></div>
+            <span className="trust-pill">Secure Checkout</span>
+            <span className="trust-pill">Fast Shipping</span>
+            <span className="trust-pill">Premium Lab Grade</span>
+            <span className="trust-pill">Cancel Anytime</span>
           </div>
         </div>
 
@@ -253,6 +293,18 @@ export default function Semaglutide() {
           <button className="secondary-btn">View Certificate of Analysis</button>
         </div>
       </section>
+
+      <div className="sticky-buy-bar">
+        <div className="sticky-buy-bar__left">
+          <div className="sticky-buy-bar__title">Semaglutide {selectedSize}</div>
+          <div className="sticky-buy-bar__price">${finalPrice.toFixed(2)}</div>
+        </div>
+        <div className="sticky-buy-bar__right">
+          <button className="primary-btn sticky-buy-btn" onClick={handleAddToCart}>
+            Add to Cart
+          </button>
+        </div>
+      </div>
     </div>
   );
-                }
+}
