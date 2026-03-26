@@ -2338,3 +2338,34 @@ body,
   color: #8eefff;
   opacity: 0.9;
 }
+/* Semaglutide subscription placement override */
+.purchase-options {
+  order: 6;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.price-display {
+  order: 5;
+}
+
+.product-image-wrap {
+  order: 7;
+}
+
+.info-dropdown {
+  order: 8;
+}
+
+.product-actions.research-actions {
+  order: 9;
+}
+
+.product-actions.shop-actions {
+  order: 10;
+}
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+}
