@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useCart } from "../../context/CartContext";
 
@@ -19,7 +19,7 @@ export default function Semaglutide() {
   };
 
   const [selectedSize, setSelectedSize] = useState("20 mg");
-  const [purchaseType, setPurchaseType] = useState("one-time");
+  const [purchaseType, setPurchaseType] = useState("subscription");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
@@ -27,10 +27,9 @@ export default function Semaglutide() {
 
   const current = options[selectedSize];
 
-  const finalPrice =
-    purchaseType === "subscription"
-      ? current.price * 0.85
-      : current.price;
+  const subscriptionPrice = useMemo(() => current.price * 0.85, [current.price]);
+  const finalPrice = purchaseType === "subscription" ? subscriptionPrice : current.price;
+  const savings = current.price - subscriptionPrice;
 
   const buildItem = () => ({
     slug: "semaglutide",
@@ -49,8 +48,13 @@ export default function Semaglutide() {
     );
     setAnimateAdd(true);
 
-    setTimeout(() => setAddedMessage(""), 1800);
-    setTimeout(() => setAnimateAdd(false), 900);
+    setTimeout(() => {
+      setAddedMessage("");
+    }, 1800);
+
+    setTimeout(() => {
+      setAnimateAdd(false);
+    }, 900);
   };
 
   const handleBuyNow = async () => {
@@ -62,7 +66,9 @@ export default function Semaglutide() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ items: [item] }),
+        body: JSON.stringify({
+          items: [item],
+        }),
       });
 
       const data = await res.json();
@@ -71,6 +77,7 @@ export default function Semaglutide() {
         window.location.href = data.url;
       } else {
         alert(data.error || "Checkout session failed.");
+        console.error(data);
       }
     } catch (error) {
       console.error(error);
@@ -84,8 +91,8 @@ export default function Semaglutide() {
         ← Back to Products
       </Link>
 
-      <section className="product-page">
-        <div className="product-copy">
+      <section className="product-page premium-product-page">
+        <div className="product-copy premium-product-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
           <h1 className="product-title">Semaglutide Research</h1>
           <p className="product-subtitle">
@@ -99,8 +106,11 @@ export default function Semaglutide() {
           </div>
 
           <div className="product-select-row">
-            <label className="select-label">Size</label>
+            <label htmlFor="semaglutide-size" className="select-label">
+              Size
+            </label>
             <select
+              id="semaglutide-size"
               className="dose-select"
               value={selectedSize}
               onChange={(e) => setSelectedSize(e.target.value)}
@@ -111,84 +121,136 @@ export default function Semaglutide() {
             </select>
           </div>
 
-          {/* PRICE FIRST */}
-          <div className="price-display">${finalPrice.toFixed(2)}</div>
-
-          {/* THEN SUBSCRIPTION */}
-          <div className="purchase-options">
-            <label className={`purchase-option ${purchaseType === "one-time" ? "active" : ""}`}>
-              <input
-                type="radio"
-                name="purchaseType"
-                checked={purchaseType === "one-time"}
-                onChange={() => setPurchaseType("one-time")}
-              />
-              <span>One-time purchase</span>
-            </label>
-
-            <label className={`purchase-option ${purchaseType === "subscription" ? "active" : ""}`}>
-              <input
-                type="radio"
-                name="purchaseType"
-                checked={purchaseType === "subscription"}
-                onChange={() => setPurchaseType("subscription")}
-              />
-              <span>Subscribe & Save 15%</span>
-            </label>
-
+          <div className="premium-price-wrap">
+            <div className="price-display">${finalPrice.toFixed(2)}</div>
             {purchaseType === "subscription" && (
-              <p className="subscription-note">
-                Save 15% on every recurring order. Cancel anytime.
-              </p>
+              <div className="subscription-savings-line">
+                Save ${savings.toFixed(2)} on every order
+              </div>
             )}
           </div>
 
+          <div className="purchase-options premium-purchase-options">
+            <label
+              className={`purchase-option premium-purchase-option ${
+                purchaseType === "one-time" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="purchaseType"
+                value="one-time"
+                checked={purchaseType === "one-time"}
+                onChange={() => setPurchaseType("one-time")}
+              />
+              <div className="purchase-option-copy">
+                <div className="purchase-option-top">
+                  <span className="purchase-option-title">One-time purchase</span>
+                  <span className="purchase-option-price">
+                    ${current.price.toFixed(2)}
+                  </span>
+                </div>
+                <div className="purchase-option-sub">
+                  Buy once with fast checkout
+                </div>
+              </div>
+            </label>
+
+            <label
+              className={`purchase-option premium-purchase-option premium-subscription-option ${
+                purchaseType === "subscription" ? "active" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name="purchaseType"
+                value="subscription"
+                checked={purchaseType === "subscription"}
+                onChange={() => setPurchaseType("subscription")}
+              />
+              <div className="purchase-option-copy">
+                <div className="purchase-option-top">
+                  <span className="purchase-option-title">
+                    Subscribe &amp; Save 15%
+                  </span>
+                  <span className="purchase-option-price">
+                    ${subscriptionPrice.toFixed(2)}
+                  </span>
+                </div>
+                <div className="purchase-option-sub">
+                  Save ${savings.toFixed(2)} every order • Cancel anytime
+                </div>
+              </div>
+              <span className="best-value-badge">Best Value</span>
+            </label>
+          </div>
+
           {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
+
+          <div className="product-actions shop-actions premium-shop-actions">
+            <button className="primary-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+            <button className="secondary-btn" onClick={handleBuyNow}>
+              Buy Now
+            </button>
+          </div>
+
+          <div className="trust-strip">
+            <div className="trust-pill">Secure Checkout</div>
+            <div className="trust-pill">Fast Shipping</div>
+            <div className="trust-pill">Premium Lab Grade</div>
+            <div className="trust-pill">Cancel Anytime</div>
+          </div>
         </div>
 
-        <div className={`product-image-wrap ${showInfo ? "glow-active" : ""}`}>
-          <div className={`product-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
-            <img src={current.image} className="product-image" />
-            <img src={current.image} className="product-reflection" />
+        <div className={`product-image-wrap premium-image-wrap ${showInfo ? "glow-active" : ""}`}>
+          <div className={`product-image-stack premium-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
+            <img
+              src={current.image}
+              alt={`Semaglutide ${selectedSize}`}
+              className="product-image premium-product-image"
+            />
+            <img
+              src={current.image}
+              alt={`Semaglutide ${selectedSize} reflection`}
+              className="product-reflection"
+            />
             <div className="glow"></div>
           </div>
         </div>
 
-        <div className="info-dropdown">
-          <button className="info-toggle" onClick={() => setShowInfo(!showInfo)}>
+        <div className="info-dropdown premium-info-dropdown">
+          <button
+            className="info-toggle"
+            type="button"
+            onClick={() => setShowInfo(!showInfo)}
+          >
             {showInfo ? "Hide Product Information ▲" : "More Product Information ▼"}
           </button>
 
           <div className={`info-panel ${showInfo ? "open" : ""}`}>
             <h2>Overview</h2>
             <p>
-              Semaglutide is studied for appetite regulation, metabolic function,
-              and weight management research.
+              Semaglutide is an investigational peptide studied for appetite
+              regulation, body composition, metabolic function, and weight
+              management research.
             </p>
 
             <h3>Key Research Areas</h3>
             <ul>
-              <li>Appetite regulation</li>
-              <li>Metabolic support</li>
-              <li>Body composition</li>
-              <li>Weight management</li>
+              <li>Appetite regulation research</li>
+              <li>Metabolic support studies</li>
+              <li>Body composition research</li>
+              <li>Weight management investigation</li>
             </ul>
           </div>
         </div>
 
-        <div className="product-actions research-actions">
+        <div className="product-actions research-actions premium-research-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
           <button className="secondary-btn">View Certificate of Analysis</button>
-        </div>
-
-        <div className="product-actions shop-actions">
-          <button className="primary-btn" onClick={handleAddToCart}>
-            Add to Cart
-          </button>
-          <button className="secondary-btn" onClick={handleBuyNow}>
-            Buy Now
-          </button>
         </div>
       </section>
     </div>
