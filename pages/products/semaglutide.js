@@ -19,6 +19,7 @@ export default function Semaglutide() {
   };
 
   const [selectedSize, setSelectedSize] = useState("20 mg");
+  const [purchaseType, setPurchaseType] = useState("one-time");
   const [showInfo, setShowInfo] = useState(false);
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
@@ -26,18 +27,26 @@ export default function Semaglutide() {
 
   const current = options[selectedSize];
 
+  const finalPrice =
+    purchaseType === "subscription"
+      ? current.price * 0.85
+      : current.price;
+
   const buildItem = () => ({
     slug: "semaglutide",
     name: "Semaglutide",
-    variant: selectedSize,
-    price: current.price,
+    variant: `${selectedSize}${purchaseType === "subscription" ? " • Subscribe & Save 15%" : ""}`,
+    price: finalPrice,
     image: current.image,
     quantity: 1,
+    subscription: purchaseType === "subscription",
   });
 
   const handleAddToCart = () => {
     addToCart(buildItem());
-    setAddedMessage(`Added Semaglutide ${selectedSize} to cart`);
+    setAddedMessage(
+      `Added Semaglutide ${selectedSize}${purchaseType === "subscription" ? " subscription" : ""} to cart`
+    );
     setAnimateAdd(true);
 
     setTimeout(() => {
@@ -68,7 +77,7 @@ export default function Semaglutide() {
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert("Checkout session failed.");
+        alert(data.error || "Checkout session failed.");
         console.error(data);
       }
     } catch (error) {
@@ -113,7 +122,37 @@ export default function Semaglutide() {
             </select>
           </div>
 
-          <div className="price-display">${current.price.toFixed(2)}</div>
+          <div className="purchase-options">
+            <label className={`purchase-option ${purchaseType === "one-time" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name="purchaseType"
+                value="one-time"
+                checked={purchaseType === "one-time"}
+                onChange={() => setPurchaseType("one-time")}
+              />
+              <span>One-time purchase</span>
+            </label>
+
+            <label className={`purchase-option ${purchaseType === "subscription" ? "active" : ""}`}>
+              <input
+                type="radio"
+                name="purchaseType"
+                value="subscription"
+                checked={purchaseType === "subscription"}
+                onChange={() => setPurchaseType("subscription")}
+              />
+              <span>Subscribe &amp; Save 15%</span>
+            </label>
+
+            {purchaseType === "subscription" && (
+              <p className="subscription-note">
+                Save 15% on every recurring order. Cancel anytime.
+              </p>
+            )}
+          </div>
+
+          <div className="price-display">${finalPrice.toFixed(2)}</div>
 
           {addedMessage && (
             <div className="add-cart-toast">
