@@ -54,19 +54,18 @@ export default function Semaglutide() {
   const subscriptionPrice = useMemo(() => current.price * 0.85, [current.price]);
   const finalPrice = purchaseType === "subscription" ? subscriptionPrice : current.price;
   const savings = current.price - subscriptionPrice;
+  const frequencyLabel = subscriptionFrequency === "biweekly" ? "Every 2 Weeks" : "Monthly";
 
   const selectedBundleItems = frequentlyBoughtTogether.filter((item) =>
     selectedBundleIds.includes(item.id)
   );
 
   const bundleSubtotal = selectedBundleItems.reduce((sum, item) => sum + item.price, 0);
-  const bundleDiscountRate = selectedBundleItems.length >= 2 ? 0.1 : selectedBundleItems.length === 1 ? 0.05 : 0;
+  const bundleDiscountRate =
+    selectedBundleItems.length >= 2 ? 0.1 : selectedBundleItems.length === 1 ? 0.05 : 0;
   const bundleDiscount = bundleSubtotal * bundleDiscountRate;
   const bumpPrice = bumpSelected ? orderBump.price : 0;
   const estimatedTotal = finalPrice + (bundleSubtotal - bundleDiscount) + bumpPrice;
-
-  const frequencyLabel =
-    subscriptionFrequency === "biweekly" ? "Every 2 Weeks" : "Monthly";
 
   const toggleBundle = (id) => {
     setSelectedBundleIds((prev) =>
@@ -97,7 +96,9 @@ export default function Semaglutide() {
     return selectedBundleItems.map((item) => ({
       slug: item.id,
       name: item.name,
-      variant: `Bundle Add-On${bundleDiscountRate > 0 ? ` • ${Math.round(bundleDiscountRate * 100)}% bundle savings` : ""}`,
+      variant: `Bundle Add-On${
+        bundleDiscountRate > 0 ? ` • ${Math.round(bundleDiscountRate * 100)}% bundle savings` : ""
+      }`,
       price: Number((item.price - perItemDiscount).toFixed(2)),
       image: item.image,
       quantity: 1,
@@ -458,4 +459,4 @@ export default function Semaglutide() {
       </div>
     </div>
   );
-    }
+                    }
