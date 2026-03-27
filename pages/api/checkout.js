@@ -3,9 +3,9 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const FREE_SHIPPING_THRESHOLD = 500;
-const GROUND_SHIPPING_RATE_ID = "YOUR_REAL_ID";
-const EXPRESS_SHIPPING_RATE_ID = "YOUR_REAL_ID";
-const FREE_SHIPPING_RATE_ID = "YOUR_REAL_ID";
+const GROUND_SHIPPING_RATE_ID = "shr_1TFPF6ETnF6oDRfIu17dCP67"; // Standard
+const EXPRESS_SHIPPING_RATE_ID = "shr_1TFPG9ETnF6oDRfINcpnya7j"; // Express
+const FREE_SHIPPING_RATE_ID = "shr_1TFPGtETnF6oDRfIavpKdy1j"; // Free
 
 // 🔥 YOUR PRICE IDS
 const PRICE_IDS = {
