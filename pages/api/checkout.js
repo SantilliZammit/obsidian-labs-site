@@ -8,8 +8,18 @@ const EXPRESS_SHIPPING_RATE_ID = "shr_1TFPG9ETnF6oDRfINcpnya7j"; // Express
 const FREE_SHIPPING_RATE_ID = "shr_1TFPGtETnF6oDRfIavpKdy1j"; // Free
 
 const PRICE_IDS = {
-  monthly: "price_1TFOgWETnF6oDRfITV7WdmwJ",
-  biweekly: "price_1TFOmWETnF6oDRfIMaDxpvwg",
+  "20 mg": {
+    monthly: "price_1TFOgWETnF6oDRfITV7WdmwJ",
+    biweekly: "price_1TFOmWETnF6oDRfIMaDxpvwg",
+  },
+  "30 mg": {
+    monthly: "price_1TFbutETnF6oDRfIIHJtiF5w",
+    biweekly: "price_1TFbw8ETnF6oDRfIWbz3xlb0",
+  },
+  "50 mg": {
+    monthly: "price_1TFc0SETnF6oDRfIlvVqDjnP",
+    biweekly: "price_1TFc0qETnF6oDRfI3Q7CWqDV",
+  },
 };
 
 export default async function handler(req, res) {
@@ -31,10 +41,16 @@ export default async function handler(req, res) {
     if (hasSubscription) {
       line_items = items.map((item) => {
         if (item.subscription) {
+          const size = item.variant.includes("30")
+            ? "30 mg"
+            : item.variant.includes("50")
+            ? "50 mg"
+            : "20 mg";
+
           const priceId =
             item.subscriptionFrequency === "biweekly"
-              ? PRICE_IDS.biweekly
-              : PRICE_IDS.monthly;
+              ? PRICE_IDS[size].biweekly
+              : PRICE_IDS[size].monthly;
 
           return {
             price: priceId,
