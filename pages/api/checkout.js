@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       line_items = items.map((item) => {
         if (item.subscription) {
           const priceId =
-            item.frequency === "biweekly"
+            item.subscriptionFrequency === "biweekly"
               ? PRICE_IDS.biweekly
               : PRICE_IDS.monthly;
 
