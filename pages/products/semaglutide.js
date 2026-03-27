@@ -33,6 +33,27 @@ export default function Semaglutide() {
     },
   ];
 
+  const peopleAlsoBought = [
+    {
+      id: "tirzepatide",
+      name: "Tirzepatide 10 mg",
+      price: 129.99,
+      image: "/tirzepatide-10mg.png",
+    },
+    {
+      id: "retatrutide",
+      name: "Retatrutide 30 mg",
+      price: 129.99,
+      image: "/retatrutide-30mg.png",
+    },
+    {
+      id: "cjc-1295",
+      name: "CJC-1295",
+      price: 89.99,
+      image: "/cjc-1295.png",
+    },
+  ];
+
   const orderBump = {
     id: "lab-priority",
     name: "Priority Handling + Premium Packaging",
@@ -46,6 +67,7 @@ export default function Semaglutide() {
   const [addedMessage, setAddedMessage] = useState("");
   const [animateAdd, setAnimateAdd] = useState(false);
   const [selectedBundleIds, setSelectedBundleIds] = useState(["bpc-157"]);
+  const [selectedAlsoBoughtIds, setSelectedAlsoBoughtIds] = useState([]);
   const [bumpSelected, setBumpSelected] = useState(true);
   const { addToCart } = useCart();
 
@@ -60,15 +82,47 @@ export default function Semaglutide() {
     selectedBundleIds.includes(item.id)
   );
 
+  const selectedAlsoBoughtItems = peopleAlsoBought.filter((item) =>
+    selectedAlsoBoughtIds.includes(item.id)
+  );
+
   const bundleSubtotal = selectedBundleItems.reduce((sum, item) => sum + item.price, 0);
   const bundleDiscountRate =
     selectedBundleItems.length >= 2 ? 0.1 : selectedBundleItems.length === 1 ? 0.05 : 0;
   const bundleDiscount = bundleSubtotal * bundleDiscountRate;
+
+  const alsoBoughtSubtotal = selectedAlsoBoughtItems.reduce((sum, item) => sum + item.price, 0);
+  const alsoBoughtDiscountRate = selectedAlsoBoughtItems.length >= 2 ? 0.08 : 0;
+  const alsoBoughtDiscount = alsoBoughtSubtotal * alsoBoughtDiscountRate;
+
   const bumpPrice = bumpSelected ? orderBump.price : 0;
-  const estimatedTotal = finalPrice + (bundleSubtotal - bundleDiscount) + bumpPrice;
+
+  const estimatedTotal =
+    finalPrice +
+    (bundleSubtotal - bundleDiscount) +
+    (alsoBoughtSubtotal - alsoBoughtDiscount) +
+    bumpPrice;
+
+  const liveSignals = useMemo(() => {
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const interest = 18 + ((hour * 3 + minute) % 11);
+    const stock = 9 + ((hour + minute) % 6);
+    return {
+      interest,
+      stock,
+    };
+  }, []);
 
   const toggleBundle = (id) => {
     setSelectedBundleIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    );
+  };
+
+  const toggleAlsoBought = (id) => {
+    setSelectedAlsoBoughtIds((prev) =>
       prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
     );
   };
@@ -87,18 +141,15 @@ export default function Semaglutide() {
     subscriptionFrequency,
   });
 
-  const buildBundleItems = () => {
-    const perItemDiscount =
-      selectedBundleItems.length > 0 && bundleDiscount > 0
-        ? bundleDiscount / selectedBundleItems.length
-        : 0;
+  const buildDiscountedItems = (items, discountRate, label) => {
+    const subtotal = items.reduce((sum, item) => sum + item.price, 0);
+    const totalDiscount = subtotal * discountRate;
+    const perItemDiscount = items.length > 0 ? totalDiscount / items.length : 0;
 
-    return selectedBundleItems.map((item) => ({
+    return items.map((item) => ({
       slug: item.id,
       name: item.name,
-      variant: `Bundle Add-On${
-        bundleDiscountRate > 0 ? ` • ${Math.round(bundleDiscountRate * 100)}% bundle savings` : ""
-      }`,
+      variant: `${label}${discountRate > 0 ? ` • ${Math.round(discountRate * 100)}% savings` : ""}`,
       price: Number((item.price - perItemDiscount).toFixed(2)),
       image: item.image,
       quantity: 1,
@@ -115,7 +166,12 @@ export default function Semaglutide() {
   });
 
   const buildCartItems = () => {
-    const items = [buildMainItem(), ...buildBundleItems()];
+    const items = [
+      buildMainItem(),
+      ...buildDiscountedItems(selectedBundleItems, bundleDiscountRate, "Bundle Add-On"),
+      ...buildDiscountedItems(selectedAlsoBoughtItems, alsoBoughtDiscountRate, "People Also Bought"),
+    ];
+
     if (bumpSelected) items.push(buildBumpItem());
     return items;
   };
@@ -162,6 +218,7 @@ export default function Semaglutide() {
       </Link>
 
       <section className="product-page premium-product-page">
+        {/* HEADER / TITLE / REVIEWS / TAGS / SIZE / PRICE / URGENCY */}
         <div className="product-copy premium-product-copy">
           <p className="eyebrow">OBSIDIAN LABS</p>
           <h1 className="product-title">Semaglutide Research</h1>
@@ -208,14 +265,15 @@ export default function Semaglutide() {
 
           <div className="scarcity-line">
             <span className="scarcity-dot"></span>
-            Only 12 left at this discounted price
+            Only {liveSignals.stock} left at this discounted price
           </div>
 
           <div className="social-proof-line">
-            23 people viewed this in the last 24 hours
+            {liveSignals.interest} people viewed this in the last 24 hours
           </div>
         </div>
 
+        {/* PRODUCT IMAGE — MUST COME HERE */}
         <div className={`product-image-wrap premium-image-wrap ${showInfo ? "glow-active" : ""}`}>
           <div className={`product-image-stack premium-image-stack ${animateAdd ? "cart-added-pulse" : ""}`}>
             <img
@@ -232,12 +290,14 @@ export default function Semaglutide() {
           </div>
         </div>
 
+        {/* PURCHASE BOX — MUST COME AFTER IMAGE */}
         <div className="purchase-panel">
           <div className="purchase-panel-header">
             <p className="purchase-panel-eyebrow">Choose your order type</p>
             <h3 className="purchase-panel-title">Fastest way to start</h3>
           </div>
 
+          {/* PURCHASE OPTIONS */}
           <div className="purchase-options premium-purchase-options">
             <label
               className={`purchase-option premium-purchase-option ${
@@ -296,6 +356,7 @@ export default function Semaglutide() {
             </label>
           </div>
 
+          {/* DELIVERY FREQUENCY */}
           {purchaseType === "subscription" && (
             <div className="frequency-panel premium-frequency-panel">
               <div className="frequency-label">Delivery frequency</div>
@@ -318,6 +379,7 @@ export default function Semaglutide() {
             </div>
           )}
 
+          {/* FREQUENTLY BOUGHT TOGETHER */}
           <div className="bundle-panel">
             <div className="bundle-panel-header">
               <div className="bundle-title">Frequently bought together</div>
@@ -355,6 +417,40 @@ export default function Semaglutide() {
             </div>
           </div>
 
+          {/* PEOPLE ALSO BOUGHT — AI STYLE CAROUSEL */}
+          <div className="also-bought-panel">
+            <div className="bundle-panel-header">
+              <div className="bundle-title">People also bought</div>
+              <div className="bundle-subtitle">
+                Popular pairings based on similar orders
+              </div>
+            </div>
+
+            <div className="also-bought-carousel">
+              {peopleAlsoBought.map((item) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={`also-bought-card ${
+                    selectedAlsoBoughtIds.includes(item.id) ? "active" : ""
+                  }`}
+                  onClick={() => toggleAlsoBought(item.id)}
+                >
+                  <img src={item.image} alt={item.name} className="also-bought-image" />
+                  <div className="also-bought-name">{item.name}</div>
+                  <div className="also-bought-price">${item.price.toFixed(2)}</div>
+                </button>
+              ))}
+            </div>
+
+            <div className="bundle-savings-line">
+              {alsoBoughtDiscount > 0
+                ? `People also bought savings applied: -$${alsoBoughtDiscount.toFixed(2)}`
+                : "Select 2 to unlock 8% additional savings"}
+            </div>
+          </div>
+
+          {/* ORDER BUMP */}
           <div className={`order-bump ${bumpSelected ? "active" : ""}`}>
             <label className="order-bump-label">
               <input
@@ -378,6 +474,7 @@ export default function Semaglutide() {
             </label>
           </div>
 
+          {/* ESTIMATED TOTAL */}
           <div className="estimated-total">
             Estimated total today: <span>${estimatedTotal.toFixed(2)}</span>
           </div>
@@ -388,6 +485,7 @@ export default function Semaglutide() {
 
           {addedMessage && <div className="add-cart-toast">{addedMessage}</div>}
 
+          {/* BUTTONS */}
           <div className="product-actions shop-actions premium-shop-actions">
             <button className="primary-btn" onClick={handleAddToCart}>
               Add to Cart
@@ -397,6 +495,7 @@ export default function Semaglutide() {
             </button>
           </div>
 
+          {/* TRUST BADGES */}
           <div className="conversion-copy">
             Secure checkout • Fast shipping • Cancel anytime
           </div>
@@ -409,6 +508,7 @@ export default function Semaglutide() {
           </div>
         </div>
 
+        {/* INFO DROPDOWN */}
         <div className="info-dropdown premium-info-dropdown">
           <button
             className="info-toggle"
@@ -436,6 +536,7 @@ export default function Semaglutide() {
           </div>
         </div>
 
+        {/* RESEARCH BUTTONS */}
         <div className="product-actions research-actions premium-research-actions">
           <button className="primary-btn">Request Research Access</button>
           <button className="secondary-btn">View Lab Information</button>
@@ -443,12 +544,13 @@ export default function Semaglutide() {
         </div>
       </section>
 
+      {/* STICKY BUY BAR */}
       <div className="sticky-buy-bar">
         <div className="sticky-buy-bar__left">
           <div className="sticky-buy-bar__title">Semaglutide {selectedSize}</div>
           <div className="sticky-buy-bar__price">${finalPrice.toFixed(2)}</div>
           <div className="sticky-buy-bar__sub">
-            Save ${savings.toFixed(2)} • Only 12 left
+            Save ${savings.toFixed(2)} • Only {liveSignals.stock} left
           </div>
         </div>
         <div className="sticky-buy-bar__right">
