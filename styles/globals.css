@@ -2559,340 +2559,20 @@ body,
     font-size: 0.82rem;
     padding: 9px 12px;
   }
-}
-/* =========================
-   PREMIUM SEMAGLUTIDE PAGE
-   ========================= */
+} 
+/* =========================================
+   SEMAGLUTIDE PAGE - FINAL CLEAN
+   ========================================= */
 
-.premium-product-page {
+.semaglutide-page .premium-product-page {
   gap: 28px;
 }
 
-.premium-product-copy {
+.semaglutide-page .premium-product-copy {
   position: relative;
 }
 
-.review-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 0 14px;
-  flex-wrap: wrap;
-}
-
-.review-stars {
-  color: #ffd666;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-.review-score {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.review-count {
-  color: #9fc8d0;
-  font-size: 0.95rem;
-}
-
-.premium-price-wrap {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.subscription-savings-line {
-  margin-top: 8px;
-  color: #7ef5ff;
-  font-size: 0.96rem;
-  font-weight: 500;
-}
-
-.scarcity-line {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #ffb4b4;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.scarcity-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
-}
-
-.purchase-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.premium-purchase-options {
-  margin-top: 0;
-  margin-bottom: 0;
-  gap: 14px;
-}
-
-.premium-purchase-option {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.18);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.025);
-  color: #e6fbff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.premium-purchase-option:hover {
-  border-color: rgba(0, 224, 255, 0.55);
-  box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.premium-purchase-option.active {
-  border-color: rgba(0, 224, 255, 0.88);
-  background: rgba(0, 224, 255, 0.08);
-  box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
-}
-
-.premium-purchase-option input[type="radio"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.purchase-option-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.purchase-option-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: center;
-  width: 100%;
-}
-
-.purchase-option-title {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-.purchase-option-price {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #aaf8ff;
-  white-space: nowrap;
-}
-
-.purchase-option-sub {
-  color: #a8c8cf;
-  font-size: 0.93rem;
-  line-height: 1.45;
-}
-
-.best-value-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #00e0ff, #00b8ff);
-  color: #00131a;
-  font-size: 0.76rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  box-shadow: 0 0 18px rgba(0, 224, 255, 0.22);
-}
-
-.frequency-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.frequency-label {
-  color: #c7faff;
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-
-.frequency-select {
-  min-height: 48px;
-  border-radius: 14px;
-  border: 1px solid rgba(0, 224, 255, 0.24);
-  background: rgba(0, 0, 0, 0.55);
-  color: #ffffff;
-  padding: 0 14px;
-  font-size: 1rem;
-}
-
-.premium-shop-actions {
-  margin-top: 0;
-}
-
-.premium-shop-actions .primary-btn,
-.premium-shop-actions .secondary-btn {
-  min-height: 52px;
-}
-
-.premium-shop-actions .primary-btn:hover {
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-  justify-content: center;
-}
-
-.trust-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: #d6f9ff;
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.premium-image-wrap {
-  min-height: 420px;
-}
-
-.premium-image-stack {
-  transform: scale(1.04);
-}
-
-.premium-product-image {
-  max-width: 310px;
-}
-
-.premium-info-dropdown .info-toggle {
-  border-radius: 16px;
-}
-
-.premium-research-actions {
-  margin-top: 4px;
-}
-
-.sticky-buy-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 14px;
-  background: rgba(2, 10, 16, 0.94);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 224, 255, 0.15);
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
-}
-
-.sticky-buy-bar__left {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.sticky-buy-bar__title {
-  color: #dffcff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-.sticky-buy-bar__price {
-  color: #7ef5ff;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.sticky-buy-bar__right {
-  flex-shrink: 0;
-}
-
-.sticky-buy-btn {
-  min-height: 46px;
-  min-width: 140px;
-}
-
-@media (max-width: 768px) {
-  .purchase-option-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-right: 0;
-  }
-
-  .purchase-option-price {
-    font-size: 0.96rem;
-  }
-
-  .best-value-badge {
-    position: static;
-    margin-top: 8px;
-    align-self: flex-start;
-  }
-
-  .premium-product-image {
-    max-width: 260px;
-  }
-
-  .trust-strip {
-    gap: 8px;
-  }
-
-  .trust-pill {
-    font-size: 0.82rem;
-    padding: 9px 12px;
-  }
-
-  .sticky-buy-bar {
-    display: flex;
-  }
-
-  .container {
-    padding-bottom: 88px;
-  }
-}
-/* =========================
-   PREMIUM SEMAGLUTIDE PAGE
-   ========================= */
-
-.premium-product-page {
-  gap: 28px;
-}
-
-.premium-product-copy {
-  position: relative;
-}
-
-.review-row {
+.semaglutide-page .review-row {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2901,377 +2581,28 @@ body,
   flex-wrap: wrap;
 }
 
-.review-stars {
+.semaglutide-page .review-stars {
   color: #ffd666;
   letter-spacing: 1px;
   font-size: 1rem;
 }
 
-.review-score {
+.semaglutide-page .review-score {
   color: #ffffff;
   font-weight: 700;
 }
 
-.review-count {
+.semaglutide-page .review-count {
   color: #9fc8d0;
   font-size: 0.95rem;
 }
 
-.premium-price-wrap {
+.semaglutide-page .premium-price-wrap {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.subscription-savings-line {
-  margin-top: 8px;
-  color: #7ef5ff;
-  font-size: 0.96rem;
-  font-weight: 500;
-  text-align: center;
-}
-
-.scarcity-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #ffb4b4;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.scarcity-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
-  animation: pulseDot 1.5s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.6; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.purchase-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 860px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.premium-purchase-options {
-  margin-top: 0;
-  margin-bottom: 0;
-  gap: 14px;
-}
-
-.premium-purchase-option {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.18);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.025);
-  color: #e6fbff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.premium-purchase-option:hover {
-  border-color: rgba(0, 224, 255, 0.55);
-  box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.premium-purchase-option.active {
-  border-color: rgba(0, 224, 255, 0.88);
-  background: rgba(0, 224, 255, 0.08);
-  box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
-}
-
-.premium-purchase-option input[type="radio"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.purchase-option-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.purchase-option-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: center;
-  width: 100%;
-}
-
-.purchase-option-title {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-.purchase-option-price {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #aaf8ff;
-  white-space: nowrap;
-}
-
-.purchase-option-sub {
-  color: #a8c8cf;
-  font-size: 0.93rem;
-  line-height: 1.45;
-}
-
-.best-value-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #00e0ff, #009dff);
-  color: #00131a;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 7px 11px;
-  border-radius: 999px;
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
-}
-
-.premium-frequency-panel {
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.14);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.frequency-label {
-  color: #c7faff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.frequency-options {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.frequency-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 224, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  color: #dffcff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.frequency-pill.active {
-  border-color: #00e0ff;
-  background: rgba(0, 224, 255, 0.1);
-  box-shadow: 0 0 14px rgba(0, 224, 255, 0.15);
-}
-
-.premium-shop-actions {
-  margin-top: 0;
-  justify-content: center;
-}
-
-.premium-shop-actions .primary-btn,
-.premium-shop-actions .secondary-btn {
-  min-height: 52px;
-}
-
-.premium-shop-actions .primary-btn:hover {
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-  justify-content: center;
-}
-
-.trust-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: #d6f9ff;
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.premium-image-wrap {
-  min-height: 420px;
-}
-
-.premium-image-stack {
-  transform: scale(1.04);
-}
-
-.premium-product-image {
-  max-width: 310px;
-}
-
-.premium-info-dropdown .info-toggle {
-  border-radius: 16px;
-}
-
-.premium-research-actions {
-  margin-top: 4px;
-}
-
-.sticky-buy-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 14px;
-  background: rgba(2, 10, 16, 0.94);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 224, 255, 0.15);
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
-}
-
-.sticky-buy-bar__left {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.sticky-buy-bar__title {
-  color: #dffcff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-.sticky-buy-bar__price {
-  color: #7ef5ff;
-  font-weight: 700;
-  font-size: 1rem;
-}
-
-.sticky-buy-bar__sub {
-  font-size: 0.8rem;
-  color: #7ef5ff;
-}
-
-.sticky-buy-bar__right {
-  flex-shrink: 0;
-}
-
-.sticky-buy-btn {
-  min-height: 46px;
-  min-width: 140px;
-}
-
-@media (max-width: 768px) {
-  .purchase-option-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-right: 0;
-  }
-
-  .purchase-option-price {
-    font-size: 0.96rem;
-  }
-
-  .best-value-badge {
-    position: static;
-    margin-top: 8px;
-    align-self: flex-start;
-  }
-
-  .premium-product-image {
-    max-width: 260px;
-  }
-
-  .trust-strip {
-    gap: 8px;
-  }
-
-  .trust-pill {
-    font-size: 0.82rem;
-    padding: 9px 12px;
-  }
-
-  .sticky-buy-bar {
-    display: flex;
-  }
-
-  .container {
-    padding-bottom: 88px;
-  }
-  }
-/* =========================
-   MONEY PRINTER SEMAGLUTIDE
-   ========================= */
-
-.premium-product-page {
-  gap: 28px;
-}
-
-.premium-product-copy {
-  position: relative;
-}
-
-.review-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 10px 0 14px;
-  flex-wrap: wrap;
-}
-
-.review-stars {
-  color: #ffd666;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-.review-score {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.review-count {
-  color: #9fc8d0;
-  font-size: 0.95rem;
-}
-
-.premium-price-wrap {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.subscription-savings-line {
+.semaglutide-page .subscription-savings-line {
   margin-top: 8px;
   color: #7ef5ff;
   font-size: 0.96rem;
@@ -3279,40 +2610,49 @@ body,
   text-align: center;
 }
 
-.scarcity-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #ffb4b4;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.scarcity-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
-  animation: pulseDot 1.5s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.45); opacity: 0.55; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.social-proof-line {
+.semaglutide-page .social-proof-line {
   text-align: center;
   color: #92dce4;
   font-size: 0.92rem;
   margin-bottom: 4px;
 }
 
-.purchase-panel {
+.semaglutide-page .scarcity-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffb4b4;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.semaglutide-page .scarcity-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ff4d4f;
+  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.semaglutide-page .purchase-panel {
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -3330,11 +2670,11 @@ body,
   box-shadow: 0 0 34px rgba(0, 224, 255, 0.04);
 }
 
-.purchase-panel-header {
+.semaglutide-page .purchase-panel-header {
   text-align: center;
 }
 
-.purchase-panel-eyebrow {
+.semaglutide-page .purchase-panel-eyebrow {
   color: #7deef8;
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -3342,20 +2682,20 @@ body,
   margin-bottom: 6px;
 }
 
-.purchase-panel-title {
+.semaglutide-page .purchase-panel-title {
   margin: 0;
   color: #ffffff;
   font-size: 1.18rem;
   font-weight: 700;
 }
 
-.premium-purchase-options {
+.semaglutide-page .premium-purchase-options {
   margin-top: 0;
   margin-bottom: 0;
   gap: 14px;
 }
 
-.premium-purchase-option {
+.semaglutide-page .premium-purchase-option {
   position: relative;
   display: flex;
   align-items: flex-start;
@@ -3369,19 +2709,19 @@ body,
   transition: all 0.25s ease;
 }
 
-.premium-purchase-option:hover {
+.semaglutide-page .premium-purchase-option:hover {
   border-color: rgba(0, 224, 255, 0.55);
   box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
   transform: translateY(-1px);
 }
 
-.premium-purchase-option.active {
+.semaglutide-page .premium-purchase-option.active {
   border-color: rgba(0, 224, 255, 0.88);
   background: rgba(0, 224, 255, 0.08);
   box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
 }
 
-.premium-purchase-option input[type="radio"] {
+.semaglutide-page .premium-purchase-option input[type="radio"] {
   accent-color: #00e0ff;
   width: 18px;
   height: 18px;
@@ -3389,14 +2729,14 @@ body,
   flex-shrink: 0;
 }
 
-.purchase-option-copy {
+.semaglutide-page .purchase-option-copy {
   display: flex;
   flex-direction: column;
   gap: 6px;
   width: 100%;
 }
 
-.purchase-option-top {
+.semaglutide-page .purchase-option-top {
   display: flex;
   justify-content: space-between;
   gap: 14px;
@@ -3404,429 +2744,33 @@ body,
   width: 100%;
 }
 
-.purchase-option-title {
+.semaglutide-page .purchase-option-title {
   font-weight: 700;
   font-size: 1rem;
   color: #ffffff;
 }
 
-.purchase-option-price {
+.semaglutide-page .purchase-option-price {
   font-weight: 800;
   font-size: 1rem;
   color: #aaf8ff;
   white-space: nowrap;
 }
 
-.purchase-option-sub {
+.semaglutide-page .purchase-option-sub {
   color: #a8c8cf;
   font-size: 0.93rem;
   line-height: 1.45;
 }
 
-.best-value-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #00e0ff, #009dff);
-  color: #00131a;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 7px 11px;
-  border-radius: 999px;
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
-}
-
-.premium-frequency-panel {
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.14);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.frequency-label {
-  color: #c7faff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.frequency-options {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.frequency-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 224, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  color: #dffcff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 600;
-}
-
-.frequency-pill.active {
-  border-color: #00e0ff;
-  background: rgba(0, 224, 255, 0.1);
-  box-shadow: 0 0 14px rgba(0, 224, 255, 0.15);
-}
-
-.micro-urgency {
-  text-align: center;
-  color: #9fd6dd;
-  font-size: 0.9rem;
-  margin-top: -2px;
-}
-
-.premium-shop-actions {
-  margin-top: 0;
-  justify-content: center;
-}
-
-.premium-shop-actions .primary-btn,
-.premium-shop-actions .secondary-btn {
-  min-height: 54px;
-}
-
-.premium-shop-actions .primary-btn:hover {
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
-  transform: translateY(-1px);
-}
-
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-  justify-content: center;
-}
-
-.trust-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: #d6f9ff;
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.premium-image-wrap {
-  min-height: 420px;
-}
-
-.premium-image-stack {
-  transform: scale(1.04);
-}
-
-.premium-product-image {
-  max-width: 310px;
-}
-
-.premium-info-dropdown .info-toggle {
-  border-radius: 16px;
-}
-
-.premium-research-actions {
-  margin-top: 4px;
-}
-
-.sticky-buy-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 14px;
-  background: rgba(2, 10, 16, 0.96);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 224, 255, 0.15);
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
-}
-
-.sticky-buy-bar__left {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.sticky-buy-bar__title {
-  color: #dffcff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-.sticky-buy-bar__price {
-  color: #7ef5ff;
-  font-weight: 800;
-  font-size: 1rem;
-}
-
-.sticky-buy-bar__sub {
-  font-size: 0.8rem;
-  color: #7ef5ff;
-}
-
-.sticky-buy-bar__right {
-  flex-shrink: 0;
-}
-
-.sticky-buy-btn {
-  min-height: 46px;
-  min-width: 140px;
-}
-
-@media (max-width: 768px) {
-  .purchase-option-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-right: 0;
-  }
-
-  .purchase-option-price {
-    font-size: 0.96rem;
-  }
-
-  .best-value-badge {
-    position: static;
-    margin-top: 8px;
-    align-self: flex-start;
-  }
-
-  .premium-product-image {
-    max-width: 260px;
-  }
-
-  .trust-strip {
-    gap: 8px;
-  }
-
-  .trust-pill {
-    font-size: 0.82rem;
-    padding: 9px 12px;
-  }
-
-  .sticky-buy-bar {
-    display: flex;
-  }
-
-  .container {
-    padding-bottom: 88px;
-  }
-
-  .purchase-panel {
-    padding: 18px 14px;
-  }
-}
-/* =========================
-   SEMAGLUTIDE MONEY PRINTER
-   ========================= */
-
-.premium-product-page {
-  gap: 28px;
-}
-
-.premium-product-copy {
-  position: relative;
-}
-
-.review-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 10px 0 14px;
-  flex-wrap: wrap;
-}
-
-.review-stars {
-  color: #ffd666;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-.review-score {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.review-count {
-  color: #9fc8d0;
-  font-size: 0.95rem;
-}
-
-.premium-price-wrap {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.subscription-savings-line {
-  margin-top: 8px;
-  color: #7ef5ff;
-  font-size: 0.96rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-.scarcity-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #ffb4b4;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.scarcity-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
-  animation: pulseDot 1.5s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.45); opacity: 0.55; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.social-proof-line {
-  text-align: center;
-  color: #92dce4;
-  font-size: 0.92rem;
-  margin-bottom: 4px;
-}
-
-.purchase-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 860px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 22px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.12);
-  border-radius: 22px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.025),
-    rgba(255, 255, 255, 0.015)
-  );
-  box-shadow: 0 0 34px rgba(0, 224, 255, 0.04);
-}
-
-.purchase-panel-header {
-  text-align: center;
-}
-
-.purchase-panel-eyebrow {
-  color: #7deef8;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.76rem;
-  margin-bottom: 6px;
-}
-
-.purchase-panel-title {
-  margin: 0;
-  color: #ffffff;
-  font-size: 1.18rem;
-  font-weight: 700;
-}
-
-.premium-purchase-options {
-  margin-top: 0;
-  margin-bottom: 0;
-  gap: 14px;
-}
-
-.premium-purchase-option {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.18);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.025);
-  color: #e6fbff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.premium-purchase-option:hover {
-  border-color: rgba(0, 224, 255, 0.55);
-  box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.premium-purchase-option.active {
-  border-color: rgba(0, 224, 255, 0.88);
-  background: rgba(0, 224, 255, 0.08);
-  box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
-}
-
-.premium-purchase-option input[type="radio"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.purchase-option-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.purchase-option-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: center;
-  width: 100%;
-}
-
-.purchase-option-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-.purchase-option-price {
-  font-weight: 800;
-  font-size: 1rem;
-  color: #aaf8ff;
-  white-space: nowrap;
-}
-
-.purchase-option-sub {
-  color: #a8c8cf;
-  font-size: 0.93rem;
-  line-height: 1.45;
-}
-
-.subscription-highlight {
+.semaglutide-page .subscription-highlight {
   margin-top: 6px;
   font-size: 0.85rem;
   color: #7ef5ff;
   font-weight: 600;
 }
 
-.best-value-badge {
+.semaglutide-page .best-value-badge {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -3839,27 +2783,27 @@ body,
   box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
 }
 
-.premium-frequency-panel {
+.semaglutide-page .premium-frequency-panel {
   padding: 16px 18px;
   border: 1px solid rgba(0, 224, 255, 0.14);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.02);
 }
 
-.frequency-label {
+.semaglutide-page .frequency-label {
   color: #c7faff;
   font-weight: 700;
   font-size: 0.95rem;
   margin-bottom: 12px;
 }
 
-.frequency-options {
+.semaglutide-page .frequency-options {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.frequency-pill {
+.semaglutide-page .frequency-pill {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(0, 224, 255, 0.2);
@@ -3870,41 +2814,42 @@ body,
   font-weight: 600;
 }
 
-.frequency-pill.active {
+.semaglutide-page .frequency-pill.active {
   border-color: #00e0ff;
   background: rgba(0, 224, 255, 0.1);
   box-shadow: 0 0 14px rgba(0, 224, 255, 0.15);
 }
 
-.bundle-panel {
+.semaglutide-page .bundle-panel,
+.semaglutide-page .also-bought-panel {
   padding: 16px 18px;
   border: 1px solid rgba(0, 224, 255, 0.12);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.02);
 }
 
-.bundle-panel-header {
+.semaglutide-page .bundle-panel-header {
   margin-bottom: 14px;
 }
 
-.bundle-title {
+.semaglutide-page .bundle-title {
   color: #ffffff;
   font-size: 1rem;
   font-weight: 700;
 }
 
-.bundle-subtitle {
+.semaglutide-page .bundle-subtitle {
   color: #9dc6ce;
   font-size: 0.9rem;
   margin-top: 4px;
 }
 
-.bundle-grid {
+.semaglutide-page .bundle-grid {
   display: grid;
   gap: 12px;
 }
 
-.bundle-card {
+.semaglutide-page .bundle-card {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -3916,614 +2861,44 @@ body,
   transition: all 0.2s ease;
 }
 
-.bundle-card.active {
+.semaglutide-page .bundle-card.active {
   border-color: rgba(0, 224, 255, 0.65);
   background: rgba(0, 224, 255, 0.06);
   box-shadow: 0 0 18px rgba(0, 224, 255, 0.08);
 }
 
-.bundle-card input[type="checkbox"] {
+.semaglutide-page .bundle-card input[type="checkbox"] {
   accent-color: #00e0ff;
   width: 18px;
   height: 18px;
   flex-shrink: 0;
 }
 
-.bundle-image {
+.semaglutide-page .bundle-image {
   width: 44px;
   height: 44px;
   object-fit: contain;
   flex-shrink: 0;
 }
 
-.bundle-copy {
+.semaglutide-page .bundle-copy {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.bundle-name {
+.semaglutide-page .bundle-name {
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 600;
 }
 
-.bundle-price {
+.semaglutide-page .bundle-price {
   color: #9fefff;
   font-size: 0.9rem;
 }
 
-.bundle-savings-line {
-  margin-top: 12px;
-  color: #7ef5ff;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.order-bump {
-  padding: 14px 16px;
-  border: 1px dashed rgba(0, 224, 255, 0.22);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.015);
-}
-
-.order-bump.active {
-  border-color: rgba(0, 224, 255, 0.55);
-  background: rgba(0, 224, 255, 0.05);
-}
-
-.order-bump-label {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  cursor: pointer;
-}
-
-.order-bump-label input[type="checkbox"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.order-bump-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.order-bump-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-}
-
-.order-bump-title {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 0.95rem;
-}
-
-.order-bump-price {
-  color: #aaf8ff;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.order-bump-sub {
-  color: #9fc6cd;
-  font-size: 0.9rem;
-}
-
-.estimated-total {
-  text-align: center;
-  color: #dffcff;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.estimated-total span {
-  color: #7ef5ff;
-  font-weight: 800;
-}
-
-.micro-urgency {
-  text-align: center;
-  color: #9fd6dd;
-  font-size: 0.9rem;
-  margin-top: -2px;
-}
-
-.premium-shop-actions {
-  margin-top: 0;
-  justify-content: center;
-}
-
-.premium-shop-actions .primary-btn,
-.premium-shop-actions .secondary-btn {
-  min-height: 54px;
-}
-
-.primary-btn {
-  box-shadow: 0 0 18px rgba(0, 224, 255, 0.25);
-}
-
-.primary-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 28px rgba(0, 224, 255, 0.4);
-}
-
-.conversion-copy {
-  text-align: center;
-  color: #8feff9;
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 4px;
-  justify-content: center;
-}
-
-.trust-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  color: #d6f9ff;
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.premium-image-wrap {
-  min-height: 420px;
-}
-
-.premium-image-stack {
-  transform: scale(1.04);
-}
-
-.premium-product-image {
-  max-width: 310px;
-}
-
-.premium-info-dropdown .info-toggle {
-  border-radius: 16px;
-}
-
-.premium-research-actions {
-  margin-top: 4px;
-}
-
-.sticky-buy-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 14px;
-  background: rgba(2, 10, 16, 0.96);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid rgba(0, 224, 255, 0.15);
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
-}
-
-.sticky-buy-bar__left {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.sticky-buy-bar__title {
-  color: #dffcff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  white-space: nowrap;
-}
-
-.sticky-buy-bar__price {
-  color: #7ef5ff;
-  font-weight: 800;
-  font-size: 1rem;
-}
-
-.sticky-buy-bar__sub {
-  font-size: 0.8rem;
-  color: #7ef5ff;
-}
-
-.sticky-buy-bar__right {
-  flex-shrink: 0;
-}
-
-.sticky-buy-btn {
-  min-height: 46px;
-  min-width: 140px;
-}
-
-@media (max-width: 768px) {
-  .purchase-option-top,
-  .order-bump-top {
-    flex-direction: column;
-    align-items: flex-start;
-    padding-right: 0;
-  }
-
-  .purchase-option-price {
-    font-size: 0.96rem;
-  }
-
-  .best-value-badge {
-    position: static;
-    margin-top: 8px;
-    align-self: flex-start;
-  }
-
-  .premium-product-image {
-    max-width: 260px;
-  }
-
-  .trust-strip {
-    gap: 8px;
-  }
-
-  .trust-pill {
-    font-size: 0.82rem;
-    padding: 9px 12px;
-  }
-
-  .sticky-buy-bar {
-    display: flex;
-  }
-
-  .container {
-    padding-bottom: 88px;
-  }
-
-  .purchase-panel {
-    padding: 18px 14px;
-  }
-  }
-/* =========================
-   ELITE SEMAGLUTIDE LAYOUT
-   ========================= */
-
-.premium-product-page {
-  gap: 28px;
-}
-
-.premium-product-copy {
-  position: relative;
-}
-
-.review-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 10px 0 14px;
-  flex-wrap: wrap;
-}
-
-.review-stars {
-  color: #ffd666;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-.review-score {
-  color: #ffffff;
-  font-weight: 700;
-}
-
-.review-count {
-  color: #9fc8d0;
-  font-size: 0.95rem;
-}
-
-.premium-price-wrap {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.subscription-savings-line {
-  margin-top: 8px;
-  color: #7ef5ff;
-  font-size: 0.96rem;
-  font-weight: 600;
-  text-align: center;
-}
-
-.scarcity-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: #ffb4b4;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-}
-
-.scarcity-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  box-shadow: 0 0 10px rgba(255, 77, 79, 0.6);
-  animation: pulseDot 1.5s infinite;
-}
-
-@keyframes pulseDot {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.45); opacity: 0.55; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-.social-proof-line {
-  text-align: center;
-  color: #92dce4;
-  font-size: 0.92rem;
-  margin-bottom: 4px;
-}
-
-.purchase-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 860px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 22px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.12);
-  border-radius: 22px;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.025),
-    rgba(255, 255, 255, 0.015)
-  );
-  box-shadow: 0 0 34px rgba(0, 224, 255, 0.04);
-}
-
-.purchase-panel-header {
-  text-align: center;
-}
-
-.purchase-panel-eyebrow {
-  color: #7deef8;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.76rem;
-  margin-bottom: 6px;
-}
-
-.purchase-panel-title {
-  margin: 0;
-  color: #ffffff;
-  font-size: 1.18rem;
-  font-weight: 700;
-}
-
-.premium-purchase-options {
-  margin-top: 0;
-  margin-bottom: 0;
-  gap: 14px;
-}
-
-.premium-purchase-option {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.18);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.025);
-  color: #e6fbff;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.premium-purchase-option:hover {
-  border-color: rgba(0, 224, 255, 0.55);
-  box-shadow: 0 0 22px rgba(0, 224, 255, 0.08);
-  transform: translateY(-1px);
-}
-
-.premium-purchase-option.active {
-  border-color: rgba(0, 224, 255, 0.88);
-  background: rgba(0, 224, 255, 0.08);
-  box-shadow: 0 0 24px rgba(0, 224, 255, 0.12);
-}
-
-.premium-purchase-option input[type="radio"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-.purchase-option-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-
-.purchase-option-top {
-  display: flex;
-  justify-content: space-between;
-  gap: 14px;
-  align-items: center;
-  width: 100%;
-}
-
-.purchase-option-title {
-  font-weight: 700;
-  font-size: 1rem;
-  color: #ffffff;
-}
-
-.purchase-option-price {
-  font-weight: 800;
-  font-size: 1rem;
-  color: #aaf8ff;
-  white-space: nowrap;
-}
-
-.purchase-option-sub {
-  color: #a8c8cf;
-  font-size: 0.93rem;
-  line-height: 1.45;
-}
-
-.subscription-highlight {
-  margin-top: 6px;
-  font-size: 0.85rem;
-  color: #7ef5ff;
-  font-weight: 600;
-}
-
-.best-value-badge {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: linear-gradient(135deg, #00e0ff, #009dff);
-  color: #00131a;
-  font-size: 0.8rem;
-  font-weight: 800;
-  padding: 7px 11px;
-  border-radius: 999px;
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
-}
-
-.premium-frequency-panel {
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.14);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.frequency-label {
-  color: #c7faff;
-  font-weight: 700;
-  font-size: 0.95rem;
-  margin-bottom: 12px;
-}
-
-.frequency-options {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.frequency-pill {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 224, 255, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  color: #dffcff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-weight: 600;
-}
-
-.frequency-pill.active {
-  border-color: #00e0ff;
-  background: rgba(0, 224, 255, 0.1);
-  box-shadow: 0 0 14px rgba(0, 224, 255, 0.15);
-}
-
-.bundle-panel,
-.also-bought-panel {
-  padding: 16px 18px;
-  border: 1px solid rgba(0, 224, 255, 0.12);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.bundle-panel-header {
-  margin-bottom: 14px;
-}
-
-.bundle-title {
-  color: #ffffff;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.bundle-subtitle {
-  color: #9dc6ce;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-.bundle-grid {
-  display: grid;
-  gap: 12px;
-}
-
-.bundle-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.02);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.bundle-card.active {
-  border-color: rgba(0, 224, 255, 0.65);
-  background: rgba(0, 224, 255, 0.06);
-  box-shadow: 0 0 18px rgba(0, 224, 255, 0.08);
-}
-
-.bundle-card input[type="checkbox"] {
-  accent-color: #00e0ff;
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.bundle-image {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.bundle-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.bundle-name {
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.bundle-price {
-  color: #9fefff;
-  font-size: 0.9rem;
-}
-
-.also-bought-carousel {
+.semaglutide-page .also-bought-carousel {
   display: flex;
   gap: 12px;
   overflow-x: auto;
@@ -4531,7 +2906,7 @@ body,
   scroll-snap-type: x proximity;
 }
 
-.also-bought-card {
+.semaglutide-page .also-bought-card {
   min-width: 150px;
   padding: 14px 12px;
   border-radius: 16px;
@@ -4543,13 +2918,13 @@ body,
   scroll-snap-align: start;
 }
 
-.also-bought-card.active {
+.semaglutide-page .also-bought-card.active {
   border-color: rgba(0, 224, 255, 0.65);
   background: rgba(0, 224, 255, 0.06);
   box-shadow: 0 0 18px rgba(0, 224, 255, 0.08);
 }
 
-.also-bought-image {
+.semaglutide-page .also-bought-image {
   width: 52px;
   height: 52px;
   object-fit: contain;
@@ -4557,45 +2932,45 @@ body,
   display: block;
 }
 
-.also-bought-name {
+.semaglutide-page .also-bought-name {
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
-.also-bought-price {
+.semaglutide-page .also-bought-price {
   color: #9fefff;
   font-size: 0.9rem;
   margin-top: 6px;
 }
 
-.bundle-savings-line {
+.semaglutide-page .bundle-savings-line {
   margin-top: 12px;
   color: #7ef5ff;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.order-bump {
+.semaglutide-page .order-bump {
   padding: 14px 16px;
   border: 1px dashed rgba(0, 224, 255, 0.22);
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.015);
 }
 
-.order-bump.active {
+.semaglutide-page .order-bump.active {
   border-color: rgba(0, 224, 255, 0.55);
   background: rgba(0, 224, 255, 0.05);
 }
 
-.order-bump-label {
+.semaglutide-page .order-bump-label {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   cursor: pointer;
 }
 
-.order-bump-label input[type="checkbox"] {
+.semaglutide-page .order-bump-label input[type="checkbox"] {
   accent-color: #00e0ff;
   width: 18px;
   height: 18px;
@@ -4603,83 +2978,83 @@ body,
   flex-shrink: 0;
 }
 
-.order-bump-copy {
+.semaglutide-page .order-bump-copy {
   display: flex;
   flex-direction: column;
   gap: 6px;
   width: 100%;
 }
 
-.order-bump-top {
+.semaglutide-page .order-bump-top {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   width: 100%;
 }
 
-.order-bump-title {
+.semaglutide-page .order-bump-title {
   color: #ffffff;
   font-weight: 700;
   font-size: 0.95rem;
 }
 
-.order-bump-price {
+.semaglutide-page .order-bump-price {
   color: #aaf8ff;
   font-weight: 700;
   white-space: nowrap;
 }
 
-.order-bump-sub {
+.semaglutide-page .order-bump-sub {
   color: #9fc6cd;
   font-size: 0.9rem;
 }
 
-.estimated-total {
+.semaglutide-page .estimated-total {
   text-align: center;
   color: #dffcff;
   font-size: 1rem;
   font-weight: 600;
 }
 
-.estimated-total span {
+.semaglutide-page .estimated-total span {
   color: #7ef5ff;
   font-weight: 800;
 }
 
-.micro-urgency {
+.semaglutide-page .micro-urgency {
   text-align: center;
   color: #9fd6dd;
   font-size: 0.9rem;
   margin-top: -2px;
 }
 
-.premium-shop-actions {
-  margin-top: 0;
-  justify-content: center;
-}
-
-.premium-shop-actions .primary-btn,
-.premium-shop-actions .secondary-btn {
-  min-height: 54px;
-}
-
-.primary-btn {
-  box-shadow: 0 0 18px rgba(0, 224, 255, 0.25);
-}
-
-.primary-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 28px rgba(0, 224, 255, 0.4);
-}
-
-.conversion-copy {
+.semaglutide-page .conversion-copy {
   text-align: center;
   color: #8feff9;
   font-size: 0.9rem;
   font-weight: 600;
 }
 
-.trust-strip {
+.semaglutide-page .premium-shop-actions {
+  margin-top: 0;
+  justify-content: center;
+}
+
+.semaglutide-page .premium-shop-actions .primary-btn,
+.semaglutide-page .premium-shop-actions .secondary-btn {
+  min-height: 54px;
+}
+
+.semaglutide-page .primary-btn {
+  box-shadow: 0 0 18px rgba(0, 224, 255, 0.25);
+}
+
+.semaglutide-page .primary-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 28px rgba(0, 224, 255, 0.4);
+}
+
+.semaglutide-page .trust-strip {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -4687,7 +3062,7 @@ body,
   justify-content: center;
 }
 
-.trust-pill {
+.semaglutide-page .trust-pill {
   padding: 10px 14px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -4697,27 +3072,27 @@ body,
   line-height: 1;
 }
 
-.premium-image-wrap {
+.semaglutide-page .premium-image-wrap {
   min-height: 420px;
 }
 
-.premium-image-stack {
+.semaglutide-page .premium-image-stack {
   transform: scale(1.04);
 }
 
-.premium-product-image {
+.semaglutide-page .premium-product-image {
   max-width: 310px;
 }
 
-.premium-info-dropdown .info-toggle {
+.semaglutide-page .premium-info-dropdown .info-toggle {
   border-radius: 16px;
 }
 
-.premium-research-actions {
+.semaglutide-page .premium-research-actions {
   margin-top: 4px;
 }
 
-.sticky-buy-bar {
+.semaglutide-page .sticky-buy-bar {
   position: fixed;
   left: 0;
   right: 0;
@@ -4734,79 +3109,89 @@ body,
   box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.35);
 }
 
-.sticky-buy-bar__left {
+.semaglutide-page .sticky-buy-bar__left {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.sticky-buy-bar__title {
+.semaglutide-page .sticky-buy-bar__title {
   color: #dffcff;
   font-weight: 800;
   font-size: 0.95rem;
   white-space: nowrap;
 }
 
-.sticky-buy-bar__price {
+.semaglutide-page .sticky-buy-bar__price {
   color: #7ef5ff;
   font-weight: 800;
   font-size: 1rem;
 }
 
-.sticky-buy-bar__sub {
+.semaglutide-page .sticky-buy-bar__sub {
   font-size: 0.8rem;
   color: #7ef5ff;
 }
 
-.sticky-buy-bar__right {
+.semaglutide-page .sticky-buy-bar__right {
   flex-shrink: 0;
 }
 
-.sticky-buy-btn {
+.semaglutide-page .sticky-buy-btn {
   min-height: 46px;
   min-width: 140px;
 }
 
 @media (max-width: 768px) {
-  .purchase-option-top,
-  .order-bump-top {
+  .semaglutide-page .purchase-option-top,
+  .semaglutide-page .order-bump-top {
     flex-direction: column;
     align-items: flex-start;
     padding-right: 0;
   }
 
-  .purchase-option-price {
+  .semaglutide-page .purchase-option-price {
     font-size: 0.96rem;
   }
 
-  .best-value-badge {
+  .semaglutide-page .best-value-badge {
     position: static;
     margin-top: 8px;
     align-self: flex-start;
   }
 
-  .premium-product-image {
+  .semaglutide-page .premium-product-image {
     max-width: 260px;
   }
 
-  .trust-strip {
+  .semaglutide-page .trust-strip {
     gap: 8px;
   }
 
-  .trust-pill {
+  .semaglutide-page .trust-pill {
     font-size: 0.82rem;
     padding: 9px 12px;
   }
 
-  .sticky-buy-bar {
+  .semaglutide-page .sticky-buy-bar {
     display: flex;
   }
 
-  .container {
+  .semaglutide-page .container {
     padding-bottom: 88px;
   }
 
-  .purchase-panel {
+  .semaglutide-page .purchase-panel {
+    order: 2;
     padding: 18px 14px;
   }
+
+  .semaglutide-page .product-image-wrap {
+    order: 3;
   }
+
+  .semaglutide-page .price-display {
+    font-size: 36px;
+    text-align: left;
+  }
+    }
